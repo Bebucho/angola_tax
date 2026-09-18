@@ -1,0 +1,118 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:estado",
+ "creation": "2026-09-17 18:52:47.946392",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tax_code",
+  "estado",
+  "validity_section",
+  "effective_from",
+  "effective_to",
+  "active",
+  "deadlines_section",
+  "deadline_rules",
+  "legal_basis_section",
+  "legal_reference",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "tax_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tax Code",
+   "reqd": 1
+  },
+  {
+   "fieldname": "estado",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Estado",
+   "options": "Estado",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "validity_section",
+   "fieldtype": "Section Break",
+   "label": "Validity"
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To"
+  },
+  {
+   "default": "1",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "Active"
+  },
+  {
+   "fieldname": "deadlines_section",
+   "fieldtype": "Section Break",
+   "label": "Deadlines"
+  },
+  {
+   "fieldname": "deadline_rules",
+   "fieldtype": "Table",
+   "label": "Deadline Rules",
+   "options": "Tax Deadline Line",
+   "reqd": 1
+  },
+  {
+   "fieldname": "legal_basis_section",
+   "fieldtype": "Section Break",
+   "label": "Legal Basis"
+  },
+  {
+   "fieldname": "legal_reference",
+   "fieldtype": "Data",
+   "label": "Legal Reference"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-17 18:57:03.357235",
+ "modified_by": "Administrator",
+ "module": "Angola Tax",
+ "name": "Tax Deadline Configuration",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

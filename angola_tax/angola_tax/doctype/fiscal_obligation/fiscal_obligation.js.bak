@@ -1,0 +1,181 @@
+frappe.ui.form.on("Fiscal Obligation", {
+    refresh(frm) {
+        const unclassified = (frm.doc.movements || []).filter(
+            row =>
+                row.movement_type === "Unclassified" ||
+                row.classification_status === "Unclassified"
+        );
+
+        if (!unclassified.length) {
+            return;
+        }
+
+        frm.dashboard.set_headline(
+            __(
+                "{0} accounting movement(s) require fiscal classification.",
+                [unclassified.length]
+            )
+        );
+
+        frm.add_custom_button(
+            __("Review Unclassified Movements"),
+            () => {
+                open_movement_review_dialog(frm);
+            },
+            __("Tax Control")
+        );
+    },
+});
+
+
+function open_movement_review_dialog(frm) {
+    const rows = (frm.doc.movements || []).filter(
+        row =>
+            row.movement_type === "Unclassified" ||
+            row.classification_status === "Unclassified"
+    );
+
+    if (!rows.length) {
+        frappe.msgprint(__("There are no unclassified movements."));
+        return;
+    }
+
+    const dialog = new frappe.ui.Dialog({
+        title: __("Review Unclassified Movements"),
+        size: "extra-large",
+        fields: [
+            {
+                fieldname: "movements",
+                label: __("Movements"),
+                fieldtype: "Table",
+                cannot_add_rows: true,
+                cannot_delete_rows: true,
+                in_place_edit: true,
+                data: rows.map(row => ({
+                    movement_name: row.name,
+                    posting_date: row.posting_date,
+                    voucher_type: row.voucher_type,
+                    voucher_no: row.voucher_no,
+                    account: row.account,
+                    debit: row.debit,
+                    credit: row.credit,
+                    movement_type: "",
+                })),
+                fields: [
+                    {
+                        fieldname: "movement_name",
+                        fieldtype: "Data",
+                        hidden: 1,
+                    },
+                    {
+                        fieldname: "posting_date",
+                        label: __("Posting Date"),
+                        fieldtype: "Date",
+                        read_only: 1,
+                        in_list_view: 1,
+                        columns: 1,
+                    },
+                    {
+                        fieldname: "voucher_type",
+                        label: __("Voucher Type"),
+                        fieldtype: "Data",
+                        read_only: 1,
+                        in_list_view: 1,
+                        columns: 1,
+                    },
+                    {
+                        fieldname: "voucher_no",
+                        label: __("Voucher"),
+                        fieldtype: "Data",
+                        read_only: 1,
+                        in_list_view: 1,
+                        columns: 2,
+                    },
+                    {
+                        fieldname: "account",
+                        label: __("Account"),
+                        fieldtype: "Data",
+                        read_only: 1,
+                        in_list_view: 1,
+                        columns: 3,
+                    },
+                    {
+                        fieldname: "debit",
+                        label: __("Debit"),
+                        fieldtype: "Currency",
+                        read_only: 1,
+                        in_list_view: 1,
+                        columns: 1,
+                    },
+                    {
+                        fieldname: "credit",
+                        label: __("Credit"),
+                        fieldtype: "Currency",
+                        read_only: 1,
+                        in_list_view: 1,
+                        columns: 1,
+                    },
+                    {
+                        fieldname: "movement_type",
+                        label: __("Fiscal Classification"),
+                        fieldtype: "Select",
+                        options: [
+                            "",
+                            "Determination",
+                            "Payment",
+                            "Adjustment Increase",
+                            "Adjustment Decrease",
+                            "Reversal",
+                            "Reclassification",
+                        ].join("\n"),
+                        in_list_view: 1,
+                        columns: 2,
+                    },
+                ],
+            },
+        ],
+
+        primary_action_label: __("Apply Classifications"),
+
+        primary_action(values) {
+            const reviewed = (values.movements || []).filter(
+                row => row.movement_type
+            );
+
+            if (!reviewed.length) {
+                frappe.msgprint(
+                    __("Select at least one fiscal classification.")
+                );
+                return;
+            }
+
+            reviewed.forEach(review_row => {
+                const source_row = (frm.doc.movements || []).find(
+                    row => row.name === review_row.movement_name
+                );
+
+                if (source_row) {
+                    frappe.model.set_value(
+                        source_row.doctype,
+                        source_row.name,
+                        "movement_type",
+                        review_row.movement_type
+                    );
+                }
+            });
+
+            dialog.hide();
+            frm.refresh_field("movements");
+
+            frappe.show_alert({
+                message: __(
+                    "{0} movement(s) classified. Save the Fiscal Obligation to confirm the review.",
+                    [reviewed.length]
+                ),
+                indicator: "green",
+            });
+        },
+    });
+
+    dialog.show();
+}

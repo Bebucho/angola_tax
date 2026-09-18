@@ -1,0 +1,615 @@
+{
+ "actions": [],
+ "autoname": "format:TAX-{YYYY}-{#####}",
+ "creation": "2026-09-17 13:53:39.201216",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "estado",
+  "tax_name",
+  "tax_code",
+  "obligation_type",
+  "status_column",
+  "status",
+  "responsible_user",
+  "reviewer",
+  "fiscal_period_section",
+  "fiscal_period_from",
+  "fiscal_period_to",
+  "fiscal_year",
+  "amounts_section",
+  "amount_determined",
+  "amount_filed",
+  "amount_assessed",
+  "amount_paid",
+  "outstanding_amount",
+  "currency",
+  "filing_variance",
+  "assessment_variance",
+  "has_variance",
+  "effective_obligation_amount",
+  "variance_reason",
+  "filing_section",
+  "filing_due_date",
+  "filing_date",
+  "declaration_reference",
+  "filing_status",
+  "days_filing_overdue",
+  "is_filing_overdue",
+  "submission_section",
+  "submission_due_date",
+  "submission_status",
+  "is_submission_overdue",
+  "days_submission_overdue",
+  "payment_and_assessment_section",
+  "original_payment_due_date",
+  "current_payment_due_date",
+  "nota_lancamento_reference",
+  "nota_lancamento_date",
+  "rupe",
+  "rupe_payment_limit_date",
+  "assessment_document",
+  "effective_payment_due_date",
+  "deadline_status",
+  "source_section",
+  "source_module",
+  "source_document_type",
+  "source_document",
+  "accounting_section",
+  "liability_account",
+  "receivable_account",
+  "journal_entry",
+  "payment_entry",
+  "accounting_reconciled",
+  "reconciliation_date",
+  "control_section",
+  "is_overdue",
+  "days_overdue",
+  "under_dispute",
+  "payment_plan",
+  "correction_required",
+  "notes",
+  "amended_from",
+  "reviewed_by",
+  "reviewed_on",
+  "payments_section",
+  "payments",
+  "compliance_status_section",
+  "compliance_status",
+  "compliance_alert",
+  "compliance_message",
+  "fiscal_obligation_movement_section",
+  "movements"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "estado",
+   "fieldtype": "Link",
+   "label": "Estado",
+   "options": "Estado",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tax_name",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Tax Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tax_code",
+   "fieldtype": "Data",
+   "label": "Tax Code"
+  },
+  {
+   "fieldname": "obligation_type",
+   "fieldtype": "Select",
+   "label": "Obligation Type",
+   "options": "Payable\nReceivable",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status_column",
+   "fieldtype": "Column Break",
+   "label": "Status"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nDetermined\nUnder Review\nApproved\nFiled\nAwaiting Assessment\nReady for Payment\nPaid\nReconciled\nClosed\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "responsible_user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Responsible User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reviewer",
+   "fieldtype": "Link",
+   "label": "Reviewer",
+   "options": "User"
+  },
+  {
+   "fieldname": "fiscal_period_section",
+   "fieldtype": "Section Break",
+   "label": "Fiscal Period"
+  },
+  {
+   "fieldname": "fiscal_period_from",
+   "fieldtype": "Date",
+   "label": "Fiscal Period From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fiscal_period_to",
+   "fieldtype": "Date",
+   "label": "Fiscal Period To",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fiscal_year",
+   "fieldtype": "Data",
+   "label": "Fiscal Year",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amounts_section",
+   "fieldtype": "Section Break",
+   "label": "Amounts"
+  },
+  {
+   "fieldname": "amount_determined",
+   "fieldtype": "Currency",
+   "label": "Amount Determined",
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "amount_filed",
+   "fieldtype": "Currency",
+   "label": "Amount Filed"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "amount_assessed",
+   "fieldtype": "Currency",
+   "label": "Amount Assessed"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "amount_paid",
+   "fieldtype": "Currency",
+   "label": "Amount Paid",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Outstanding Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "filing_section",
+   "fieldtype": "Section Break",
+   "label": "Filing"
+  },
+  {
+   "fieldname": "filing_due_date",
+   "fieldtype": "Date",
+   "label": "Filing Due Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "filing_date",
+   "fieldtype": "Date",
+   "label": "Filing Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "declaration_reference",
+   "fieldtype": "Data",
+   "label": "Declaration Reference"
+  },
+  {
+   "fieldname": "payment_and_assessment_section",
+   "fieldtype": "Section Break",
+   "label": "Payment and Assessment"
+  },
+  {
+   "fieldname": "original_payment_due_date",
+   "fieldtype": "Date",
+   "label": "Original Payment Due Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "current_payment_due_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Current Payment Due Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "nota_lancamento_reference",
+   "fieldtype": "Data",
+   "label": "Nota de Lan\u00e7amento Reference"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "nota_lancamento_date",
+   "fieldtype": "Date",
+   "label": "Nota de Lan\u00e7amento Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "rupe",
+   "fieldtype": "Data",
+   "label": "RUPE"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "rupe_payment_limit_date",
+   "fieldtype": "Date",
+   "label": "RUPE Payment Limit Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "assessment_document",
+   "fieldtype": "Attach",
+   "label": "Assessment Document"
+  },
+  {
+   "fieldname": "source_section",
+   "fieldtype": "Section Break",
+   "label": "Source"
+  },
+  {
+   "fieldname": "source_module",
+   "fieldtype": "Select",
+   "label": "Source Module",
+   "options": "Payroll\nAccounting\nVAT\nManual\nImport\nOther"
+  },
+  {
+   "fieldname": "source_document_type",
+   "fieldtype": "Link",
+   "label": "Source Document Type",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "source_document",
+   "fieldtype": "Dynamic Link",
+   "label": "Source Document",
+   "options": "source_document_type"
+  },
+  {
+   "fieldname": "accounting_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting"
+  },
+  {
+   "fieldname": "liability_account",
+   "fieldtype": "Link",
+   "label": "Liability Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "receivable_account",
+   "fieldtype": "Link",
+   "label": "Receivable Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "journal_entry",
+   "fieldtype": "Link",
+   "label": "Journal Entry",
+   "options": "Journal Entry"
+  },
+  {
+   "fieldname": "payment_entry",
+   "fieldtype": "Link",
+   "label": "Payment Entry",
+   "options": "Payment Entry"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "accounting_reconciled",
+   "fieldtype": "Check",
+   "label": "Accounting Reconciled",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "reconciliation_date",
+   "fieldtype": "Date",
+   "label": "Reconciliation Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "control_section",
+   "fieldtype": "Section Break",
+   "label": "Control"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "is_overdue",
+   "fieldtype": "Check",
+   "in_filter": 1,
+   "in_standard_filter": 1,
+   "label": "Is Overdue",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "days_overdue",
+   "fieldtype": "Int",
+   "label": "Days Overdue",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "under_dispute",
+   "fieldtype": "Check",
+   "in_filter": 1,
+   "in_standard_filter": 1,
+   "label": "Under Dispute"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "payment_plan",
+   "fieldtype": "Check",
+   "in_filter": 1,
+   "in_standard_filter": 1,
+   "label": "Payment Plan"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "correction_required",
+   "fieldtype": "Check",
+   "label": "Correction Required"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Fiscal Obligation",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "payments_section",
+   "fieldtype": "Section Break",
+   "label": "Payments"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "payments",
+   "fieldtype": "Table",
+   "options": "Tax Payment Allocation"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "assessment_variance",
+   "fieldtype": "Currency",
+   "label": "Assessment Variance",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "has_variance",
+   "fieldtype": "Check",
+   "in_filter": 1,
+   "in_standard_filter": 1,
+   "label": "Has Variance"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "effective_obligation_amount",
+   "fieldtype": "Currency",
+   "label": "Effective Obligation Amount",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "filing_variance",
+   "fieldtype": "Currency",
+   "label": "Filing Variance",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "variance_reason",
+   "fieldtype": "Small Text",
+   "label": "Variance Reason"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "effective_payment_due_date",
+   "fieldtype": "Date",
+   "label": "Effective Payment Due Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "deadline_status",
+   "fieldtype": "Select",
+   "label": "Deadline Status",
+   "options": "No Deadline\nOn Time\nDue Soon\nDue Today\nOverdue\nPaid"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "filing_status",
+   "fieldtype": "Select",
+   "label": "Filing Status",
+   "options": "Not Due\nDue Soon\nDue Today\nFiled\nOverdue\nNo Deadline"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "days_filing_overdue",
+   "fieldtype": "Int",
+   "label": "Days Filing Overdue"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "is_filing_overdue",
+   "fieldtype": "Check",
+   "label": "Is filing Overdue"
+  },
+  {
+   "fieldname": "compliance_status_section",
+   "fieldtype": "Section Break",
+   "label": "Compliance Status"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "compliance_status",
+   "fieldtype": "Select",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Compliance Status",
+   "options": "Compliant\nAction Required\nDue Soon\nOverdue\nUnder Review\nClosed"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "compliance_alert",
+   "fieldtype": "Check",
+   "label": "Compliance Alert"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "compliance_message",
+   "fieldtype": "Small Text",
+   "label": "Compliance Message"
+  },
+  {
+   "fieldname": "fiscal_obligation_movement_section",
+   "fieldtype": "Section Break",
+   "label": "Fiscal Obligation Movement"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "movements",
+   "fieldtype": "Table",
+   "label": "Movements",
+   "options": "Fiscal Obligation Movement"
+  },
+  {
+   "fieldname": "submission_section",
+   "fieldtype": "Section Break",
+   "label": "Submission"
+  },
+  {
+   "fieldname": "submission_due_date",
+   "fieldtype": "Date",
+   "label": "Submission Due Date",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "submission_status",
+   "fieldtype": "Select",
+   "label": "Submission Status",
+   "options": "Not Due\nDue Soon\nDue Today\nSubmitted\nOverdue\nNo Deadline"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "is_submission_overdue",
+   "fieldtype": "Check",
+   "label": "Is Submission Overdue"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "days_submission_overdue",
+   "fieldtype": "Int",
+   "label": "Days Submission Overdue",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reviewed_by",
+   "fieldtype": "Link",
+   "label": "Reviewed By",
+   "options": "User"
+  },
+  {
+   "fieldname": "reviewed_on",
+   "fieldtype": "Datetime",
+   "label": "Reviewed on"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-09-17 22:25:17.943792",
+ "modified_by": "Administrator",
+ "module": "Angola Tax",
+ "name": "Fiscal Obligation",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

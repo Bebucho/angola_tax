@@ -1,0 +1,165 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:TAXCFG-{#####}",
+ "creation": "2026-09-17 21:21:11.539791",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "estado",
+  "tax_code",
+  "tax_name",
+  "obligation_type",
+  "account",
+  "match_mode",
+  "determination_direction",
+  "settlement_direction",
+  "source_module",
+  "periodicity",
+  "effective_from",
+  "effective_to",
+  "active",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "estado",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Estado",
+   "options": "Estado",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tax_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tax Code",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tax_name",
+   "fieldtype": "Data",
+   "label": "Tax Name",
+   "reqd": 1
+  },
+  {
+   "default": "Payable",
+   "fieldname": "obligation_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Obligation Type",
+   "options": "Payable\nReceivable",
+   "reqd": 1
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Tax Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "default": "Account Only",
+   "fieldname": "match_mode",
+   "fieldtype": "Select",
+   "label": "Match Mode",
+   "options": "Account Only\nAccount + Estado Party",
+   "reqd": 1
+  },
+  {
+   "default": "Credit",
+   "fieldname": "determination_direction",
+   "fieldtype": "Select",
+   "label": "Determination Direction",
+   "options": "Debit\nCredit",
+   "reqd": 1
+  },
+  {
+   "default": "Debit",
+   "fieldname": "settlement_direction",
+   "fieldtype": "Select",
+   "label": "Settlement Direction",
+   "options": "Debit\nCredit",
+   "reqd": 1
+  },
+  {
+   "default": "Accounting",
+   "fieldname": "source_module",
+   "fieldtype": "Select",
+   "label": "Source Module",
+   "options": "Payroll\nAccounting\nVAT\nImport\nCustoms\nManual\nOther"
+  },
+  {
+   "default": "Monthly",
+   "fieldname": "periodicity",
+   "fieldtype": "Select",
+   "label": "Periodicity",
+   "options": "Monthly\nQuarterly\nAnnual\nTransaction",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To"
+  },
+  {
+   "default": "1",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Active"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-17 21:21:11.539791",
+ "modified_by": "Administrator",
+ "module": "Angola Tax",
+ "name": "Tax Account Configuration",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
