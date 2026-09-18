@@ -7,9 +7,8 @@
  "engine": "InnoDB",
  "field_order": [
   "company",
-  "estado",
+  "tax_type",
   "tax_name",
-  "tax_code",
   "obligation_type",
   "status_column",
   "status",
@@ -95,25 +94,10 @@
    "reqd": 1
   },
   {
-   "fieldname": "estado",
-   "fieldtype": "Link",
-   "label": "Estado",
-   "options": "Estado",
-   "reqd": 1
-  },
-  {
+   "fetch_from": "tax_type.tax_name",
    "fieldname": "tax_name",
    "fieldtype": "Data",
-   "in_filter": 1,
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Tax Name",
-   "reqd": 1
-  },
-  {
-   "fieldname": "tax_code",
-   "fieldtype": "Data",
-   "label": "Tax Code"
+   "label": "Tax Name"
   },
   {
    "fieldname": "obligation_type",
@@ -179,10 +163,10 @@
    "label": "Amounts"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "amount_determined",
    "fieldtype": "Currency",
    "label": "Amount Determined",
-   "allow_on_submit": 1,
    "read_only": 1
   },
   {
@@ -580,13 +564,23 @@
    "fieldname": "reviewed_on",
    "fieldtype": "Datetime",
    "label": "Reviewed on"
+  },
+  {
+   "fieldname": "tax_type",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Tax Type",
+   "options": "Tax Type",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-09-17 22:25:17.943792",
+ "modified": "2026-09-18 10:15:47.775424",
  "modified_by": "Administrator",
  "module": "Angola Tax",
  "name": "Fiscal Obligation",

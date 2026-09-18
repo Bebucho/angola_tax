@@ -21,7 +21,6 @@
   "reviewed_on",
   "source_section",
   "gl_entry",
-  "estado",
   "source_module",
   "remarks"
  ],
@@ -126,12 +125,6 @@
    "fieldtype": "Link",
    "label": "GL Entry",
    "options": "GL Entry"
-  },
-  {
-   "fieldname": "estado",
-   "fieldtype": "Link",
-   "label": "Estado",
-   "options": "Estado"
   },
   {
    "fieldname": "source_module",

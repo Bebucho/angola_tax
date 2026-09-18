@@ -31,7 +31,7 @@
    "reqd": 1
   },
   {
-   "default": "1",
+   "default": "0",
    "fieldname": "due_month_offset",
    "fieldtype": "Int",
    "in_list_view": 1,
@@ -49,14 +49,15 @@
    "fieldname": "use_end_of_month",
    "fieldtype": "Check",
    "in_list_view": 1,
-   "label": "Use End of Month"
+   "label": "Use End of Month",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-09-17 19:24:00.613022",
+ "modified": "2026-09-18 09:32:34.597993",
  "modified_by": "Administrator",
  "module": "Angola Tax",
  "name": "Tax Deadline Line",

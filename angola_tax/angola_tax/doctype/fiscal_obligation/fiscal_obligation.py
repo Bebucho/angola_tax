@@ -419,7 +419,7 @@ class FiscalObligation(Document):
 
 
     def get_deadline_rule(self, deadline_type):
-        if not self.fiscal_period_to or not self.tax_code or not self.estado:
+        if not self.fiscal_period_to or not self.tax_type:
             return None
 
         period_end = getdate(self.fiscal_period_to)
@@ -427,8 +427,7 @@ class FiscalObligation(Document):
         configurations = frappe.get_all(
             "Tax Deadline Configuration",
             filters={
-                "tax_code": self.tax_code,
-                "estado": self.estado,
+                "tax_type": self.tax_type,
                 "active": 1,
                 "effective_from": ["<=", period_end],
             },

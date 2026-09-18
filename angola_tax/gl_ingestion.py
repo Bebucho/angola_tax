@@ -6,25 +6,21 @@ def sync_taxes_from_gl():
     """
     Synchronise configured tax-control accounts with Fiscal Obligations.
 
-    Historical function name retained for compatibility.
-    The implementation is now generic and is no longer limited to payroll,
-    IRT or INSS.
+    Tax Account Configuration defines the accounting mapping.
+    Tax Type defines the statutory identity and behaviour of the tax.
     """
+
     configurations = frappe.get_all(
         "Tax Account Configuration",
         filters={"active": 1},
         fields=[
             "name",
             "company",
-            "estado",
-            "tax_code",
-            "tax_name",
-            "obligation_type",
+            "tax_type",
             "account",
             "determination_direction",
             "settlement_direction",
             "source_module",
-            "periodicity",
             "effective_from",
             "effective_to",
         ],
@@ -35,10 +31,17 @@ def sync_taxes_from_gl():
 
     frappe.db.commit()
 
+
 def sync_payroll_taxes_from_gl():
+    """
+    Historical function retained for compatibility.
+    """
     return sync_taxes_from_gl()
 
+
 def sync_configuration(config):
+    tax_type = get_tax_type(config.tax_type)
+
     filters = {
         "company": config.company,
         "account": config.account,
@@ -56,8 +59,6 @@ def sync_configuration(config):
             "company",
             "posting_date",
             "account",
-            "party_type",
-            "party",
             "voucher_type",
             "voucher_no",
             "debit",
@@ -68,7 +69,10 @@ def sync_configuration(config):
     )
 
     for gle in entries:
-        if not configuration_applies(config, gle.posting_date):
+        if not configuration_applies(
+            config,
+            gle.posting_date,
+        ):
             continue
 
         if frappe.db.exists(
@@ -83,7 +87,10 @@ def sync_configuration(config):
         )
 
         if movement_type == "Payment":
-            obligation = get_payment_obligation(gle, config)
+            obligation = get_payment_obligation(
+                gle,
+                config,
+            )
 
             if not obligation:
                 frappe.log_error(
@@ -91,7 +98,7 @@ def sync_configuration(config):
                         f"{gle.voucher_type} {gle.voucher_no} on account "
                         f"{gle.account} could not be automatically matched "
                         f"to a single submitted Fiscal Obligation for "
-                        f"{config.tax_code}."
+                        f"{config.tax_type}."
                     ),
                     title="Unmatched Tax Payment",
                 )
@@ -101,6 +108,7 @@ def sync_configuration(config):
             obligation = get_or_create_obligation(
                 gle,
                 config,
+                tax_type,
             )
 
         add_gl_movement(
@@ -112,6 +120,28 @@ def sync_configuration(config):
         )
 
         obligation.save(ignore_permissions=True)
+
+
+def get_tax_type(tax_type_name):
+    """
+    Load statutory tax master data.
+
+    Tax Type is the source of truth for:
+    - tax identity
+    - tax name
+    - obligation type
+    - periodicity
+    """
+
+    if not tax_type_name:
+        frappe.throw(
+            "Tax Account Configuration must have a Tax Type."
+        )
+
+    return frappe.get_cached_doc(
+        "Tax Type",
+        tax_type_name,
+    )
 
 
 def configuration_applies(config, posting_date):
@@ -128,18 +158,21 @@ def configuration_applies(config, posting_date):
     return True
 
 
-def get_or_create_obligation(gle, config):
+def get_or_create_obligation(
+    gle,
+    config,
+    tax_type,
+):
     period_from, period_to = get_obligation_period(
         gle.posting_date,
-        config.periodicity,
+        tax_type.periodicity,
     )
 
     existing = frappe.db.get_value(
         "Fiscal Obligation",
         {
             "company": gle.company,
-            "estado": config.estado,
-            "tax_code": config.tax_code,
+            "tax_type": config.tax_type,
             "fiscal_period_from": period_from,
             "fiscal_period_to": period_to,
             "docstatus": ["!=", 2],
@@ -159,41 +192,48 @@ def get_or_create_obligation(gle, config):
         "default_currency",
     )
 
-    return frappe.get_doc(
+    obligation = frappe.get_doc(
         {
             "doctype": "Fiscal Obligation",
             "company": gle.company,
-            "estado": config.estado,
-            "tax_name": config.tax_name,
-            "tax_code": config.tax_code,
-            "obligation_type": config.obligation_type,
+            "tax_type": config.tax_type,
+            "tax_name": tax_type.tax_name,
+            "obligation_type": tax_type.obligation_type,
             "status": "Determined",
             "responsible_user": "Administrator",
             "fiscal_period_from": period_from,
             "fiscal_period_to": period_to,
+            "fiscal_year": str(period_from.year),
             "currency": company_currency,
-            "source_module": config.source_module or "Accounting",
+            "source_module": (
+                config.source_module
+                or "Accounting"
+            ),
             "liability_account": (
                 config.account
-                if config.obligation_type == "Payable"
+                if tax_type.obligation_type == "Payable"
                 else None
             ),
             "receivable_account": (
                 config.account
-                if config.obligation_type == "Receivable"
+                if tax_type.obligation_type == "Receivable"
                 else None
             ),
         }
     )
 
+    return obligation
 
-def get_payment_obligation(gle, config):
+
+def get_payment_obligation(
+    gle,
+    config,
+):
     obligations = frappe.get_all(
         "Fiscal Obligation",
         filters={
             "company": gle.company,
-            "estado": config.estado,
-            "tax_code": config.tax_code,
+            "tax_type": config.tax_type,
             "docstatus": 1,
             "outstanding_amount": [">", 0],
         },
@@ -225,7 +265,10 @@ def add_gl_movement(
     movement_type,
     classification_status,
 ):
-    net_amount = (gle.credit or 0) - (gle.debit or 0)
+    net_amount = (
+        (gle.credit or 0)
+        - (gle.debit or 0)
+    )
 
     obligation.append(
         "movements",
@@ -240,7 +283,6 @@ def add_gl_movement(
             "movement_type": movement_type,
             "classification_status": classification_status,
             "gl_entry": gle.name,
-            "estado": config.estado,
             "source_module": get_source_module(
                 gle,
                 config,
@@ -250,8 +292,27 @@ def add_gl_movement(
     )
 
 
-def classify_gl_entry(gle, config):
-    remarks = (gle.remarks or "").strip()
+def is_payroll_accrual(gle):
+    remarks = (gle.remarks or "").strip().lower()
+
+    payroll_markers = (
+        "accrual journal entry for salaries",
+        "accural journal entry for salaries",
+        "entrada de diário de acréscimo para salários",
+    )
+
+    return (
+        gle.voucher_type == "Journal Entry"
+        and any(marker in remarks for marker in payroll_markers)
+    )
+
+def classify_gl_entry(
+    gle,
+    config,
+):
+    remarks = (
+        gle.remarks or ""
+    ).strip()
 
     debit = gle.debit or 0
     credit = gle.credit or 0
@@ -261,44 +322,52 @@ def classify_gl_entry(gle, config):
         credit,
     )
 
-    # Settlement/payment documents can be classified directly from the
-    # configured settlement direction.
+    # Settlement/payment documents can be classified directly
+    # from the configured settlement direction.
     if gle.voucher_type == "Payment Entry":
-        if movement_direction == config.settlement_direction:
+        if (
+            movement_direction
+            == config.settlement_direction
+        ):
             return "Payment", "Automatic"
 
         return "Unclassified", "Unclassified"
 
-    # ERPNext/HRMS payroll accrual journals are system-generated and have
-    # a known semantic meaning.
-    if (
-        gle.voucher_type == "Journal Entry"
-        and "Accrual Journal Entry for salaries" in remarks
-    ):
-        if movement_direction == config.determination_direction:
+    # ERPNext/HRMS payroll accrual journals are system-generated
+    # and have a known semantic meaning.
+    if is_payroll_accrual(gle):
+        if (
+            movement_direction
+            == config.determination_direction
+        ):
             return "Determination", "Automatic"
 
-        if movement_direction == config.settlement_direction:
+        if (
+            movement_direction
+            == config.settlement_direction
+        ):
             return "Reversal", "Automatic"
 
         return "Unclassified", "Unclassified"
 
     # Manual/other Journal Entries remain conservative.
-    # A debit or credit alone does not tell us whether the entry is an
-    # adjustment, correction, reversal or reclassification.
     if gle.voucher_type == "Journal Entry":
         return "Unclassified", "Unclassified"
 
-    # For normal system-generated accounting documents such as invoices,
-    # use the configured determination direction.
-    if movement_direction == config.determination_direction:
+    # Normal system-generated accounting documents.
+    if (
+        movement_direction
+        == config.determination_direction
+    ):
         return "Determination", "Automatic"
 
-    # Opposite-direction non-payment movements are not guessed.
     return "Unclassified", "Unclassified"
 
 
-def get_movement_direction(debit, credit):
+def get_movement_direction(
+    debit,
+    credit,
+):
     if credit > 0 and debit == 0:
         return "Credit"
 
@@ -308,23 +377,33 @@ def get_movement_direction(debit, credit):
     return None
 
 
-def get_source_module(gle, config):
-    remarks = (gle.remarks or "").strip()
+def get_source_module(
+    gle,
+    config,
+):
+    remarks = (
+        gle.remarks or ""
+    ).strip()
 
-    if (
-        gle.voucher_type == "Journal Entry"
-        and "Accrual Journal Entry for salaries" in remarks
-    ):
+    if is_payroll_accrual(gle):
         return "Payroll"
 
     if gle.voucher_type == "Payment Entry":
         return "Payment"
 
-    return config.source_module or "Accounting"
+    return (
+        config.source_module
+        or "Accounting"
+    )
 
 
-def get_obligation_period(posting_date, periodicity):
-    posting_date = getdate(posting_date)
+def get_obligation_period(
+    posting_date,
+    periodicity,
+):
+    posting_date = getdate(
+        posting_date
+    )
 
     if periodicity == "Monthly":
         return (
@@ -334,7 +413,9 @@ def get_obligation_period(posting_date, periodicity):
 
     if periodicity == "Quarterly":
         quarter_start_month = (
-            ((posting_date.month - 1) // 3) * 3 + 1
+            ((posting_date.month - 1) // 3)
+            * 3
+            + 1
         )
 
         period_from = posting_date.replace(
@@ -342,7 +423,9 @@ def get_obligation_period(posting_date, periodicity):
             day=1,
         )
 
-        quarter_end_month = quarter_start_month + 2
+        quarter_end_month = (
+            quarter_start_month + 2
+        )
 
         period_to = get_last_day(
             posting_date.replace(
@@ -351,7 +434,10 @@ def get_obligation_period(posting_date, periodicity):
             )
         )
 
-        return period_from, period_to
+        return (
+            period_from,
+            period_to,
+        )
 
     if periodicity == "Annual":
         return (
@@ -366,8 +452,12 @@ def get_obligation_period(posting_date, periodicity):
         )
 
     if periodicity == "Transaction":
-        return posting_date, posting_date
+        return (
+            posting_date,
+            posting_date,
+        )
 
     frappe.throw(
-        f"Unsupported tax periodicity: {periodicity}"
+        f"Unsupported tax periodicity: "
+        f"{periodicity}"
     )
