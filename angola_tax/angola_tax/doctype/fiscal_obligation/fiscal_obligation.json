@@ -52,6 +52,7 @@
   "assessment_document",
   "effective_payment_due_date",
   "deadline_status",
+  "trigger_date",
   "source_section",
   "source_module",
   "source_document_type",
@@ -574,13 +575,19 @@
    "label": "Tax Type",
    "options": "Tax Type",
    "reqd": 1
+  },
+  {
+   "fieldname": "trigger_date",
+   "fieldtype": "Date",
+   "label": "Trigger Date",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-09-18 10:15:47.775424",
+ "modified": "2026-09-18 15:46:03.936421",
  "modified_by": "Administrator",
  "module": "Angola Tax",
  "name": "Fiscal Obligation",

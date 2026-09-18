@@ -1,6 +1,6 @@
 import frappe
 from frappe.utils import get_first_day, get_last_day, getdate
-
+from frappe.utils import getdate, add_days
 
 def sync_taxes_from_gl():
     """
@@ -461,3 +461,120 @@ def get_obligation_period(
         f"Unsupported tax periodicity: "
         f"{periodicity}"
     )
+
+def is_salary_payment_event(gle):
+    if not gle.account:
+        return False
+
+    if (gle.debit or 0) <= 0:
+        return False
+
+    against_accounts = [
+        account.strip()
+        for account in (gle.against or "").split(",")
+        if account.strip()
+    ]
+
+    for account_name in against_accounts:
+        account_type = frappe.db.get_value(
+            "Account",
+            account_name,
+            "account_type",
+        )
+
+        if account_type in ("Bank", "Cash"):
+            return True
+
+    return False
+
+def get_previous_month_period(payment_date):
+    payment_date = getdate(payment_date)
+
+    first_day_current_month = payment_date.replace(day=1)
+    previous_month_end = add_days(first_day_current_month, -1)
+    previous_month_start = previous_month_end.replace(day=1)
+
+    return previous_month_start, previous_month_end
+
+def apply_irtd_trigger_from_gl(gle, company):
+    if not is_salary_payment_event(gle):
+        return
+
+    period_from, period_to = get_previous_month_period(
+        gle.posting_date
+    )
+
+    obligation_name = frappe.db.get_value(
+        "Fiscal Obligation",
+        {
+            "company": company,
+            "tax_type": "IRTD",
+            "fiscal_period_from": period_from,
+            "fiscal_period_to": period_to,
+            "docstatus": ["!=", 2],
+        },
+        "name",
+    )
+
+    if not obligation_name:
+        return
+
+    obligation = frappe.get_doc(
+        "Fiscal Obligation",
+        obligation_name,
+    )
+
+    if not obligation.trigger_date:
+        obligation.trigger_date = gle.posting_date
+        obligation.save(ignore_permissions=True)
+
+def scan_irtd_salary_payment_triggers(
+    company,
+    salary_payable_account,
+    from_date=None,
+    to_date=None,
+):
+    filters = {
+        "company": company,
+        "account": salary_payable_account,
+        "is_cancelled": 0,
+        "debit": [">", 0],
+    }
+
+    if from_date:
+        filters["posting_date"] = [">=", from_date]
+
+    if from_date and to_date:
+        filters["posting_date"] = [
+            "between",
+            [from_date, to_date],
+        ]
+    elif to_date:
+        filters["posting_date"] = ["<=", to_date]
+
+    entries = frappe.get_all(
+        "GL Entry",
+        filters=filters,
+        fields=[
+            "name",
+            "posting_date",
+            "account",
+            "against",
+            "debit",
+            "credit",
+            "voucher_type",
+            "voucher_no",
+        ],
+        order_by="posting_date asc, creation asc",
+    )
+
+    for row in entries:
+        gle = frappe._dict(row)
+
+        if not is_salary_payment_event(gle):
+            continue
+
+        apply_irtd_trigger_from_gl(
+            gle,
+            company,
+        )
