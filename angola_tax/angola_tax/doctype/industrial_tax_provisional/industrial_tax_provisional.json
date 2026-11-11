@@ -1,0 +1,396 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax Provisional",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "profile",
+  "tax_type",
+  "annual_tax_type",
+  "currency",
+  "fiscal_period_from",
+  "fiscal_period_to",
+  "fiscal_year",
+  "period_key",
+  "source_section",
+  "revenue_configuration",
+  "source_format",
+  "revenue_accounts",
+  "revenue_total",
+  "withholding_base_total",
+  "other_exclusions_total",
+  "unexplained_difference",
+  "pending_account_count",
+  "gl_movement_count",
+  "invoice_line_count",
+  "source_hash",
+  "source_lines",
+  "base_review_complete",
+  "exemption_basis",
+  "exemption_evidence",
+  "taxable_base",
+  "tax_raw",
+  "tax_amount",
+  "rounding_difference",
+  "credit_applied_amount",
+  "net_cash_requirement",
+  "review_section",
+  "review_complete",
+  "base_completeness_reviewed",
+  "review_evidence",
+  "responsible_user",
+  "approved_by",
+  "approved_on",
+  "accounting_date",
+  "cost_center",
+  "existing_recognition_journal",
+  "recognition_evidence",
+  "no_existing_recognition_confirmed",
+  "asset_configuration",
+  "fiscal_obligation",
+  "accounting_complete",
+  "recognition_journal_entry",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "Company"
+  },
+  {
+   "fieldname": "profile",
+   "fieldtype": "Link",
+   "label": "Profile",
+   "reqd": 1,
+   "options": "Industrial Tax Mechanism Profile"
+  },
+  {
+   "fieldname": "tax_type",
+   "fieldtype": "Link",
+   "label": "Tax Type",
+   "read_only": 1,
+   "options": "Tax Type"
+  },
+  {
+   "fieldname": "annual_tax_type",
+   "fieldtype": "Link",
+   "label": "Annual Tax Type",
+   "read_only": 1,
+   "options": "Tax Type"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "read_only": 1,
+   "fetch_from": "company.default_currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "fiscal_period_from",
+   "fieldtype": "Date",
+   "label": "Fiscal Period From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fiscal_period_to",
+   "fieldtype": "Date",
+   "label": "Fiscal Period To",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fiscal_year",
+   "fieldtype": "Data",
+   "label": "Fiscal Year",
+   "read_only": 1
+  },
+  {
+   "fieldname": "period_key",
+   "fieldtype": "Data",
+   "label": "Period Key",
+   "read_only": 1,
+   "unique": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "source_section",
+   "fieldtype": "Section Break",
+   "label": "First-half revenue by Income account \u2014 excluding VAT"
+  },
+  {
+   "fieldname": "source_hash",
+   "fieldtype": "Data",
+   "label": "Source Hash",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_lines",
+   "fieldtype": "Table",
+   "label": "Legacy Invoice Sources",
+   "options": "Industrial Tax Provisional Line",
+   "hidden": 1
+  },
+  {
+   "fieldname": "base_review_complete",
+   "fieldtype": "Check",
+   "label": "Base Review Complete",
+   "default": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "exemption_basis",
+   "fieldtype": "Small Text",
+   "label": "Exemption Basis"
+  },
+  {
+   "fieldname": "exemption_evidence",
+   "fieldtype": "Attach",
+   "label": "Exemption Evidence"
+  },
+  {
+   "fieldname": "taxable_base",
+   "fieldtype": "Currency",
+   "label": "Taxable Base",
+   "precision": "2",
+   "read_only": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "tax_raw",
+   "fieldtype": "Currency",
+   "label": "Tax Raw",
+   "read_only": 1,
+   "precision": "6",
+   "options": "currency"
+  },
+  {
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "label": "Tax Amount",
+   "precision": "2",
+   "read_only": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "rounding_difference",
+   "fieldtype": "Currency",
+   "label": "Rounding Difference",
+   "precision": "2",
+   "read_only": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "credit_applied_amount",
+   "fieldtype": "Currency",
+   "label": "Credit Applied Amount",
+   "precision": "2",
+   "read_only": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "net_cash_requirement",
+   "fieldtype": "Currency",
+   "label": "Net Cash Requirement",
+   "precision": "2",
+   "read_only": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "review_section",
+   "fieldtype": "Section Break",
+   "label": "Approval and prior recognition reconciliation"
+  },
+  {
+   "fieldname": "review_complete",
+   "fieldtype": "Check",
+   "label": "Review Complete",
+   "default": "0"
+  },
+  {
+   "fieldname": "review_evidence",
+   "fieldtype": "Attach",
+   "label": "Review Evidence"
+  },
+  {
+   "fieldname": "responsible_user",
+   "fieldtype": "Link",
+   "label": "Responsible User",
+   "reqd": 1,
+   "options": "User"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "read_only": 1,
+   "options": "User"
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Datetime",
+   "label": "Approved On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accounting_date",
+   "fieldtype": "Date",
+   "label": "Accounting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "existing_recognition_journal",
+   "fieldtype": "Link",
+   "label": "Existing Recognition Journal",
+   "options": "Journal Entry"
+  },
+  {
+   "fieldname": "recognition_evidence",
+   "fieldtype": "Attach",
+   "label": "Recognition Evidence"
+  },
+  {
+   "fieldname": "no_existing_recognition_confirmed",
+   "fieldtype": "Check",
+   "label": "All provisional accounts reviewed \u2014 no existing recognition",
+   "default": "0"
+  },
+  {
+   "fieldname": "asset_configuration",
+   "fieldtype": "Link",
+   "label": "Asset Configuration",
+   "read_only": 1,
+   "options": "Tax Account Configuration"
+  },
+  {
+   "fieldname": "fiscal_obligation",
+   "fieldtype": "Link",
+   "label": "Fiscal Obligation",
+   "read_only": 1,
+   "options": "Fiscal Obligation"
+  },
+  {
+   "fieldname": "accounting_complete",
+   "fieldtype": "Check",
+   "label": "Accounting Complete",
+   "read_only": 1
+  },
+  {
+   "fieldname": "recognition_journal_entry",
+   "fieldtype": "Link",
+   "label": "Recognition Journal Entry",
+   "read_only": 1,
+   "options": "Journal Entry"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "base_completeness_reviewed",
+   "fieldtype": "Check",
+   "label": "All H1 Income accounts captured and revenue / withholding differences reviewed",
+   "default": "0"
+  },
+  {
+   "fieldname": "revenue_configuration",
+   "fieldtype": "Link",
+   "label": "Revenue Configuration",
+   "options": "Industrial Tax Revenue Configuration"
+  },
+  {
+   "fieldname": "source_format",
+   "fieldtype": "Data",
+   "label": "Source Format",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "revenue_accounts",
+   "fieldtype": "Table",
+   "label": "Revenue by Account",
+   "options": "Industrial Tax Revenue Summary"
+  },
+  {
+   "fieldname": "revenue_total",
+   "fieldtype": "Currency",
+   "label": "GL Revenue Total",
+   "read_only": 1,
+   "options": "currency",
+   "precision": "2"
+  },
+  {
+   "fieldname": "withholding_base_total",
+   "fieldtype": "Currency",
+   "label": "Revenue Base Subject to Withholding",
+   "read_only": 1,
+   "options": "currency",
+   "precision": "2"
+  },
+  {
+   "fieldname": "other_exclusions_total",
+   "fieldtype": "Currency",
+   "label": "Other Excluded Revenue",
+   "read_only": 1,
+   "options": "currency",
+   "precision": "2"
+  },
+  {
+   "fieldname": "unexplained_difference",
+   "fieldtype": "Currency",
+   "label": "Unexplained GL Difference",
+   "read_only": 1,
+   "options": "currency",
+   "precision": "2"
+  },
+  {
+   "fieldname": "pending_account_count",
+   "fieldtype": "Int",
+   "label": "Accounts Requiring Review",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gl_movement_count",
+   "fieldtype": "Int",
+   "label": "GL Movements Captured",
+   "read_only": 1
+  },
+  {
+   "fieldname": "invoice_line_count",
+   "fieldtype": "Int",
+   "label": "Invoice Lines Reconciled",
+   "read_only": 1
+  }
+ ],
+ "track_changes": 1,
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "is_submittable": 1,
+ "autoname": "format:II-PROVISIONAL-{#####}",
+ "modified": "2026-10-11 21:06:35.940474"
+}

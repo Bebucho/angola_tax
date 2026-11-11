@@ -1,0 +1,149 @@
+{
+ "doctype": "DocType",
+ "name": "Tax Dispute Action",
+ "module": "Angola Tax",
+ "istable": 1,
+ "editable_grid": 1,
+ "fields": [
+  {
+   "fieldname": "stage",
+   "fieldtype": "Select",
+   "label": "Stage",
+   "options": "Direito de Audição Prévia\nReclamação Administrativa\nRecurso Administrativo\nImpugnação Judicial\nEnd Process",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "action_date",
+   "fieldtype": "Date",
+   "label": "Action Date",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reference",
+   "fieldtype": "Data",
+   "label": "Reference",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "amount_under_dispute",
+   "fieldtype": "Currency",
+   "label": "Amount Under Dispute",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nAwaiting Decision\nAccepted\nRejected\nWithdrawn\nClosed",
+   "default": "Open",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "decision_date",
+   "fieldtype": "Date",
+   "label": "Decision Date"
+  },
+  {
+   "fieldname": "decision_reference",
+   "fieldtype": "Data",
+   "label": "Decision Reference"
+  },
+  {
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "label": "Submission / Decision Document",
+   "hidden": 1
+  },
+  {
+   "fieldname": "guarantee_section",
+   "fieldtype": "Section Break",
+   "label": "Guarantee"
+  },
+  {
+   "fieldname": "guarantee_treatment",
+   "fieldtype": "Select",
+   "label": "Guarantee Treatment",
+   "options": "\nNot Required\nGuarantee Provided\nGuarantee Exemption Requested\nGuarantee Exemption Granted\nGuarantee Exemption Rejected"
+  },
+  {
+   "fieldname": "guarantee_amount",
+   "fieldtype": "Currency",
+   "label": "Guarantee Amount"
+  },
+  {
+   "fieldname": "guarantee_reference",
+   "fieldtype": "Data",
+   "label": "Guarantee Reference"
+  },
+  {
+   "fieldname": "guarantee_document",
+   "fieldtype": "Attach",
+   "label": "Guarantee Document"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "tax_office_reference",
+   "fieldtype": "Data",
+   "label": "Tax Office Reference"
+  },
+  {
+   "fieldname": "tax_office_date",
+   "fieldtype": "Date",
+   "label": "Tax Office Document Date"
+  },
+  {
+   "fieldname": "tax_office_document",
+   "fieldtype": "Attach",
+   "label": "Tax Office Document"
+  },
+  {
+   "fieldname": "company_reply_reference",
+   "fieldtype": "Data",
+   "label": "Company Reply Reference"
+  },
+  {
+   "fieldname": "company_reply_date",
+   "fieldtype": "Date",
+   "label": "Company Reply Date"
+  },
+  {
+   "fieldname": "company_reply_document",
+   "fieldtype": "Attach",
+   "label": "Company Reply Document"
+  },
+  {
+   "fieldname": "decision_document",
+   "fieldtype": "Attach",
+   "label": "Decision Document"
+  }
+ ],
+ "field_order": [
+  "stage",
+  "action_date",
+  "reference",
+  "amount_under_dispute",
+  "status",
+  "decision_date",
+  "decision_reference",
+  "document",
+  "guarantee_section",
+  "guarantee_treatment",
+  "guarantee_amount",
+  "guarantee_reference",
+  "guarantee_document",
+  "notes",
+  "tax_office_reference",
+  "tax_office_date",
+  "tax_office_document",
+  "company_reply_reference",
+  "company_reply_date",
+  "company_reply_document",
+  "decision_document"
+ ]
+}

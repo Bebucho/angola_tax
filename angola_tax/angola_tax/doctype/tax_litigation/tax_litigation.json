@@ -1,0 +1,145 @@
+{
+ "doctype": "DocType",
+ "name": "Tax Litigation",
+ "module": "Angola Tax",
+ "autoname": "format:TAXLIT-{#####}",
+ "is_submittable": 1,
+ "track_changes": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tax_assessment",
+  "fiscal_obligation",
+  "company",
+  "tax_type",
+  "amount_under_dispute",
+  "undisputed_amount",
+  "current_stage",
+  "case_number",
+  "status",
+  "litigation_notes",
+  "fiscal_obligation",
+  "provision_decision",
+  "provision_review_status",
+  "tax_provision",
+  "current_phase_doctype",
+  "current_phase"
+ ],
+ "fields": [
+  {
+   "fieldname": "tax_assessment",
+   "label": "Tax Assessment",
+   "fieldtype": "Link",
+   "options": "Tax Assessment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fiscal_obligation",
+   "label": "Fiscal Obligation",
+   "fieldtype": "Link",
+   "options": "Fiscal Obligation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "label": "Company",
+   "fieldtype": "Link",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tax_type",
+   "label": "Tax Type",
+   "fieldtype": "Link",
+   "options": "Tax Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amount_under_dispute",
+   "label": "Amount Under Dispute",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "undisputed_amount",
+   "label": "Undisputed Amount",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "current_stage",
+   "label": "Current Stage",
+   "fieldtype": "Select",
+   "read_only": 1,
+   "options": "DAP\nReclamação Administrativa\nRecurso Hierárquico\nImpugnação Judicial\nClosed"
+  },
+  {
+   "fieldname": "case_number",
+   "label": "Case / Process Number",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "options": "Open\nAwaiting AGT Reply\nAwaiting Decision\nSettlement Pending\nAgreement\nWon\nLost\nClosed",
+   "default": "Open"
+  },
+  {
+   "fieldname": "litigation_notes",
+   "label": "Litigation Notes",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "fiscal_obligation",
+   "label": "Fiscal Obligation",
+   "fieldtype": "Link",
+   "options": "Fiscal Obligation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "provision_decision",
+   "label": "Initial Provision Decision",
+   "fieldtype": "Select",
+   "options": "Pending\nNo Provision\nFull Provision\nPartial Provision\nAlready Recognised\nDisclosure Only",
+   "default": "Pending",
+   "reqd": 1
+  },
+  {
+   "fieldname": "provision_review_status",
+   "label": "Provision Review Status",
+   "fieldtype": "Select",
+   "options": "Pending\nRecorded",
+   "default": "Pending",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_provision",
+   "label": "Current Tax Provision",
+   "fieldtype": "Link",
+   "options": "Tax Provision",
+   "read_only": 1
+  },
+  {
+   "fieldname": "current_phase_doctype",
+   "label": "Current Phase Type",
+   "fieldtype": "Link",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "current_phase",
+   "label": "Current Phase Record",
+   "fieldtype": "Dynamic Link",
+   "options": "current_phase_doctype",
+   "read_only": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1
+  }
+ ]
+}

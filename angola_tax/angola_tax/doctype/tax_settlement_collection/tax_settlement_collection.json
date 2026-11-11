@@ -1,0 +1,85 @@
+{
+ "actions": [],
+ "creation": "2026-09-20 15:58:10.733098",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "nota_liquidacao",
+  "rupe",
+  "rupe_amount",
+  "principal_amount",
+  "penalty_amount",
+  "issue_date",
+  "payment_due_date",
+  "collection_reference"
+ ],
+ "fields": [
+  {
+   "fieldname": "nota_liquidacao",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nota de Liquidação",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rupe",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "RUPE",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rupe_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "RUPE Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "principal_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Principal Amount"
+  },
+  {
+   "fieldname": "penalty_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Penalty Amount"
+  },
+  {
+   "fieldname": "issue_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Issue Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_due_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Payment Due Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "collection_reference",
+   "fieldtype": "Link",
+   "label": "Tax Collection Reference",
+   "options": "Tax Collection Reference",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-09-20 17:29:37.656267",
+ "modified_by": "Administrator",
+ "module": "Angola Tax",
+ "name": "Tax Settlement Collection",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

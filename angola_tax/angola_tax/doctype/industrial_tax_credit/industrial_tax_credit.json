@@ -1,0 +1,217 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax Credit",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "credit_kind",
+  "source_withholding",
+  "source_provisional",
+  "collection_reference",
+  "annual_tax_type",
+  "fiscal_year",
+  "eligibility_date",
+  "currency",
+  "source_key",
+  "asset_configuration",
+  "asset_account",
+  "amount",
+  "committed_amount",
+  "available_amount",
+  "eligibility_reviewed",
+  "eligibility_evidence",
+  "approved_by",
+  "approved_on",
+  "notes",
+  "agt_import",
+  "accounting_date",
+  "cost_center",
+  "asset_recognition_journal"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "reqd": 1,
+   "options": "Company"
+  },
+  {
+   "fieldname": "credit_kind",
+   "fieldtype": "Select",
+   "label": "Credit Kind",
+   "reqd": 1,
+   "options": "Suffered Withholding\nPaid Provisional"
+  },
+  {
+   "fieldname": "source_withholding",
+   "fieldtype": "Link",
+   "label": "Source Withholding",
+   "options": "Industrial Tax Withholding",
+   "depends_on": "eval:doc.credit_kind==\"Suffered Withholding\""
+  },
+  {
+   "fieldname": "source_provisional",
+   "fieldtype": "Link",
+   "label": "Source Provisional",
+   "options": "Industrial Tax Provisional",
+   "depends_on": "eval:doc.credit_kind==\"Paid Provisional\""
+  },
+  {
+   "fieldname": "collection_reference",
+   "fieldtype": "Link",
+   "label": "Collection Reference",
+   "options": "Tax Collection Reference",
+   "depends_on": "eval:doc.credit_kind==\"Paid Provisional\""
+  },
+  {
+   "fieldname": "annual_tax_type",
+   "fieldtype": "Link",
+   "label": "Annual Tax Type",
+   "read_only": 1,
+   "options": "Tax Type"
+  },
+  {
+   "fieldname": "fiscal_year",
+   "fieldtype": "Data",
+   "label": "Fiscal Year",
+   "read_only": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "read_only": 1,
+   "options": "Currency"
+  },
+  {
+   "fieldname": "source_key",
+   "fieldtype": "Data",
+   "label": "Source Key",
+   "read_only": 1,
+   "unique": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "asset_configuration",
+   "fieldtype": "Link",
+   "label": "Asset Configuration",
+   "read_only": 1,
+   "options": "Tax Account Configuration"
+  },
+  {
+   "fieldname": "asset_account",
+   "fieldtype": "Link",
+   "label": "Asset Account",
+   "read_only": 1,
+   "options": "Account"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "precision": "2",
+   "read_only": 1,
+   "in_list_view": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "committed_amount",
+   "fieldtype": "Currency",
+   "label": "Committed Amount",
+   "precision": "2",
+   "read_only": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "available_amount",
+   "fieldtype": "Currency",
+   "label": "Available Amount",
+   "precision": "2",
+   "read_only": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "eligibility_reviewed",
+   "fieldtype": "Check",
+   "label": "Eligibility Reviewed",
+   "default": "0"
+  },
+  {
+   "fieldname": "eligibility_evidence",
+   "fieldtype": "Attach",
+   "label": "Eligibility Evidence"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "read_only": 1,
+   "options": "User"
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Datetime",
+   "label": "Approved On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "eligibility_date",
+   "fieldtype": "Date",
+   "label": "Eligibility Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "agt_import",
+   "fieldtype": "Link",
+   "label": "Approved AGT Reconciliation",
+   "options": "Industrial Tax AGT Import",
+   "depends_on": "eval:doc.credit_kind==\"Suffered Withholding\""
+  },
+  {
+   "fieldname": "accounting_date",
+   "fieldtype": "Date",
+   "label": "Pending Asset Transfer Date",
+   "depends_on": "eval:doc.credit_kind==\"Suffered Withholding\""
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "options": "Cost Center",
+   "label": "Cost Center"
+  },
+  {
+   "fieldname": "asset_recognition_journal",
+   "fieldtype": "Link",
+   "options": "Journal Entry",
+   "label": "Pending to Eligible Asset Journal",
+   "read_only": 1
+  }
+ ],
+ "track_changes": 1,
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "is_submittable": 1,
+ "autoname": "format:II-CREDIT-{#####}",
+ "modified": "2026-10-11 19:59:55.661810"
+}

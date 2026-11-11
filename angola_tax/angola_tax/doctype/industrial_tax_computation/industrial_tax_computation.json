@@ -1,0 +1,411 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax Computation",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "profile",
+  "mechanism",
+  "tax_type",
+  "rule_version",
+  "fiscal_period_from",
+  "fiscal_period_to",
+  "currency",
+  "period_key",
+  "source_section",
+  "source_hash",
+  "source_captured_on",
+  "source_rows",
+  "adjustments",
+  "estimates",
+  "results_section",
+  "result_before_tax",
+  "addbacks",
+  "deductions",
+  "fiscal_result",
+  "taxable_base",
+  "tax_raw",
+  "tax_amount",
+  "rounding_difference",
+  "prior_recognised",
+  "true_up_amount",
+  "credit_allocations",
+  "credit_applied_amount",
+  "net_cash_requirement",
+  "unsupported_section",
+  "losses_requested",
+  "credits_requested",
+  "autonomous_tax_requested",
+  "review_section",
+  "review_complete",
+  "prior_tax_review_complete",
+  "review_evidence",
+  "responsible_user",
+  "accounting_date",
+  "cost_center",
+  "approved_by",
+  "approved_on",
+  "fiscal_obligation",
+  "recognition_journal_entry",
+  "offset_journal_entry",
+  "accounting_complete",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "profile",
+   "fieldtype": "Link",
+   "label": "Profile",
+   "options": "Industrial Tax Profile",
+   "reqd": 1
+  },
+  {
+   "fieldname": "mechanism",
+   "fieldtype": "Select",
+   "label": "Mechanism",
+   "options": "Annual",
+   "default": "Annual",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tax_type",
+   "fieldtype": "Link",
+   "label": "Tax Type",
+   "options": "Tax Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rule_version",
+   "fieldtype": "Link",
+   "label": "Rule Version",
+   "options": "Industrial Tax Rule",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fiscal_period_from",
+   "fieldtype": "Date",
+   "label": "Fiscal Period From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fiscal_period_to",
+   "fieldtype": "Date",
+   "label": "Fiscal Period To",
+   "reqd": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "read_only": 1,
+   "fetch_from": "company.default_currency"
+  },
+  {
+   "fieldname": "period_key",
+   "fieldtype": "Data",
+   "label": "Period Key",
+   "read_only": 1,
+   "unique": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "source_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting source \u2014 before income tax"
+  },
+  {
+   "fieldname": "source_hash",
+   "fieldtype": "Data",
+   "label": "Source Hash",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_captured_on",
+   "fieldtype": "Datetime",
+   "label": "Source Captured On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_rows",
+   "fieldtype": "Table",
+   "label": "Source Rows",
+   "options": "Industrial Tax Source",
+   "read_only": 1
+  },
+  {
+   "fieldname": "adjustments",
+   "fieldtype": "Table",
+   "label": "Adjustments",
+   "options": "Industrial Tax Adjustment"
+  },
+  {
+   "fieldname": "estimates",
+   "fieldtype": "Table",
+   "label": "Estimates",
+   "options": "Industrial Tax Estimate"
+  },
+  {
+   "fieldname": "results_section",
+   "fieldtype": "Section Break",
+   "label": "Statutory calculation"
+  },
+  {
+   "fieldname": "result_before_tax",
+   "fieldtype": "Currency",
+   "label": "Result Before Tax",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "addbacks",
+   "fieldtype": "Currency",
+   "label": "Addbacks",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "deductions",
+   "fieldtype": "Currency",
+   "label": "Deductions",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fiscal_result",
+   "fieldtype": "Currency",
+   "label": "Fiscal Result",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "taxable_base",
+   "fieldtype": "Currency",
+   "label": "Taxable Base",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_raw",
+   "fieldtype": "Currency",
+   "label": "Tax Raw",
+   "options": "currency",
+   "precision": "6",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "label": "Tax Amount",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rounding_difference",
+   "fieldtype": "Currency",
+   "label": "Rounding Difference",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "prior_recognised",
+   "fieldtype": "Currency",
+   "label": "Prior Recognised",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "true_up_amount",
+   "fieldtype": "Currency",
+   "label": "True Up Amount",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "credit_applied_amount",
+   "fieldtype": "Currency",
+   "label": "Credit Applied Amount",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "net_cash_requirement",
+   "fieldtype": "Currency",
+   "label": "Net Cash Requirement",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unsupported_section",
+   "fieldtype": "Section Break",
+   "label": "Dependencies \u2014 approval blocked when nonzero"
+  },
+  {
+   "fieldname": "losses_requested",
+   "fieldtype": "Currency",
+   "label": "Losses Requested",
+   "options": "currency",
+   "precision": "2",
+   "default": "0"
+  },
+  {
+   "fieldname": "credits_requested",
+   "fieldtype": "Currency",
+   "label": "Credits Requested \u2014 from reviewed allocations",
+   "options": "currency",
+   "precision": "2",
+   "default": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "autonomous_tax_requested",
+   "fieldtype": "Currency",
+   "label": "Autonomous Tax Requested",
+   "options": "currency",
+   "precision": "2",
+   "default": "0"
+  },
+  {
+   "fieldname": "review_section",
+   "fieldtype": "Section Break",
+   "label": "Approval and accounting"
+  },
+  {
+   "fieldname": "review_complete",
+   "fieldtype": "Check",
+   "label": "Review Complete",
+   "default": "0"
+  },
+  {
+   "fieldname": "prior_tax_review_complete",
+   "fieldtype": "Check",
+   "label": "All income tax accounts and prior accruals reconciled",
+   "default": "0"
+  },
+  {
+   "fieldname": "review_evidence",
+   "fieldtype": "Attach",
+   "label": "Review Evidence"
+  },
+  {
+   "fieldname": "responsible_user",
+   "fieldtype": "Link",
+   "label": "Responsible User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "accounting_date",
+   "fieldtype": "Date",
+   "label": "Accounting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center",
+   "reqd": 1
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Datetime",
+   "label": "Approved On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fiscal_obligation",
+   "fieldtype": "Link",
+   "label": "Fiscal Obligation",
+   "options": "Fiscal Obligation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "recognition_journal_entry",
+   "fieldtype": "Link",
+   "label": "Recognition Journal Entry",
+   "options": "Journal Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accounting_complete",
+   "fieldtype": "Check",
+   "label": "Accounting Complete",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Industrial Tax Computation",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "credit_allocations",
+   "fieldtype": "Table",
+   "label": "Credit Allocations",
+   "options": "Industrial Tax Credit Allocation"
+  },
+  {
+   "fieldname": "offset_journal_entry",
+   "fieldtype": "Link",
+   "label": "Offset Journal Entry",
+   "read_only": 1,
+   "options": "Journal Entry"
+  }
+ ],
+ "track_changes": 1,
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "is_submittable": 1,
+ "autoname": "format:II-COMPUTATION-{#####}",
+ "modified": "2026-10-11 19:59:55.661810"
+}

@@ -7,6 +7,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "company",
   "tax_type",
   "tax_name",
   "tax_year",
@@ -16,11 +17,22 @@
   "effective_from",
   "effective_to",
   "active",
-  "deadlines_section",
-  "deadline_rules",
+  "legal_deadline_section",
+  "legal_periodicity",
+  "legal_due_timing",
+  "legal_due_day_rule",
+  "legal_due_day",
+  "process_schedule_section",
+  "process_schedule",
   "legal_basis_section",
   "legal_reference",
-  "notes"
+  "notes",
+  "deadline_rules",
+  "deadlines_section",
+  "legal_due_month_offset",
+  "legal_use_end_of_month",
+  "amended_from",
+  "holiday_list"
  ],
  "fields": [
   {
@@ -54,9 +66,9 @@
   {
    "fieldname": "deadline_rules",
    "fieldtype": "Table",
+   "hidden": 1,
    "label": "Deadline Rules",
-   "options": "Tax Deadline Line",
-   "reqd": 1
+   "options": "Tax Deadline Line"
   },
   {
    "fieldname": "legal_basis_section",
@@ -72,6 +84,16 @@
    "fieldname": "notes",
    "fieldtype": "Small Text",
    "label": "Notes"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
   },
   {
    "fieldname": "tax_type",
@@ -109,16 +131,95 @@
    "label": "Sector"
   },
   {
-   "fetch_from": "tax_type.data",
+   "fetch_from": "tax_type.tax_name",
    "fieldname": "tax_name",
    "fieldtype": "Data",
    "label": "Tax Name"
+  },
+  {
+   "fieldname": "legal_deadline_section",
+   "fieldtype": "Section Break",
+   "label": "Legal Deadline"
+  },
+  {
+   "default": "Monthly",
+   "fieldname": "legal_periodicity",
+   "fieldtype": "Select",
+   "label": "Periodicity",
+   "options": "Monthly\nQuarterly\nAnnual\nTransaction",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "legal_due_month_offset",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Due Month Offset",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "legal_due_day",
+   "fieldtype": "Int",
+   "label": "Due Day"
+  },
+  {
+   "default": "0",
+   "fieldname": "legal_use_end_of_month",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Use End of Month",
+   "read_only": 1
+  },
+  {
+   "fieldname": "process_schedule_section",
+   "fieldtype": "Section Break",
+   "label": "Internal Process Schedule"
+  },
+  {
+   "fieldname": "process_schedule",
+   "fieldtype": "Table",
+   "label": "Process Schedule",
+   "options": "Tax Process Schedule Line"
+  },
+  {
+   "default": "Next Month",
+   "fieldname": "legal_due_timing",
+   "fieldtype": "Select",
+   "label": "Due Timing",
+   "options": "Current Month\nNext Month\nSecond Following Month\nThird Following Month\nFourth Following Month\nFifth Following Month\nSixth Following Month",
+   "reqd": 1
+  },
+  {
+   "default": "Fixed Day",
+   "fieldname": "legal_due_day_rule",
+   "fieldtype": "Select",
+   "label": "Due Day Rule",
+   "options": "Fixed Day\nEnd of Month\nLast Working Day",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Tax Deadline Configuration",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "holiday_list",
+   "fieldtype": "Link",
+   "label": "Holiday List",
+   "options": "Holiday List"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-09-18 09:41:53.440936",
+ "modified": "2026-10-11 18:00:00.000000",
  "modified_by": "Administrator",
  "module": "Angola Tax",
  "name": "Tax Deadline Configuration",

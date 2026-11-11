@@ -1,0 +1,1 @@
+from angola_tax.industrial_tax.computation import IndustrialTaxComputation

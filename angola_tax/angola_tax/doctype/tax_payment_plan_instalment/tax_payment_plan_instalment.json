@@ -1,0 +1,79 @@
+{
+ "doctype": "DocType",
+ "name": "Tax Payment Plan Instalment",
+ "module": "Angola Tax",
+ "istable": 1,
+ "editable_grid": 1,
+ "fields": [
+  {
+   "fieldname": "instalment_no",
+   "fieldtype": "Int",
+   "label": "Instalment No.",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "nota_liquidacao",
+   "fieldtype": "Data",
+   "label": "Nota de Liquidação",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "rupe",
+   "fieldtype": "Data",
+   "label": "RUPE",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "agt_status",
+   "fieldtype": "Data",
+   "label": "AGT Status"
+  },
+  {
+   "fieldname": "amount_paid",
+   "fieldtype": "Currency",
+   "label": "Amount Paid",
+   "read_only": 1
+  },
+  {
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Currency",
+   "label": "Outstanding Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_status",
+   "fieldtype": "Select",
+   "label": "Payment Status",
+   "options": "Pending\nPartially Paid\nPaid\nOverdue",
+   "default": "Pending",
+   "read_only": 1
+  }
+ ],
+ "field_order": [
+  "instalment_no",
+  "nota_liquidacao",
+  "rupe",
+  "due_date",
+  "amount",
+  "agt_status",
+  "amount_paid",
+  "outstanding_amount",
+  "payment_status"
+ ]
+}

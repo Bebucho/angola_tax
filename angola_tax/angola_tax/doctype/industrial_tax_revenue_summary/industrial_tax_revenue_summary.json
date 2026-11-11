@@ -1,0 +1,152 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax Revenue Summary",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "account",
+  "classification",
+  "classification_reason",
+  "debit",
+  "credit",
+  "gl_revenue",
+  "invoice_revenue",
+  "captured_withholding_base",
+  "reconciliation_difference",
+  "withholding_base",
+  "other_exclusions",
+  "withholding_exception_count",
+  "gl_count",
+  "invoice_line_count",
+  "exceptions_reviewed",
+  "difference_explained",
+  "review_reason",
+  "review_evidence"
+ ],
+ "fields": [
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Income Account",
+   "options": "Account",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "classification",
+   "fieldtype": "Select",
+   "label": "Fiscal Classification",
+   "options": "Eligible\nExcluded\nMixed\nUnmapped",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "classification_reason",
+   "fieldtype": "Small Text",
+   "label": "Configured Classification Reason",
+   "read_only": 1
+  },
+  {
+   "fieldname": "debit",
+   "fieldtype": "Currency",
+   "label": "GL Debit",
+   "read_only": 1,
+   "precision": "2",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "credit",
+   "fieldtype": "Currency",
+   "label": "GL Credit",
+   "read_only": 1,
+   "precision": "2",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "gl_revenue",
+   "fieldtype": "Currency",
+   "label": "Net GL Revenue",
+   "read_only": 1,
+   "precision": "2",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "invoice_revenue",
+   "fieldtype": "Currency",
+   "label": "Invoice Revenue",
+   "read_only": 1,
+   "precision": "2",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "captured_withholding_base",
+   "fieldtype": "Currency",
+   "label": "Captured Withholding Revenue Base",
+   "read_only": 1,
+   "precision": "2",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reconciliation_difference",
+   "fieldtype": "Currency",
+   "label": "GL / Invoice Difference",
+   "read_only": 1,
+   "precision": "2",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "withholding_base",
+   "fieldtype": "Currency",
+   "label": "Applied Withholding Revenue Base",
+   "precision": "2"
+  },
+  {
+   "fieldname": "other_exclusions",
+   "fieldtype": "Currency",
+   "label": "Other Excluded Revenue",
+   "precision": "2"
+  },
+  {
+   "fieldname": "withholding_exception_count",
+   "fieldtype": "Int",
+   "label": "Invoices with Withholding Exceptions",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gl_count",
+   "fieldtype": "Int",
+   "label": "GL Movements",
+   "read_only": 1
+  },
+  {
+   "fieldname": "invoice_line_count",
+   "fieldtype": "Int",
+   "label": "Invoice Lines",
+   "read_only": 1
+  },
+  {
+   "fieldname": "exceptions_reviewed",
+   "fieldtype": "Check",
+   "label": "Withholding / Mixed Revenue Exceptions Reviewed"
+  },
+  {
+   "fieldname": "difference_explained",
+   "fieldtype": "Check",
+   "label": "GL / Invoice Difference Explained"
+  },
+  {
+   "fieldname": "review_reason",
+   "fieldtype": "Small Text",
+   "label": "Exception / Difference Explanation"
+  },
+  {
+   "fieldname": "review_evidence",
+   "fieldtype": "Attach",
+   "label": "Exception / Difference Evidence"
+  }
+ ],
+ "permissions": [],
+ "modified": "2026-10-11 21:06:35.941172",
+ "istable": 1,
+ "editable_grid": 1
+}

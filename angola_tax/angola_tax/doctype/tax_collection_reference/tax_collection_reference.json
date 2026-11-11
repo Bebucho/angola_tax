@@ -1,0 +1,157 @@
+{
+ "doctype": "DocType",
+ "name": "Tax Collection Reference",
+ "module": "Angola Tax",
+ "istable": 0,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "source_section",
+  "fiscal_obligation",
+  "tax_settlement",
+  "source_type",
+  "payment_plan",
+  "instalment_no",
+  "collection_section",
+  "nota_liquidacao",
+  "rupe",
+  "amount",
+  "principal_amount",
+  "penalty_amount",
+  "issue_date",
+  "due_date",
+  "status_section",
+  "status",
+  "tax_payment",
+  "payment_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "source_section",
+   "fieldtype": "Section Break",
+   "label": "Collection Source"
+  },
+  {
+   "fieldname": "fiscal_obligation",
+   "fieldtype": "Link",
+   "label": "Fiscal Obligation",
+   "options": "Fiscal Obligation",
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_settlement",
+   "fieldtype": "Link",
+   "label": "Tax Settlement",
+   "options": "Tax Settlement",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_type",
+   "fieldtype": "Select",
+   "label": "Collection Source",
+   "options": "Tax Settlement\nPayment Plan Instalment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_plan",
+   "fieldtype": "Link",
+   "label": "Tax Payment Plan",
+   "options": "Tax Payment Plan",
+   "depends_on": "eval:doc.source_type=='Payment Plan Instalment'"
+  },
+  {
+   "fieldname": "instalment_no",
+   "fieldtype": "Int",
+   "label": "Instalment No.",
+   "depends_on": "eval:doc.source_type=='Payment Plan Instalment'"
+  },
+  {
+   "fieldname": "collection_section",
+   "fieldtype": "Section Break",
+   "label": "AGT Collection Reference"
+  },
+  {
+   "fieldname": "nota_liquidacao",
+   "fieldtype": "Data",
+   "label": "Nota de Liquidação"
+  },
+  {
+   "fieldname": "rupe",
+   "fieldtype": "Data",
+   "label": "RUPE",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "RUPE Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "principal_amount",
+   "fieldtype": "Currency",
+   "label": "Principal Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "penalty_amount",
+   "fieldtype": "Currency",
+   "label": "Penalty Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "issue_date",
+   "fieldtype": "Date",
+   "label": "Issue Date"
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Payment Due Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status_section",
+   "fieldtype": "Section Break",
+   "label": "Collection Status"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Issued\nAwaiting DC Pago\nConfirmed\nExpired\nCancelled\nSuperseded",
+   "default": "Issued",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_payment",
+   "fieldtype": "Link",
+   "label": "Tax Payment",
+   "options": "Tax Payment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "label": "Payment Date",
+   "read_only": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "TAXCR-.YYYY.-.#####",
+ "track_changes": 1
+}

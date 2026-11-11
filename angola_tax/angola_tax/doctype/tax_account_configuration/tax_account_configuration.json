@@ -2,7 +2,7 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "format:TAXCFG-{#####}",
- "creation": "2026-09-17 21:21:11.539791",
+ "creation": "2026-09-26 13:37:10.241550",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -17,7 +17,10 @@
   "effective_from",
   "effective_to",
   "active",
-  "notes"
+  "notes",
+  "amended_from",
+  "account_role",
+  "ingestion_policy"
  ],
  "fields": [
   {
@@ -29,7 +32,7 @@
    "reqd": 1
   },
   {
-   "fetch_from": "tax_type.data",
+   "fetch_from": "tax_type.tax_name",
    "fieldname": "tax_name",
    "fieldtype": "Data",
    "label": "Tax Name",
@@ -40,6 +43,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Tax Account",
+   "link_filters": "[[\"Account\",\"company\",\"=\",\"eval:doc.company\"],[\"Account\",\"is_group\",\"=\",0]]",
    "options": "Account",
    "reqd": 1
   },
@@ -96,12 +100,39 @@
    "label": "Tax Type",
    "options": "Tax Type",
    "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Tax Account Configuration",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "account_role",
+   "fieldtype": "Select",
+   "label": "Account Role",
+   "options": "Legacy\nAnnual Liability\nCurrent Tax Expense\nDeferred Tax Expense\nProvisional Asset\nProvisional Liability\nSuffered Withholding Asset\nPending Suffered Withholding Asset\nRecognised Carryforward Credit\nCollected Resident Withholding Liability\nCollected Nonresident Withholding Liability\nRounding",
+   "default": "Legacy",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ingestion_policy",
+   "fieldtype": "Select",
+   "label": "Ingestion Policy",
+   "options": "Legacy\nComputation Only\nDisabled",
+   "default": "Legacy",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-09-18 09:00:08.417066",
+ "modified": "2026-10-11 18:00:00.000000",
  "modified_by": "Administrator",
  "module": "Angola Tax",
  "name": "Tax Account Configuration",
@@ -118,7 +149,10 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
-   "write": 1
+   "write": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
   }
  ],
  "row_format": "Dynamic",

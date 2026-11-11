@@ -1,0 +1,1 @@
+from angola_tax.declarations.configuration import TaxDeclarationType

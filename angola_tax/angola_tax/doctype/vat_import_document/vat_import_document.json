@@ -1,0 +1,235 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:VATIMP-{#####}",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "customs_section",
+  "company",
+  "customs_reference",
+  "customs_date",
+  "customs_document",
+  "status",
+  "amounts_section",
+  "import_taxable_base",
+  "customs_vat_amount",
+  "effective_vat_rate",
+  "accounting_section",
+  "vat_settings",
+  "vat_customs_recoverable_account",
+  "vat_customs_clearing_account",
+  "import_landed_cost_clearing_account",
+  "recognition_journal_entry",
+  "broker_section",
+  "freight_forwarder",
+  "source_purchase_invoice",
+  "purchase_receipt",
+  "landed_cost_voucher",
+  "debit_note_reference",
+  "debit_note_date",
+  "debit_note_document",
+  "cost_treatment",
+  "source_cost_stock_account",
+  "debit_note_reclassification_journal_entry",
+  "control_section",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "customs_section",
+   "fieldtype": "Section Break",
+   "label": "Customs / ASYCUDA"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "customs_reference",
+   "fieldtype": "Data",
+   "label": "Customs / ASYCUDA Reference",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "customs_date",
+   "fieldtype": "Date",
+   "label": "Customs VAT Date",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "customs_document",
+   "fieldtype": "Attach",
+   "label": "Customs Document"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nCustoms Recognised\nDebit Note Received\nMatched",
+   "default": "Draft",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "amounts_section",
+   "fieldtype": "Section Break",
+   "label": "Import VAT"
+  },
+  {
+   "fieldname": "import_taxable_base",
+   "fieldtype": "Currency",
+   "label": "Import Taxable Base",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customs_vat_amount",
+   "fieldtype": "Currency",
+   "label": "Customs VAT Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_vat_rate",
+   "fieldtype": "Percent",
+   "label": "Effective VAT Rate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accounting_section",
+   "fieldtype": "Section Break",
+   "label": "Customs VAT Accounting"
+  },
+  {
+   "fieldname": "vat_settings",
+   "fieldtype": "Link",
+   "label": "VAT Settings",
+   "options": "VAT Settings",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vat_customs_recoverable_account",
+   "fieldtype": "Link",
+   "label": "VAT Customs Recoverable Account",
+   "options": "Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vat_customs_clearing_account",
+   "fieldtype": "Link",
+   "label": "VAT Customs Clearing Account",
+   "options": "Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "import_landed_cost_clearing_account",
+   "fieldtype": "Link",
+   "label": "Import / Landed Cost Clearing Account",
+   "options": "Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "recognition_journal_entry",
+   "fieldtype": "Link",
+   "label": "Customs VAT Recognition Journal Entry",
+   "options": "Journal Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "broker_section",
+   "fieldtype": "Section Break",
+   "label": "Freight Forwarder / Debit Note"
+  },
+  {
+   "fieldname": "freight_forwarder",
+   "fieldtype": "Link",
+   "label": "Freight Forwarder",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "source_purchase_invoice",
+   "fieldtype": "Link",
+   "label": "Source Purchase Invoice",
+   "options": "Purchase Invoice"
+  },
+  {
+   "fieldname": "purchase_receipt",
+   "fieldtype": "Link",
+   "label": "Purchase Receipt",
+   "options": "Purchase Receipt"
+  },
+  {
+   "fieldname": "landed_cost_voucher",
+   "fieldtype": "Link",
+   "label": "Landed Cost Voucher",
+   "options": "Landed Cost Voucher"
+  },
+  {
+   "fieldname": "debit_note_reference",
+   "fieldtype": "Data",
+   "label": "Debit Note Reference"
+  },
+  {
+   "fieldname": "debit_note_date",
+   "fieldtype": "Date",
+   "label": "Debit Note Date"
+  },
+  {
+   "fieldname": "debit_note_document",
+   "fieldtype": "Attach",
+   "label": "Debit Note Document"
+  },
+  {
+   "fieldname": "cost_treatment",
+   "fieldtype": "Select",
+   "label": "Cost Treatment",
+   "options": "Expense / Cost\nStock / Landed Cost Voucher"
+  },
+  {
+   "fieldname": "source_cost_stock_account",
+   "fieldtype": "Link",
+   "label": "Source Cost / Stock Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "debit_note_reclassification_journal_entry",
+   "fieldtype": "Link",
+   "label": "Debit Note Reclassification Journal Entry",
+   "options": "Journal Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "control_section",
+   "fieldtype": "Section Break",
+   "label": "Control"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "module": "Angola Tax",
+ "name": "VAT Import Document",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  }
+ ],
+ "sort_field": "customs_date",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

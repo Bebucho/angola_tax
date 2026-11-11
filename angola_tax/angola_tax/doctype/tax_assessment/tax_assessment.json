@@ -1,0 +1,478 @@
+{
+ "actions": [],
+ "autoname": "format:TAX-ASS-{#####}",
+ "creation": "2026-09-19 16:54:56.462039",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "assessment_origin",
+  "source_tax_notification",
+  "fiscal_obligation",
+  "tax_type",
+  "overdue_obligation",
+  "overdue_principal",
+  "assessment_reference",
+  "overdue_tax_account",
+  "column_break_llle",
+  "currency",
+  "period_section",
+  "fiscal_period_from",
+  "column_break_vzfc",
+  "fiscal_period_to",
+  "statutory_payment_due_date",
+  "lineage_section",
+  "assessment_type",
+  "assessment_reason",
+  "previous_assessment",
+  "superseded_by",
+  "column_break_hboz",
+  "determined_amount",
+  "amount_assessed",
+  "tax_credit_applied",
+  "tax_credit_account",
+  "net_payable_amount",
+  "effective_assessed_amount",
+  "assessment_variance",
+  "assessed_penalty_amount",
+  "column_break_bzbv",
+  "adjustment_counterpart_account",
+  "adjustment_cost_center",
+  "adjustment_journal_entry",
+  "amended_from",
+  "previous_assessed_amount",
+  "section_break_prdt",
+  "responsible_user",
+  "date_received",
+  "column_break_nflu",
+  "legal_time_limit_days",
+  "legal_time_limit_date",
+  "assessment_details_tab",
+  "assessment_section",
+  "column_break_yoko",
+  "attach",
+  "assessment_decision",
+  "decision_date",
+  "decision_reference",
+  "decision_document",
+  "decision_notes",
+  "acceptance_date",
+  "disputed_amount",
+  "undisputed_amount",
+  "agreement_date",
+  "agreement_reference",
+  "agreed_amount",
+  "agreement_document",
+  "action_due_date",
+  "recognition_journal_entry"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "assessment_origin",
+   "fieldtype": "Select",
+   "label": "Assessment Origin",
+   "options": "\nFrom Fiscal Obligation\nDirect AGT Assessment\nFrom Tax Notification",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_tax_notification",
+   "fieldtype": "Link",
+   "label": "Source Tax Notification",
+   "options": "Tax Notification",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "fiscal_obligation",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Fiscal Obligation",
+   "options": "Fiscal Obligation"
+  },
+  {
+   "default": "0",
+   "fieldname": "overdue_obligation",
+   "fieldtype": "Check",
+   "label": "Overdue Obligation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "overdue_principal",
+   "fieldtype": "Currency",
+   "label": "Overdue Principal",
+   "read_only": 1
+  },
+  {
+   "fieldname": "overdue_tax_account",
+   "fieldtype": "Link",
+   "label": "Original Tax Account",
+   "options": "Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_type",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Tax Type",
+   "options": "Tax Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "assessment_reference",
+   "fieldtype": "Data",
+   "label": "Assessment Reference"
+  },
+  {
+   "fieldname": "column_break_llle",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "period_section",
+   "fieldtype": "Section Break",
+   "label": "Fiscal Period"
+  },
+  {
+   "fieldname": "fiscal_period_from",
+   "fieldtype": "Date",
+   "label": "Fiscal Period From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_vzfc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fiscal_period_to",
+   "fieldtype": "Date",
+   "label": "Fiscal Period To",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "fiscal_obligation.current_payment_due_date",
+   "fieldname": "statutory_payment_due_date",
+   "fieldtype": "Date",
+   "label": "Statutory Payment Due Date",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.assessment_type != \"Self-Determination\"",
+   "fieldname": "section_break_prdt",
+   "fieldtype": "Section Break",
+   "label": "Responsibilities and Deadline"
+  },
+  {
+   "fieldname": "responsible_user",
+   "fieldtype": "Link",
+   "label": "Responsible User",
+   "options": "User"
+  },
+  {
+   "fieldname": "date_received",
+   "fieldtype": "Date",
+   "label": "Date Received"
+  },
+  {
+   "fieldname": "column_break_nflu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "legal_time_limit_days",
+   "fieldtype": "Int",
+   "label": "Legal Time Limit (Days)"
+  },
+  {
+   "fieldname": "legal_time_limit_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Legal Time Limit Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "assessment_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Assessment Details"
+  },
+  {
+   "fieldname": "lineage_section",
+   "fieldtype": "Section Break",
+   "label": "Assessment Lineage And Decision"
+  },
+  {
+   "fieldname": "assessment_type",
+   "fieldtype": "Select",
+   "label": "Assessment Type",
+   "options": "\nNotification\nReissue\nAdditional\nCorrection\nSelf-Determination",
+   "reqd": 1
+  },
+  {
+   "fieldname": "previous_assessment",
+   "fieldtype": "Link",
+   "label": "Previous Assessment",
+   "options": "Tax Assessment"
+  },
+  {
+   "fieldname": "superseded_by",
+   "fieldtype": "Link",
+   "label": "Superseded By",
+   "options": "Tax Assessment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_bzbv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "effective_assessed_amount",
+   "fieldtype": "Currency",
+   "label": "Effective Assessed Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "assessment_section",
+   "fieldtype": "Section Break",
+   "label": "Liquidação / Assessment"
+  },
+  {
+   "fieldname": "determined_amount",
+   "fieldtype": "Currency",
+   "label": "Determined Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amount_assessed",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount Assessed",
+   "options": "currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tax_credit_applied",
+   "fieldtype": "Currency",
+   "label": "Tax Credit Applied",
+   "default": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_credit_account",
+   "fieldtype": "Link",
+   "label": "Tax Credit Account",
+   "options": "Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "net_payable_amount",
+   "fieldtype": "Currency",
+   "label": "Balance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "assessment_reason",
+   "fieldtype": "Data",
+   "label": "Assessment Reason"
+  },
+  {
+   "fieldname": "assessment_variance",
+   "fieldtype": "Currency",
+   "label": "Assessment Variance",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "assessed_penalty_amount",
+   "fieldtype": "Currency",
+   "label": "Assessed Penalty Amount",
+   "default": "0",
+   "description": "Penalty expressly identified in the assessment. Must equal its positive variance for the automatic penalty account route."
+  },
+  {
+   "fieldname": "adjustment_counterpart_account",
+   "fieldtype": "Link",
+   "label": "Adjustment Counterpart Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "adjustment_cost_center",
+   "fieldtype": "Link",
+   "label": "Adjustment Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "adjustment_journal_entry",
+   "fieldtype": "Link",
+   "label": "Adjustment Journal Entry",
+   "options": "Journal Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Tax Assessment",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fetch_from": "fiscal_obligation.amount_assessed",
+   "fieldname": "previous_assessed_amount",
+   "fieldtype": "Currency",
+   "label": "Previous Assessed Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_yoko",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "attach",
+   "fieldtype": "Attach",
+   "label": "Attach"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Pending",
+   "fieldname": "assessment_decision",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Assessment Decision",
+   "options": "Pending\nAccepted\nDisputed\nAgreement\nCancelled by AGT",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "decision_date",
+   "fieldtype": "Date",
+   "label": "Decision Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "decision_reference",
+   "fieldtype": "Data",
+   "label": "Decision Reference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "decision_document",
+   "fieldtype": "Attach",
+   "label": "Decision Document",
+   "read_only": 1
+  },
+  {
+   "fieldname": "decision_notes",
+   "fieldtype": "Small Text",
+   "label": "Decision Comment",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "acceptance_date",
+   "fieldtype": "Date",
+   "label": "Acceptance Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "disputed_amount",
+   "fieldtype": "Currency",
+   "label": "Disputed Amount",
+   "options": "currency"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "undisputed_amount",
+   "fieldtype": "Currency",
+   "label": "Undisputed Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "agreement_date",
+   "fieldtype": "Date",
+   "label": "Agreement Date"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "agreement_reference",
+   "fieldtype": "Data",
+   "label": "Agreement Reference"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "agreed_amount",
+   "fieldtype": "Currency",
+   "label": "Agreed Amount",
+   "options": "currency"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "agreement_document",
+   "fieldtype": "Attach",
+   "label": "Agreement Document"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "action_due_date",
+   "fieldtype": "Date",
+   "label": "Further Action Due Date"
+  },
+  {
+   "fieldname": "recognition_journal_entry",
+   "fieldtype": "Link",
+   "label": "Recognition Journal Entry",
+   "options": "Journal Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_hboz",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-09-26 17:25:33.864342",
+ "modified_by": "Administrator",
+ "module": "Angola Tax",
+ "name": "Tax Assessment",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

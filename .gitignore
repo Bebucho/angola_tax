@@ -5,3 +5,39 @@
 tags
 node_modules
 __pycache__
+# Local development backups
+*.bak
+*.bak.*
+*.bak_*
+*.before_*
+*.pre_*
+*.orig
+*.swp
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa
+id_ed25519
+yes
+yes.pub
+
+# Temporary Python and editor files
+.pytest_cache/
+.mypy_cache/
+.vscode/
+.idea/
+
+# Local backup directories
+.declaration_backups/
+
+# Historical development patches and temporary scripts
+/*.patch
+/make_*.py
+/repair_*.py
+
+# Local development manifests
+/.metagest_*_manifest.json

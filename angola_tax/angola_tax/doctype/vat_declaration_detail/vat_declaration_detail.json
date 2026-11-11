@@ -1,0 +1,140 @@
+{
+ "doctype": "DocType",
+ "name": "VAT Declaration Detail",
+ "module": "Angola Tax",
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "source_section",
+  "source_vat_transaction",
+  "source_document_type",
+  "source_document",
+  "source_row",
+  "source_item",
+  "item_name",
+  "party",
+  "tax_id",
+  "tax_section",
+  "declaration_component",
+  "taxable_base",
+  "vat_rate",
+  "vat_amount",
+  "cativo_percentage",
+  "classification_section",
+  "modelo_7_field",
+  "classification_status",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "source_section",
+   "fieldtype": "Section Break",
+   "label": "Source"
+  },
+  {
+   "fieldname": "source_vat_transaction",
+   "fieldtype": "Data",
+   "label": "VAT Transaction Row"
+  },
+  {
+   "fieldname": "source_document_type",
+   "fieldtype": "Link",
+   "label": "Source Document Type",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "source_document",
+   "fieldtype": "Dynamic Link",
+   "label": "Source Document",
+   "options": "source_document_type"
+  },
+  {
+   "fieldname": "source_row",
+   "fieldtype": "Data",
+   "label": "Source Row"
+  },
+  {
+   "fieldname": "source_item",
+   "fieldtype": "Link",
+   "label": "Item",
+   "options": "Item",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "party",
+   "fieldtype": "Data",
+   "label": "Party"
+  },
+  {
+   "fieldname": "tax_id",
+   "fieldtype": "Data",
+   "label": "Tax ID"
+  },
+  {
+   "fieldname": "tax_section",
+   "fieldtype": "Section Break",
+   "label": "VAT Detail"
+  },
+  {
+   "fieldname": "declaration_component",
+   "fieldtype": "Select",
+   "label": "Declaration Component",
+   "options": "Output VAT\nInput VAT\nCativo Suffered\nCativo Withheld\nCativo Regularisation\nImport VAT\nCustomer Regularisation\nSupplier Regularisation\nOther",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "taxable_base",
+   "fieldtype": "Currency",
+   "label": "Taxable Base",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vat_rate",
+   "fieldtype": "Percent",
+   "label": "VAT Rate"
+  },
+  {
+   "fieldname": "vat_amount",
+   "fieldtype": "Currency",
+   "label": "VAT Amount",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cativo_percentage",
+   "fieldtype": "Percent",
+   "label": "Cativo Percentage"
+  },
+  {
+   "fieldname": "classification_section",
+   "fieldtype": "Section Break",
+   "label": "Modelo 7 Classification"
+  },
+  {
+   "fieldname": "modelo_7_field",
+   "fieldtype": "Data",
+   "label": "Modelo 7 Field"
+  },
+  {
+   "fieldname": "classification_status",
+   "fieldtype": "Select",
+   "label": "Classification Status",
+   "options": "Derived\nPending Modelo 7 Mapping\nReviewed",
+   "default": "Pending Modelo 7 Mapping",
+   "reqd": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "permissions": []
+}

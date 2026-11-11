@@ -1,0 +1,56 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax Adjustment",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "kind",
+  "description",
+  "amount",
+  "legal_reference",
+  "evidence"
+ ],
+ "fields": [
+  {
+   "fieldname": "kind",
+   "fieldtype": "Select",
+   "label": "Kind",
+   "options": "Add-back\nDeduction",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "options": "currency",
+   "precision": "2",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "legal_reference",
+   "fieldtype": "Small Text",
+   "label": "Legal Reference",
+   "reqd": 1
+  },
+  {
+   "fieldname": "evidence",
+   "fieldtype": "Attach",
+   "label": "Evidence",
+   "reqd": 1
+  }
+ ],
+ "track_changes": 1,
+ "permissions": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "modified": "2026-10-11 18:00:00.000000"
+}

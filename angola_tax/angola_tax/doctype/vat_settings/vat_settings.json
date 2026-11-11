@@ -1,0 +1,152 @@
+{
+ "doctype": "DocType",
+ "name": "VAT Settings",
+ "module": "Angola Tax",
+ "autoname": "field:company",
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "company",
+  "active",
+  "tax_type",
+  "account_mapping_section",
+  "account_mappings",
+  "purchase_classification_section",
+  "purchase_classifications",
+  "control_section",
+  "default_currency",
+  "vat_reconciling_account",
+  "vat_recoverable_account",
+  "vat_rounding_account",
+  "notes",
+  "import_vat_section",
+  "vat_customs_recoverable_account",
+  "vat_customs_clearing_account",
+  "import_landed_cost_clearing_account"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "tax_type",
+   "fieldtype": "Link",
+   "label": "VAT Tax Type",
+   "options": "Tax Type"
+  },
+  {
+   "fieldname": "account_mapping_section",
+   "fieldtype": "Section Break",
+   "label": "VAT Account Mapping"
+  },
+  {
+   "fieldname": "account_mappings",
+   "fieldtype": "Table",
+   "label": "Account Mappings",
+   "options": "VAT Account Mapping",
+   "reqd": 1
+  },
+  {
+   "fieldname": "purchase_classification_section",
+   "fieldtype": "Section Break",
+   "label": "Purchase Classifications"
+  },
+  {
+   "fieldname": "purchase_classifications",
+   "fieldtype": "Table",
+   "label": "Purchase Classifications",
+   "options": "VAT Purchase Classification Line"
+  },
+  {
+   "fieldname": "control_section",
+   "fieldtype": "Section Break",
+   "label": "Control"
+  },
+  {
+   "fieldname": "default_currency",
+   "fieldtype": "Link",
+   "label": "Default Currency",
+   "options": "Currency",
+   "fetch_from": "company.default_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vat_reconciling_account",
+   "fieldtype": "Link",
+   "label": "VAT Reconciling Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "vat_recoverable_account",
+   "fieldtype": "Link",
+   "label": "VAT Recoverable Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "vat_rounding_account",
+   "fieldtype": "Link",
+   "label": "VAT Rounding Account",
+   "options": "Account",
+   "description": "Profit and Loss account used only for statutory VAT payment rounding."
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "import_vat_section",
+   "fieldtype": "Section Break",
+   "label": "Import VAT Accounting"
+  },
+  {
+   "fieldname": "vat_customs_recoverable_account",
+   "fieldtype": "Link",
+   "label": "VAT Customs Recoverable Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "vat_customs_clearing_account",
+   "fieldtype": "Link",
+   "label": "VAT Customs Clearing Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "import_landed_cost_clearing_account",
+   "fieldtype": "Link",
+   "label": "Import / Landed Cost Clearing Account",
+   "options": "Account"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ]
+}

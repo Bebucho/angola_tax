@@ -1,27 +1,38 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:tax_code",
  "creation": "2026-09-18 08:43:09.972796",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "company",
   "tax_code",
   "tax_name",
   "obligation_type",
   "periodicity",
+  "obligation_grouping",
   "authority",
   "active",
-  "notes"
+  "notes",
+  "amended_from"
  ],
  "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
   {
    "fieldname": "tax_code",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Tax Code",
-   "reqd": 1,
-   "unique": 1
+   "reqd": 1
   },
   {
    "fieldname": "obligation_type",
@@ -37,6 +48,16 @@
    "in_list_view": 1,
    "label": "Periodicity",
    "options": "Monthly\nQuarterly\nAnnual\nTransaction",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Fiscal Period",
+   "description": "Fiscal Period combines postings for the period. Source Voucher creates a separate obligation for each source accounting voucher.",
+   "fieldname": "obligation_grouping",
+   "fieldtype": "Select",
+   "label": "Obligation Grouping",
+   "options": "Fiscal Period\nSource Voucher",
    "reqd": 1
   },
   {
@@ -62,12 +83,23 @@
    "in_list_view": 1,
    "label": "Tax Name",
    "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Tax Type",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-09-18 10:09:54.821412",
+ "modified": "2026-10-11 18:00:00.000000",
  "modified_by": "Administrator",
  "module": "Angola Tax",
  "name": "Tax Type",
@@ -84,7 +116,10 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
-   "write": 1
+   "write": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
   }
  ],
  "row_format": "Dynamic",

@@ -1,0 +1,437 @@
+{
+ "actions": [],
+ "autoname": "format:TAXSET-{#####}",
+ "creation": "2026-09-20 16:11:59.771058",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "settlement_context_section",
+  "fiscal_obligation",
+  "company",
+  "tax_type",
+  "tax_authority",
+  "settlement_basis",
+  "amounts_section",
+  "expected_amount",
+  "liquidated_amount",
+  "statutory_payment_due_date",
+  "components_section",
+  "settlement_components",
+  "settlement_variance",
+  "has_variance",
+  "variance_reason",
+  "accounting_section",
+  "tax_account",
+  "cost_account",
+  "adjustment_journal_entry",
+  "tax_penalty_cost_account",
+  "tax_provision_account",
+  "tax_settlement_control_account",
+  "settlement_journal_entry",
+  "collection_section",
+  "nota_de_liquidacao_attachement",
+  "collection_mode",
+  "payment_arrangement",
+  "approved_plan_number",
+  "approved_plan_document",
+  "collection_lines",
+  "collection_total",
+  "collection_variance",
+  "settlement_notes_section",
+  "status",
+  "settlement_notes",
+  "tax_assessment",
+  "principal_amount",
+  "penalty_amount",
+  "interest_amount",
+  "liquidation_reference",
+  "liquidation_issue_date",
+  "rupe",
+  "payment_due_date",
+  "recognition_journal_entry",
+  "amended_from",
+  "gross_tax_amount",
+  "credit_applied_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "settlement_context_section",
+   "fieldtype": "Section Break",
+   "label": "Settlement Context",
+   "idx": 1
+  },
+  {
+   "fieldname": "fiscal_obligation",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Fiscal Obligation",
+   "options": "Fiscal Obligation",
+   "reqd": 1,
+   "idx": 2
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1,
+   "reqd": 1,
+   "idx": 3
+  },
+  {
+   "fieldname": "tax_type",
+   "fieldtype": "Link",
+   "label": "Tax Type",
+   "options": "Tax Type",
+   "read_only": 1,
+   "idx": 4
+  },
+  {
+   "fieldname": "tax_authority",
+   "fieldtype": "Link",
+   "label": "Tax Authority",
+   "options": "Tax Authority",
+   "read_only": 1,
+   "idx": 5
+  },
+  {
+   "default": "Self-Determined",
+   "fieldname": "settlement_basis",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Settlement Basis",
+   "options": "Self-Determined\nAccepted Assessment\nLitigation Resolution\nAgreement\nOther Adjustment\nOverdue Obligation",
+   "read_only": 1,
+   "reqd": 1,
+   "idx": 6
+  },
+  {
+   "fieldname": "amounts_section",
+   "fieldtype": "Section Break",
+   "label": "Liquidation",
+   "idx": 7
+  },
+  {
+   "fieldname": "expected_amount",
+   "fieldtype": "Currency",
+   "label": "Determined Amount",
+   "read_only": 1,
+   "idx": 8
+  },
+  {
+   "fieldname": "liquidated_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Liquidated Amount",
+   "reqd": 1,
+   "idx": 9
+  },
+  {
+   "fetch_from": "fiscal_obligation.current_payment_due_date",
+   "fieldname": "statutory_payment_due_date",
+   "fieldtype": "Date",
+   "label": "Statutory Payment Due Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "components_section",
+   "fieldtype": "Section Break",
+   "label": "Liquidation Components"
+  },
+  {
+   "fieldname": "settlement_components",
+   "fieldtype": "Table",
+   "label": "Principal and Penalty",
+   "options": "Tax Settlement Component"
+  },
+  {
+   "fieldname": "settlement_variance",
+   "fieldtype": "Currency",
+   "label": "Variance",
+   "read_only": 1,
+   "idx": 10
+  },
+  {
+   "default": "0",
+   "fieldname": "has_variance",
+   "fieldtype": "Check",
+   "label": "Has Variance",
+   "read_only": 1,
+   "idx": 11
+  },
+  {
+   "depends_on": "eval:doc.has_variance==1",
+   "fieldname": "variance_reason",
+   "fieldtype": "Small Text",
+   "label": "Variance Reason",
+   "mandatory_depends_on": "eval:doc.has_variance==1",
+   "idx": 12
+  },
+  {
+   "fieldname": "accounting_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting Control",
+   "idx": 13
+  },
+  {
+   "fieldname": "tax_account",
+   "fieldtype": "Link",
+   "label": "Tax Control Account",
+   "options": "Account",
+   "read_only": 1,
+   "idx": 14
+  },
+  {
+   "depends_on": "eval:doc.has_variance==1",
+   "fieldname": "cost_account",
+   "fieldtype": "Link",
+   "label": "Cost Account",
+   "mandatory_depends_on": "eval:doc.has_variance==1",
+   "options": "Account",
+   "idx": 15
+  },
+  {
+   "fieldname": "adjustment_journal_entry",
+   "fieldtype": "Link",
+   "label": "Adjustment Journal Entry",
+   "options": "Journal Entry",
+   "read_only": 1,
+   "idx": 16
+  },
+  {
+   "fieldname": "tax_penalty_cost_account",
+   "label": "Tax Penalty Cost Account",
+   "fieldtype": "Link",
+   "options": "Account",
+   "read_only": 1,
+   "idx": 17
+  },
+  {
+   "fieldname": "tax_provision_account",
+   "label": "Tax Provision Account",
+   "fieldtype": "Link",
+   "options": "Account",
+   "read_only": 1,
+   "idx": 18
+  },
+  {
+   "fieldname": "tax_settlement_control_account",
+   "label": "Tax Settlement Control Account",
+   "fieldtype": "Link",
+   "options": "Account",
+   "read_only": 1,
+   "idx": 19
+  },
+  {
+   "fieldname": "settlement_journal_entry",
+   "label": "Settlement Journal Entry",
+   "fieldtype": "Link",
+   "options": "Journal Entry",
+   "read_only": 1,
+   "idx": 20
+  },
+  {
+   "fieldname": "collection_section",
+   "fieldtype": "Section Break",
+   "label": "Tax Collection",
+   "idx": 21
+  },
+  {
+   "fieldname": "nota_de_liquidacao_attachement",
+   "fieldtype": "Attach",
+   "label": "Nota de Liquidacao Attachement",
+   "reqd": 1,
+   "idx": 22
+  },
+  {
+   "default": "Single RUPE",
+   "fieldname": "collection_mode",
+   "fieldtype": "Select",
+   "label": "Collection Mode",
+   "options": "Single RUPE\nMultiple RUPEs",
+   "reqd": 1,
+   "idx": 23
+  },
+  {
+   "fieldname": "payment_arrangement",
+   "fieldtype": "Select",
+   "label": "Payment Arrangement",
+   "options": "Direct Collection\nPayment Plan",
+   "default": "Direct Collection",
+   "reqd": 1,
+   "description": "Select Payment Plan only when an approved instalment plan will be recorded after submission."
+  },
+  {
+   "fieldname": "approved_plan_number",
+   "fieldtype": "Data",
+   "label": "AGT Payment Plan Number",
+   "hidden": 1
+  },
+  {
+   "fieldname": "approved_plan_document",
+   "fieldtype": "Attach",
+   "label": "Approved AGT Payment Plan",
+   "hidden": 1
+  },
+  {
+   "fieldname": "collection_lines",
+   "fieldtype": "Table",
+   "label": "Collection References",
+   "options": "Tax Settlement Collection",
+   "idx": 24
+  },
+  {
+   "fieldname": "collection_total",
+   "fieldtype": "Currency",
+   "label": "Collection Total",
+   "read_only": 1,
+   "idx": 25
+  },
+  {
+   "fieldname": "collection_variance",
+   "fieldtype": "Currency",
+   "label": "Collection Difference",
+   "read_only": 1,
+   "idx": 26
+  },
+  {
+   "fieldname": "settlement_notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes",
+   "idx": 27
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nAwaiting Liquidation\nLiquidated\nUnder Payment Plan\nPartially Paid\nPaid\nCancelled",
+   "read_only": 1,
+   "idx": 28
+  },
+  {
+   "fieldname": "settlement_notes",
+   "fieldtype": "Small Text",
+   "label": "Settlement Notes",
+   "idx": 29
+  },
+  {
+   "fieldname": "tax_assessment",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Tax Assessment",
+   "options": "Tax Assessment",
+   "idx": 30
+  },
+  {
+   "fieldname": "principal_amount",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Principal Amount",
+   "idx": 31
+  },
+  {
+   "default": "0",
+   "fieldname": "penalty_amount",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Penalty Amount",
+   "idx": 32
+  },
+  {
+   "default": "0",
+   "fieldname": "interest_amount",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Interest Amount",
+   "idx": 33
+  },
+  {
+   "fieldname": "liquidation_reference",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Nota de Liquida\u00e7\u00e3o",
+   "idx": 34
+  },
+  {
+   "fieldname": "liquidation_issue_date",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "label": "Liquidation Issue Date",
+   "idx": 35
+  },
+  {
+   "fieldname": "rupe",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "RUPE",
+   "idx": 36
+  },
+  {
+   "fieldname": "payment_due_date",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "label": "Payment Due Date",
+   "idx": 37
+  },
+  {
+   "fieldname": "recognition_journal_entry",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Recognition Journal Entry",
+   "options": "Journal Entry",
+   "read_only": 1,
+   "idx": 38
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Tax Settlement",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1,
+   "idx": 39
+  },
+  {
+   "fieldname": "gross_tax_amount",
+   "fieldtype": "Currency",
+   "label": "Gross Tax Amount",
+   "precision": "2",
+   "read_only": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "credit_applied_amount",
+   "fieldtype": "Currency",
+   "label": "Credit Applied Amount",
+   "precision": "2",
+   "read_only": 1,
+   "options": "currency"
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-10-11 19:59:55.661810",
+ "modified_by": "Administrator",
+ "module": "Angola Tax",
+ "name": "Tax Settlement",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "read": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

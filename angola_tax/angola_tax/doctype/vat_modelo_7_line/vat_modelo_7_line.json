@@ -1,0 +1,62 @@
+{
+ "doctype": "DocType",
+ "name": "VAT Modelo 7 Line",
+ "module": "Angola Tax",
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "field_code",
+  "description",
+  "side",
+  "source_amount",
+  "declared_amount",
+  "difference",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "field_code",
+   "fieldtype": "Data",
+   "label": "Field",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "side",
+   "fieldtype": "Select",
+   "label": "Side",
+   "options": "Base\nTaxpayer\nState\nControl",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_amount",
+   "fieldtype": "Currency",
+   "label": "Accounting Source Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "declared_amount",
+   "fieldtype": "Currency",
+   "label": "Declared Amount"
+  },
+  {
+   "fieldname": "difference",
+   "fieldtype": "Currency",
+   "label": "Difference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "permissions": []
+}

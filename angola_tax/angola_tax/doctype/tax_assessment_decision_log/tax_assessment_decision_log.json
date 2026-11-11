@@ -1,0 +1,147 @@
+{
+ "actions": [],
+ "autoname": "format:TADL-{YYYY}-{#####}",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tax_assessment",
+  "sequence",
+  "previous_decision",
+  "new_decision",
+  "decision_date",
+  "recorded_at",
+  "recorded_by",
+  "evidence_section",
+  "reference",
+  "document",
+  "notes",
+  "links_section",
+  "related_fiscal_obligation",
+  "related_tax_litigation",
+  "related_tax_settlement"
+ ],
+ "fields": [
+  {
+   "fieldname": "tax_assessment",
+   "fieldtype": "Link",
+   "label": "Tax Assessment",
+   "options": "Tax Assessment",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "label": "Sequence",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "previous_decision",
+   "fieldtype": "Select",
+   "label": "Previous Decision",
+   "options": "\nPending\nAccepted\nDisputed\nAgreement\nCancelled by AGT",
+   "read_only": 1
+  },
+  {
+   "fieldname": "new_decision",
+   "fieldtype": "Select",
+   "label": "New Decision",
+   "options": "Pending\nAccepted\nDisputed\nAgreement\nCancelled by AGT",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "decision_date",
+   "fieldtype": "Date",
+   "label": "Decision Date",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "recorded_at",
+   "fieldtype": "Datetime",
+   "label": "Recorded At",
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "recorded_by",
+   "fieldtype": "Link",
+   "label": "Recorded By",
+   "options": "User",
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "evidence_section",
+   "fieldtype": "Section Break",
+   "label": "Decision Evidence"
+  },
+  {
+   "fieldname": "reference",
+   "fieldtype": "Data",
+   "label": "Reference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "document",
+   "fieldtype": "Attach",
+   "label": "Document",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes",
+   "read_only": 1
+  },
+  {
+   "fieldname": "links_section",
+   "fieldtype": "Section Break",
+   "label": "Related Records"
+  },
+  {
+   "fieldname": "related_fiscal_obligation",
+   "fieldtype": "Link",
+   "label": "Fiscal Obligation",
+   "options": "Fiscal Obligation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "related_tax_litigation",
+   "fieldtype": "Link",
+   "label": "Tax Litigation",
+   "options": "Tax Litigation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "related_tax_settlement",
+   "fieldtype": "Link",
+   "label": "Tax Settlement",
+   "options": "Tax Settlement",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "module": "Angola Tax",
+ "name": "Tax Assessment Decision Log",
+ "permissions": [
+  {
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}

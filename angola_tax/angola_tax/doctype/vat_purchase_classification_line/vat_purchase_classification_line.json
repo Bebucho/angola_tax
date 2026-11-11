@@ -1,0 +1,79 @@
+{
+ "doctype": "DocType",
+ "name": "VAT Purchase Classification Line",
+ "module": "Angola Tax",
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "active",
+  "item_group",
+  "item",
+  "modelo_7_category",
+  "modelo_7_base_field",
+  "modelo_7_vat_field",
+  "effective_from",
+  "effective_to",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "label": "Item Group",
+   "options": "Item Group",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "label": "Item Override",
+   "options": "Item",
+   "in_list_view": 1,
+   "description": "Optional. When set, this Item-specific rule takes precedence over the Item Group default."
+  },
+  {
+   "fieldname": "modelo_7_category",
+   "fieldtype": "Select",
+   "label": "Modelo 7 Category",
+   "options": "Fixed Assets and Investments\nInventory\nOther Consumption Goods\nServices",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "modelo_7_base_field",
+   "fieldtype": "Data",
+   "label": "Modelo 7 Base Field",
+   "read_only": 1
+  },
+  {
+   "fieldname": "modelo_7_vat_field",
+   "fieldtype": "Data",
+   "label": "Modelo 7 VAT Field",
+   "read_only": 1
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From"
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "permissions": []
+}

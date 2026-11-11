@@ -1,0 +1,92 @@
+{
+ "doctype": "DocType",
+ "name": "Tax Assessment Collection",
+ "module": "Angola Tax",
+ "istable": 1,
+ "editable_grid": 1,
+ "fields": [
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "label": "Sequence",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "nota_lancamento",
+   "fieldtype": "Data",
+   "label": "Nota de Lançamento",
+   "reqd": 0,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "rupe",
+   "fieldtype": "Data",
+   "label": "RUPE",
+   "reqd": 0,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "issue_date",
+   "fieldtype": "Date",
+   "label": "Issue Date"
+  },
+  {
+   "fieldname": "payment_limit_date",
+   "fieldtype": "Date",
+   "label": "Payment Limit Date",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Issued\nPartially Paid\nPaid\nExpired\nCancelled\nSuperseded",
+   "default": "Issued",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "amount_paid",
+   "fieldtype": "Currency",
+   "label": "Amount Paid",
+   "read_only": 1
+  },
+  {
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Currency",
+   "label": "Outstanding Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "collection_document",
+   "fieldtype": "Attach",
+   "label": "Collection Document"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "field_order": [
+  "sequence",
+  "nota_lancamento",
+  "rupe",
+  "issue_date",
+  "payment_limit_date",
+  "amount",
+  "status",
+  "amount_paid",
+  "outstanding_amount",
+  "collection_document",
+  "notes"
+ ]
+}

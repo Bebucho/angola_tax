@@ -6,8 +6,11 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "obligation_origin",
+  "source_tax_assessment",
+  "source_tax_notification",
+  "related_operational_obligation",
   "company",
-  "tax_type",
   "tax_name",
   "obligation_type",
   "status_column",
@@ -18,45 +21,37 @@
   "fiscal_period_from",
   "fiscal_period_to",
   "fiscal_year",
+  "fiscal_obligation_movement_section",
+  "movements",
   "amounts_section",
+  "amount_determined_raw",
   "amount_determined",
+  "rounding_difference",
   "amount_filed",
+  "latest_tax_assessment",
   "amount_assessed",
+  "latest_tax_payment",
   "amount_paid",
   "outstanding_amount",
   "currency",
-  "filing_variance",
-  "assessment_variance",
-  "has_variance",
-  "effective_obligation_amount",
-  "variance_reason",
   "filing_section",
   "filing_due_date",
   "filing_date",
   "declaration_reference",
-  "filing_status",
-  "days_filing_overdue",
-  "is_filing_overdue",
-  "submission_section",
-  "submission_due_date",
-  "submission_status",
-  "is_submission_overdue",
-  "days_submission_overdue",
   "payment_and_assessment_section",
   "original_payment_due_date",
   "current_payment_due_date",
+  "fully_paid_on",
+  "paid_late",
+  "days_paid_late",
   "nota_lancamento_reference",
   "nota_lancamento_date",
-  "rupe",
-  "rupe_payment_limit_date",
   "assessment_document",
-  "effective_payment_due_date",
-  "deadline_status",
-  "trigger_date",
   "source_section",
   "source_module",
   "source_document_type",
   "source_document",
+  "latest_tax_settlement",
   "accounting_section",
   "liability_account",
   "receivable_account",
@@ -68,22 +63,83 @@
   "is_overdue",
   "days_overdue",
   "under_dispute",
+  "latest_payment_plan",
   "payment_plan",
   "correction_required",
   "notes",
   "amended_from",
-  "reviewed_by",
-  "reviewed_on",
-  "payments_section",
-  "payments",
+  "assessment_variance",
+  "has_variance",
+  "effective_obligation_amount",
+  "filing_variance",
+  "variance_reason",
+  "process_schedule_section",
+  "determination_target_date",
+  "determination_critical_date",
+  "liquidation_target_date",
+  "liquidation_critical_date",
+  "payment_target_date",
+  "payment_critical_date",
+  "effective_payment_due_date",
+  "deadline_status",
+  "filing_status",
+  "days_filing_overdue",
+  "is_filing_overdue",
   "compliance_status_section",
   "compliance_status",
   "compliance_alert",
   "compliance_message",
-  "fiscal_obligation_movement_section",
-  "movements"
+  "submission_section",
+  "submission_due_date",
+  "submission_date",
+  "submission_reference",
+  "submission_status",
+  "is_submission_overdue",
+  "days_submission_overdue",
+  "reviewed_by",
+  "reviewed_on",
+  "tax_type",
+  "tax_code",
+  "trigger_date",
+  "supersedes",
+  "superseded_by",
+  "determination_basis",
+  "credit_applied_amount",
+  "net_cash_requirement",
+  "unapplied_amount"
  ],
  "fields": [
+  {
+   "default": "Operational",
+   "fieldname": "obligation_origin",
+   "fieldtype": "Select",
+   "label": "Obligation Origin",
+   "options": "Operational\nDirect Assessment\nAssessment Successor\nTax Notification",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "source_tax_assessment",
+   "fieldtype": "Link",
+   "label": "Source Tax Assessment",
+   "options": "Tax Assessment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_tax_notification",
+   "fieldtype": "Link",
+   "label": "Source Tax Notification",
+   "options": "Tax Notification",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "related_operational_obligation",
+   "fieldtype": "Link",
+   "label": "Related Operational Obligation",
+   "options": "Fiscal Obligation",
+   "read_only": 1
+  },
   {
    "fieldname": "company",
    "fieldtype": "Link",
@@ -118,7 +174,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Draft\nDetermined\nUnder Review\nApproved\nFiled\nAwaiting Assessment\nReady for Payment\nPaid\nReconciled\nClosed\nCancelled",
+   "options": "Draft\nDetermined\nUnder Review\nApproved\nFiled\nAwaiting Assessment\nAwaiting Liquidation\nLiquidated\nReady for Payment\nUnder Payment Plan\nPaid\nReconciled\nClosed\nCancelled\nSuperseded\nSettled by Credits",
    "reqd": 1
   },
   {
@@ -165,9 +221,25 @@
   },
   {
    "allow_on_submit": 1,
+   "fieldname": "amount_determined_raw",
+   "fieldtype": "Currency",
+   "label": "Amount Determined Raw",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
    "fieldname": "amount_determined",
    "fieldtype": "Currency",
    "label": "Amount Determined",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "rounding_difference",
+   "fieldtype": "Currency",
+   "label": "Rounding Difference",
+   "options": "currency",
    "read_only": 1
   },
   {
@@ -177,10 +249,26 @@
    "label": "Amount Filed"
   },
   {
+   "fieldname": "latest_tax_assessment",
+   "fieldtype": "Link",
+   "label": "Latest Tax Assessment",
+   "options": "Tax Assessment",
+   "read_only": 1
+  },
+  {
    "allow_on_submit": 1,
    "fieldname": "amount_assessed",
    "fieldtype": "Currency",
-   "label": "Amount Assessed"
+   "label": "Amount Assessed",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "latest_tax_payment",
+   "fieldtype": "Link",
+   "label": "Latest Tax Payment",
+   "options": "Tax Payment",
+   "read_only": 1
   },
   {
    "allow_on_submit": 1,
@@ -245,33 +333,46 @@
   },
   {
    "allow_on_submit": 1,
+   "fieldname": "fully_paid_on",
+   "fieldtype": "Date",
+   "label": "Fully Paid On",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "paid_late",
+   "fieldtype": "Check",
+   "label": "Paid After Original Due Date",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "days_paid_late",
+   "fieldtype": "Int",
+   "label": "Days Paid Late",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
    "fieldname": "nota_lancamento_reference",
    "fieldtype": "Data",
-   "label": "Nota de Lan\u00e7amento Reference"
+   "label": "Nota de Lan\u00e7amento Reference",
+   "read_only": 1
   },
   {
    "allow_on_submit": 1,
    "fieldname": "nota_lancamento_date",
    "fieldtype": "Date",
-   "label": "Nota de Lan\u00e7amento Date"
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "rupe",
-   "fieldtype": "Data",
-   "label": "RUPE"
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "rupe_payment_limit_date",
-   "fieldtype": "Date",
-   "label": "RUPE Payment Limit Date"
+   "label": "Nota de Lan\u00e7amento Date",
+   "read_only": 1
   },
   {
    "allow_on_submit": 1,
    "fieldname": "assessment_document",
    "fieldtype": "Attach",
-   "label": "Assessment Document"
+   "label": "Assessment Document",
+   "read_only": 1
   },
   {
    "fieldname": "source_section",
@@ -373,6 +474,14 @@
   },
   {
    "allow_on_submit": 1,
+   "fieldname": "latest_payment_plan",
+   "fieldtype": "Link",
+   "label": "Latest Payment Plan",
+   "options": "Tax Payment Plan",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
    "default": "0",
    "fieldname": "payment_plan",
    "fieldtype": "Check",
@@ -402,17 +511,6 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
-  },
-  {
-   "fieldname": "payments_section",
-   "fieldtype": "Section Break",
-   "label": "Payments"
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "payments",
-   "fieldtype": "Table",
-   "options": "Tax Payment Allocation"
   },
   {
    "allow_on_submit": 1,
@@ -454,14 +552,15 @@
    "allow_on_submit": 1,
    "fieldname": "effective_payment_due_date",
    "fieldtype": "Date",
-   "label": "Effective Payment Due Date"
+   "label": "Effective Payment Due Date",
+   "read_only": 1
   },
   {
    "allow_on_submit": 1,
    "fieldname": "deadline_status",
    "fieldtype": "Select",
    "label": "Deadline Status",
-   "options": "No Deadline\nOn Time\nDue Soon\nDue Today\nOverdue\nPaid"
+   "options": "No Deadline\nOn Time\nDue Soon\nDue Today\nOverdue\nPaid\nNo Payment Required"
   },
   {
    "allow_on_submit": 1,
@@ -496,7 +595,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Compliance Status",
-   "options": "Compliant\nAction Required\nDue Soon\nOverdue\nUnder Review\nClosed"
+   "options": "Compliant\nAction Required\nDue Soon\nOverdue\nPaid Late\nUnder Review\nClosed"
   },
   {
    "allow_on_submit": 1,
@@ -533,6 +632,16 @@
    "fieldtype": "Date",
    "label": "Submission Due Date",
    "read_only": 1
+  },
+  {
+   "fieldname": "submission_date",
+   "fieldtype": "Date",
+   "label": "Submission Date"
+  },
+  {
+   "fieldname": "submission_reference",
+   "fieldtype": "Data",
+   "label": "Submission Reference"
   },
   {
    "allow_on_submit": 1,
@@ -581,13 +690,120 @@
    "fieldtype": "Date",
    "label": "Trigger Date",
    "read_only": 1
+  },
+  {
+   "fieldname": "supersedes",
+   "fieldtype": "Link",
+   "label": "Supersedes",
+   "options": "Fiscal Obligation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "superseded_by",
+   "fieldtype": "Link",
+   "label": "Superseded By",
+   "options": "Fiscal Obligation"
+  },
+  {
+   "fieldname": "latest_tax_settlement",
+   "fieldtype": "Link",
+   "label": "Latest Tax Settlement",
+   "options": "Tax Settlement",
+   "read_only": 1
+  },
+  {
+   "fieldname": "process_schedule_section",
+   "fieldtype": "Section Break",
+   "label": "Internal Process Schedule"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "determination_target_date",
+   "fieldtype": "Date",
+   "label": "Determination Target",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "determination_critical_date",
+   "fieldtype": "Date",
+   "label": "Determination Critical",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "liquidation_target_date",
+   "fieldtype": "Date",
+   "label": "Liquidation Target",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "liquidation_critical_date",
+   "fieldtype": "Date",
+   "label": "Liquidation Critical",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "payment_target_date",
+   "fieldtype": "Date",
+   "label": "Payment Target",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "payment_critical_date",
+   "fieldtype": "Date",
+   "label": "Payment Critical",
+   "read_only": 1
+  },
+  {
+   "fieldname": "determination_basis",
+   "fieldtype": "Select",
+   "label": "Determination Basis",
+   "options": "GL\nComputation",
+   "default": "GL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "credit_applied_amount",
+   "fieldtype": "Currency",
+   "label": "Credit Applied Amount",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "net_cash_requirement",
+   "fieldtype": "Currency",
+   "label": "Net Cash Requirement",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unapplied_amount",
+   "fieldtype": "Currency",
+   "label": "Unapplied Amount",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "tax_code",
+   "fieldtype": "Data",
+   "label": "Tax Code",
+   "read_only": 1,
+   "fetch_from": "tax_type.tax_code"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-09-18 15:46:03.936421",
+ "modified": "2026-10-11 19:59:55.661810",
  "modified_by": "Administrator",
  "module": "Angola Tax",
  "name": "Fiscal Obligation",

@@ -1,0 +1,216 @@
+{
+ "doctype": "DocType",
+ "name": "Tax Alert Rule",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "rule_title",
+  "company",
+  "enabled",
+  "fiscal_process",
+  "trigger_label",
+  "condition",
+  "kind",
+  "severity",
+  "overdue_severity",
+  "advance_days",
+  "recurrence_hours",
+  "escalation_hours",
+  "responsible_user",
+  "responsible_role",
+  "escalation_user",
+  "notify_in_app",
+  "notes",
+  "last_evaluated_on",
+  "last_error",
+  "scope_key"
+ ],
+ "fields": [
+  {
+   "fieldname": "rule_title",
+   "label": "Rule Title",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "company",
+   "label": "Company",
+   "fieldtype": "Link",
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "Company"
+  },
+  {
+   "fieldname": "enabled",
+   "label": "Enabled",
+   "fieldtype": "Check",
+   "default": "0",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "fiscal_process",
+   "label": "Fiscal Process",
+   "fieldtype": "Select",
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "Accounting Review\nConfiguration\nDeclarations\nDisputes\nFiscal Compliance\nIndustrial Tax\nPayments\nVAT"
+  },
+  {
+   "fieldname": "trigger_label",
+   "label": "Triggering Condition",
+   "fieldtype": "Select",
+   "options": "Fiscal action required\nDetermination preparation deadline\nLiquidation preparation deadline\nInternal payment target\nPayment deadline\nDeclaration preparation\nDeclaration approval\nDeclaration delivery\nRequired filing not created\nRejected declaration\nDeclaration correction pending\nDeclaration sources changed\nSubmission evidence missing\nAcknowledgement pending or evidence missing\nPayment confirmation pending or evidence missing\nTax movements require classification\nWithholding movements require classification\nWithholding map incomplete\nAGT amounts require review\nVAT movements require classification\nVAT reconciliation differences\nVAT reconciliation differences\nProvisional tax differences\nUnresolved fiscal differences\nPayment plan reconciliation difference\nFiscal configuration requires review\nAssessment decision deadline\nTaxpayer action deadline\nAuthority reply requires follow-up\nNotification response deadline needs review\nPayment plan instalment\nCollection reference requires review\nFiscal deadline configuration missing",
+   "reqd": 1
+  },
+  {
+   "fieldname": "condition",
+   "label": "Condition",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "description": "Choose the existing fiscal condition to monitor.",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "kind",
+   "label": "Kind",
+   "fieldtype": "Select",
+   "default": "Alert",
+   "reqd": 1,
+   "options": "Alert\nNotice"
+  },
+  {
+   "fieldname": "severity",
+   "label": "Severity",
+   "fieldtype": "Select",
+   "default": "High",
+   "reqd": 1,
+   "options": "Low\nMedium\nHigh\nCritical"
+  },
+  {
+   "fieldname": "overdue_severity",
+   "label": "Overdue Severity",
+   "fieldtype": "Select",
+   "default": "Critical",
+   "options": "\nLow\nMedium\nHigh\nCritical"
+  },
+  {
+   "fieldname": "advance_days",
+   "label": "Advance Days",
+   "fieldtype": "Int",
+   "default": "7",
+   "description": "Warn this many days before the existing deadline. No statutory date is changed."
+  },
+  {
+   "fieldname": "recurrence_hours",
+   "label": "Recurrence Hours",
+   "fieldtype": "Int",
+   "default": "24",
+   "description": "Minimum hours between reminders. Zero sends once per occurrence."
+  },
+  {
+   "fieldname": "escalation_hours",
+   "label": "Escalation Hours",
+   "fieldtype": "Int",
+   "default": "48",
+   "description": "Hours from first detection before escalation. Zero disables escalation."
+  },
+  {
+   "fieldname": "responsible_user",
+   "label": "Responsible User",
+   "fieldtype": "Link",
+   "options": "User"
+  },
+  {
+   "fieldname": "responsible_role",
+   "label": "Responsible Role",
+   "fieldtype": "Link",
+   "options": "Role"
+  },
+  {
+   "fieldname": "escalation_user",
+   "label": "Escalation User",
+   "fieldtype": "Link",
+   "options": "User"
+  },
+  {
+   "fieldname": "notify_in_app",
+   "label": "Notify In App",
+   "fieldtype": "Check",
+   "default": "0",
+   "description": "In-app delivery only. Email and other channels are not active."
+  },
+  {
+   "fieldname": "notes",
+   "label": "Notes",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "last_evaluated_on",
+   "label": "Last Evaluated On",
+   "fieldtype": "Datetime",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_error",
+   "label": "Last Error",
+   "fieldtype": "Small Text",
+   "read_only": 1
+  },
+  {
+   "fieldname": "scope_key",
+   "label": "Company Condition Identity",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "read_only": 1,
+   "unique": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Tax Alert Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Tax Preparer",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Tax Approver",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Tax Submission User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "track_changes": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "rule_title",
+ "autoname": "hash"
+}

@@ -1,0 +1,33 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax Account Role",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "role",
+  "configuration"
+ ],
+ "fields": [
+  {
+   "fieldname": "role",
+   "fieldtype": "Select",
+   "label": "Role",
+   "options": "Annual Liability\nCurrent Tax Expense\nDeferred Tax Expense\nProvisional Asset\nProvisional Liability\nSuffered Withholding Asset\nPending Suffered Withholding Asset\nRecognised Carryforward Credit\nCollected Resident Withholding Liability\nCollected Nonresident Withholding Liability\nRounding",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "configuration",
+   "fieldtype": "Link",
+   "label": "Configuration",
+   "options": "Tax Account Configuration",
+   "reqd": 1,
+   "in_list_view": 1
+  }
+ ],
+ "track_changes": 1,
+ "permissions": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "modified": "2026-10-11 18:00:00.000000"
+}

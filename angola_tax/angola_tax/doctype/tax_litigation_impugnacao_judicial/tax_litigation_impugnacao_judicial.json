@@ -1,0 +1,375 @@
+{
+ "doctype": "DocType",
+ "name": "Tax Litigation Impugnacao Judicial",
+ "module": "Angola Tax",
+ "autoname": "format:TLPH-{#####}",
+ "is_submittable": 1,
+ "track_changes": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tax_litigation",
+  "tax_assessment",
+  "company",
+  "tax_type",
+  "fiscal_obligation",
+  "tax_provision",
+  "phase_status",
+  "company_submission_due_date",
+  "submission_date",
+  "submission_reference",
+  "submission_document",
+  "court_name",
+  "court_case_reference",
+  "guarantee_section",
+  "guarantee_status",
+  "guarantee_type",
+  "guarantee_amount",
+  "guarantee_reference",
+  "guarantee_date",
+  "guarantee_document",
+  "dispensation_request_date",
+  "dispensation_request_reference",
+  "dispensation_grounds",
+  "dispensation_request_document",
+  "dispensation_decision_date",
+  "dispensation_decision_reference",
+  "dispensation_decision_document",
+  "guarantee_notes",
+  "agt_response_section",
+  "response_due_date",
+  "agt_response",
+  "agt_response_date",
+  "agt_response_reference",
+  "agt_response_document",
+  "agt_revised_amount",
+  "company_decision",
+  "settlement_amount",
+  "company_decision_date",
+  "company_decision_notes",
+  "tax_settlement",
+  "next_phase_doctype",
+  "next_phase"
+ ],
+ "fields": [
+  {
+   "fieldname": "tax_litigation",
+   "label": "Tax Litigation",
+   "fieldtype": "Link",
+   "reqd": true,
+   "options": "Tax Litigation"
+  },
+  {
+   "fieldname": "tax_assessment",
+   "label": "Tax Assessment",
+   "fieldtype": "Link",
+   "reqd": true,
+   "options": "Tax Assessment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "label": "Company",
+   "fieldtype": "Link",
+   "reqd": true,
+   "options": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_type",
+   "label": "Tax Type",
+   "fieldtype": "Link",
+   "reqd": true,
+   "options": "Tax Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fiscal_obligation",
+   "label": "Fiscal Obligation",
+   "fieldtype": "Link",
+   "reqd": false,
+   "options": "Fiscal Obligation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_provision",
+   "label": "Provision Review",
+   "fieldtype": "Link",
+   "options": "Tax Provision",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "phase_status",
+   "label": "Phase Status",
+   "fieldtype": "Select",
+   "reqd": true,
+   "options": "Draft\nAwaiting AGT Reply\nAGT Accepted\nAGT Rejected\nRevised Amount Proposed\nSettlement Pending\nContinue Dispute\nClosed\nAwaiting Court Decision",
+   "allow_on_submit": 1,
+   "default": "Draft",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company_submission_due_date",
+   "label": "Judicial Submission Due Date",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "submission_date",
+   "label": "Judicial Submission Date",
+   "fieldtype": "Date",
+   "reqd": false
+  },
+  {
+   "fieldname": "submission_reference",
+   "label": "Judicial Submission Reference",
+   "fieldtype": "Data",
+   "reqd": false
+  },
+  {
+   "fieldname": "submission_document",
+   "label": "Judicial Submission Document",
+   "fieldtype": "Attach",
+   "reqd": false
+  },
+  {
+   "fieldname": "response_due_date",
+   "label": "Court Decision Due Date",
+   "fieldtype": "Date",
+   "reqd": false
+  },
+  {
+   "fieldname": "agt_response",
+   "label": "Court Outcome",
+   "fieldtype": "Select",
+   "reqd": false,
+   "options": "\nArgument Accepted\nArgument Rejected\nRevised Amount Proposed",
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "agt_response_date",
+   "label": "Court Decision Date",
+   "fieldtype": "Date",
+   "reqd": false,
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "agt_response_reference",
+   "label": "Court Decision Reference",
+   "fieldtype": "Data",
+   "reqd": false,
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "agt_response_document",
+   "label": "Court Decision Document",
+   "fieldtype": "Attach",
+   "reqd": false,
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "agt_revised_amount",
+   "label": "Amount Determined by Court",
+   "fieldtype": "Currency",
+   "reqd": false,
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "company_decision",
+   "label": "Company Decision",
+   "fieldtype": "Select",
+   "reqd": false,
+   "options": "\nAccept AGT Position\nContinue Litigation",
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "company_decision_date",
+   "label": "Company Decision Date",
+   "fieldtype": "Date",
+   "reqd": false,
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "settlement_amount",
+   "label": "Accepted Settlement Amount",
+   "fieldtype": "Currency",
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "company_decision_notes",
+   "label": "Company Decision Notes",
+   "fieldtype": "Small Text",
+   "reqd": false,
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_settlement",
+   "label": "Tax Settlement",
+   "fieldtype": "Link",
+   "reqd": false,
+   "options": "Tax Settlement",
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "next_phase_doctype",
+   "label": "Next Phase Type",
+   "fieldtype": "Link",
+   "reqd": false,
+   "options": "DocType",
+   "allow_on_submit": 1,
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "next_phase",
+   "label": "Next Phase Record",
+   "fieldtype": "Dynamic Link",
+   "reqd": false,
+   "options": "next_phase_doctype",
+   "allow_on_submit": 1,
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "court_name",
+   "label": "Court",
+   "fieldtype": "Data",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "court_case_reference",
+   "label": "Court Case Reference",
+   "fieldtype": "Data",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "guarantee_section",
+   "label": "Guarantee / Dispensation",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "guarantee_status",
+   "label": "Guarantee Status",
+   "fieldtype": "Select",
+   "allow_on_submit": 1,
+   "options": "Pending\nPresented\nDispensation Requested\nDispensation Granted\nDispensation Refused",
+   "default": "Pending"
+  },
+  {
+   "fieldname": "guarantee_type",
+   "label": "Guarantee Type",
+   "fieldtype": "Data",
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.guarantee_status === 'Presented'"
+  },
+  {
+   "fieldname": "guarantee_amount",
+   "label": "Guarantee Amount",
+   "fieldtype": "Currency",
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.guarantee_status === 'Presented'"
+  },
+  {
+   "fieldname": "guarantee_reference",
+   "label": "Guarantee Reference",
+   "fieldtype": "Data",
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.guarantee_status === 'Presented'"
+  },
+  {
+   "fieldname": "guarantee_date",
+   "label": "Guarantee Presentation Date",
+   "fieldtype": "Date",
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.guarantee_status === 'Presented'"
+  },
+  {
+   "fieldname": "guarantee_document",
+   "label": "Guarantee Document",
+   "fieldtype": "Attach",
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.guarantee_status === 'Presented'"
+  },
+  {
+   "fieldname": "dispensation_request_date",
+   "label": "Dispensation Request Date",
+   "fieldtype": "Date",
+   "allow_on_submit": 1,
+   "depends_on": "eval:['Dispensation Requested','Dispensation Granted','Dispensation Refused'].indexOf(doc.guarantee_status) !== -1"
+  },
+  {
+   "fieldname": "dispensation_request_reference",
+   "label": "Dispensation Request Reference",
+   "fieldtype": "Data",
+   "allow_on_submit": 1,
+   "depends_on": "eval:['Dispensation Requested','Dispensation Granted','Dispensation Refused'].indexOf(doc.guarantee_status) !== -1"
+  },
+  {
+   "fieldname": "dispensation_grounds",
+   "label": "Dispensation Grounds",
+   "fieldtype": "Small Text",
+   "allow_on_submit": 1,
+   "depends_on": "eval:['Dispensation Requested','Dispensation Granted','Dispensation Refused'].indexOf(doc.guarantee_status) !== -1"
+  },
+  {
+   "fieldname": "dispensation_request_document",
+   "label": "Dispensation Request Document",
+   "fieldtype": "Attach",
+   "allow_on_submit": 1,
+   "depends_on": "eval:['Dispensation Requested','Dispensation Granted','Dispensation Refused'].indexOf(doc.guarantee_status) !== -1"
+  },
+  {
+   "fieldname": "dispensation_decision_date",
+   "label": "Dispensation Decision Date",
+   "fieldtype": "Date",
+   "allow_on_submit": 1,
+   "depends_on": "eval:['Dispensation Granted','Dispensation Refused'].indexOf(doc.guarantee_status) !== -1"
+  },
+  {
+   "fieldname": "dispensation_decision_reference",
+   "label": "Dispensation Decision Reference",
+   "fieldtype": "Data",
+   "allow_on_submit": 1,
+   "depends_on": "eval:['Dispensation Granted','Dispensation Refused'].indexOf(doc.guarantee_status) !== -1"
+  },
+  {
+   "fieldname": "dispensation_decision_document",
+   "label": "Dispensation Decision Document",
+   "fieldtype": "Attach",
+   "allow_on_submit": 1,
+   "depends_on": "eval:['Dispensation Granted','Dispensation Refused'].indexOf(doc.guarantee_status) !== -1"
+  },
+  {
+   "fieldname": "guarantee_notes",
+   "label": "Guarantee / Dispensation Notes",
+   "fieldtype": "Small Text",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "agt_response_section",
+   "label": "Court Decision and Company Decision",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "print": 1,
+   "report": 1
+  }
+ ]
+}

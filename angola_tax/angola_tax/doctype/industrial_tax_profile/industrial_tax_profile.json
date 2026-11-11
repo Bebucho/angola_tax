@@ -1,0 +1,113 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax Profile",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "tax_type",
+  "rule_version",
+  "effective_from",
+  "effective_to",
+  "general_ordinary_only",
+  "account_roles",
+  "deadline_configuration",
+  "review_evidence",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "tax_type",
+   "fieldtype": "Link",
+   "label": "Tax Type",
+   "options": "Tax Type",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "rule_version",
+   "fieldtype": "Link",
+   "label": "Rule Version",
+   "options": "Industrial Tax Rule",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To",
+   "reqd": 1
+  },
+  {
+   "fieldname": "general_ordinary_only",
+   "fieldtype": "Check",
+   "label": "Reviewed: exclusively ordinary general regime",
+   "default": "0"
+  },
+  {
+   "fieldname": "account_roles",
+   "fieldtype": "Table",
+   "label": "Account Roles",
+   "options": "Industrial Tax Account Role"
+  },
+  {
+   "fieldname": "deadline_configuration",
+   "fieldtype": "Link",
+   "label": "Deadline Configuration",
+   "options": "Tax Deadline Configuration",
+   "reqd": 1
+  },
+  {
+   "fieldname": "review_evidence",
+   "fieldtype": "Attach",
+   "label": "Review Evidence"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Industrial Tax Profile",
+   "read_only": 1,
+   "no_copy": 1
+  }
+ ],
+ "track_changes": 1,
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "is_submittable": 1,
+ "autoname": "format:II-PROFILE-{#####}",
+ "modified": "2026-10-11 18:00:00.000000"
+}

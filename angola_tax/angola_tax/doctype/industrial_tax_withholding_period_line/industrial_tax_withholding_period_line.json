@@ -1,0 +1,35 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax Withholding Period Line",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "withholding",
+  "tax_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "withholding",
+   "fieldtype": "Link",
+   "label": "Withholding",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "options": "Industrial Tax Withholding"
+  },
+  {
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "label": "Tax Amount",
+   "precision": "2",
+   "read_only": 1,
+   "in_list_view": 1,
+   "options": "currency"
+  }
+ ],
+ "track_changes": 1,
+ "permissions": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "modified": "2026-10-11 19:59:55.661810"
+}

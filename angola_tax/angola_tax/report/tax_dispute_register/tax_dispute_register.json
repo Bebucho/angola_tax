@@ -1,0 +1,27 @@
+{
+ "doctype": "Report",
+ "name": "Tax Dispute Register",
+ "report_name": "Tax Dispute Register",
+ "ref_doctype": "Company",
+ "report_type": "Script Report",
+ "is_standard": "Yes",
+ "module": "Angola Tax",
+ "add_total_row": 0,
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Tax Alert Manager"
+  },
+  {
+   "role": "Tax Preparer"
+  },
+  {
+   "role": "Tax Approver"
+  },
+  {
+   "role": "Tax Submission User"
+  }
+ ]
+}

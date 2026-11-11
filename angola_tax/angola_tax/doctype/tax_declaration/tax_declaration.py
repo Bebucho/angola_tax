@@ -1,0 +1,1 @@
+from angola_tax.declarations.controller import TaxDeclaration

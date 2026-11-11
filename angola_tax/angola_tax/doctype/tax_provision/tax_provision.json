@@ -1,0 +1,155 @@
+{
+ "doctype": "DocType",
+ "name": "Tax Provision",
+ "module": "Angola Tax",
+ "autoname": "format:TAXPROV-{#####}",
+ "is_submittable": 1,
+ "track_changes": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tax_assessment",
+  "tax_litigation",
+  "company",
+  "tax_type",
+  "provision_decision",
+  "exposure_amount",
+  "provision_amount",
+  "provision_date",
+  "status",
+  "provision_notes",
+  "provision_cost_account",
+  "provision_account",
+  "provision_journal_entry",
+  "reversal_journal_entry",
+  "reversed_amount",
+  "outstanding_provision",
+  "litigation_phase_doctype",
+  "litigation_phase"
+ ],
+ "fields": [
+  {
+   "fieldname": "tax_assessment",
+   "label": "Tax Assessment",
+   "fieldtype": "Link",
+   "options": "Tax Assessment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tax_litigation",
+   "label": "Tax Litigation",
+   "fieldtype": "Link",
+   "options": "Tax Litigation"
+  },
+  {
+   "fieldname": "company",
+   "label": "Company",
+   "fieldtype": "Link",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tax_type",
+   "label": "Tax Type",
+   "fieldtype": "Link",
+   "options": "Tax Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "provision_decision",
+   "label": "Provision Decision",
+   "fieldtype": "Select",
+   "options": "No Provision\nFull Provision\nPartial Provision\nAlready Recognised\nDisclosure Only",
+   "reqd": 1
+  },
+  {
+   "fieldname": "exposure_amount",
+   "label": "Exposure Amount",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "provision_amount",
+   "label": "Provision Amount",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "provision_date",
+   "label": "Provision Date",
+   "fieldtype": "Date"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "options": "Draft\nProvided\nPartially Reversed\nReversed\nClosed",
+   "default": "Draft",
+   "read_only": 1
+  },
+  {
+   "fieldname": "provision_notes",
+   "label": "Provision Notes",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "provision_cost_account",
+   "label": "Tax Litigation Cost Account",
+   "fieldtype": "Link",
+   "options": "Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "provision_account",
+   "label": "Tax Litigation Provision Account",
+   "fieldtype": "Link",
+   "options": "Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "provision_journal_entry",
+   "label": "Provision Journal Entry",
+   "fieldtype": "Link",
+   "options": "Journal Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reversal_journal_entry",
+   "label": "Reversal Journal Entry",
+   "fieldtype": "Link",
+   "options": "Journal Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reversed_amount",
+   "label": "Reversed Amount",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "outstanding_provision",
+   "label": "Outstanding Provision",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "litigation_phase_doctype",
+   "label": "Litigation Phase Type",
+   "fieldtype": "Link",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "litigation_phase",
+   "label": "Litigation Phase",
+   "fieldtype": "Dynamic Link",
+   "options": "litigation_phase_doctype"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1
+  }
+ ]
+}

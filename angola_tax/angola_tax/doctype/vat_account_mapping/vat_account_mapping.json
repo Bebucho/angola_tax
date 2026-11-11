@@ -1,0 +1,56 @@
+{
+ "doctype": "DocType",
+ "name": "VAT Account Mapping",
+ "module": "Angola Tax",
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "account",
+  "vat_nature",
+  "modelo_7_side",
+  "active",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Account",
+   "options": "Account",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vat_nature",
+   "fieldtype": "Select",
+   "label": "VAT Nature",
+   "options": "IVA Liquidado\nIVA Suportado\nIVA Cativo a Recuperar\nIVA Cativo a Entregar\nIVA a Pagar\nIVA a Recuperar\nVAT Reconciling Items\nOther VAT",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "modelo_7_side",
+   "fieldtype": "Select",
+   "label": "Modelo 7 Side",
+   "options": "State\nTaxpayer\nControl\nNone",
+   "reqd": 1,
+   "default": "None",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "permissions": [],
+ "track_changes": 0
+}

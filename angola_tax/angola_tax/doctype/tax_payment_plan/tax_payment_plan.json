@@ -1,0 +1,320 @@
+{
+ "doctype": "DocType",
+ "name": "Tax Payment Plan",
+ "module": "Angola Tax",
+ "autoname": "format:TAXPLAN-{#####}",
+ "is_submittable": 1,
+ "track_changes": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "fiscal_obligation",
+  "tax_settlement",
+  "tax_assessment",
+  "status",
+  "company",
+  "tax_type",
+  "currency",
+  "plan_section",
+  "plan_origin",
+  "plan_number",
+  "tax_year",
+  "plan_start_date",
+  "plan_end_date",
+  "number_of_instalments",
+  "original_debt_amount",
+  "total_plan_amount",
+  "plan_variance",
+  "variance_reason",
+  "original_rupe",
+  "original_collection_document",
+  "plan_document",
+  "instalments_section",
+  "instalments",
+  "accounting_section",
+  "tax_account",
+  "tax_penalty_settings",
+  "payment_plan_control_account",
+  "tax_penalty_cost_account",
+  "opening_journal_entry",
+  "scheduled_outstanding",
+  "control_account_balance",
+  "expected_control_balance",
+  "gl_variance",
+  "accounting_reconciled",
+  "reissue_section",
+  "previous_plan",
+  "superseded_by",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "fiscal_obligation",
+   "fieldtype": "Link",
+   "label": "Fiscal Obligation",
+   "options": "Fiscal Obligation",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "tax_settlement",
+   "fieldtype": "Link",
+   "label": "Tax Settlement",
+   "options": "Tax Settlement",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "tax_assessment",
+   "fieldtype": "Link",
+   "label": "Tax Assessment",
+   "options": "Tax Assessment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nActive\nIn Arrears\nAwaiting Reissue\nSuperseded\nCompleted\nCancelled",
+   "default": "Draft",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "tax_type",
+   "fieldtype": "Link",
+   "label": "Tax Type",
+   "options": "Tax Type",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "plan_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Plan"
+  },
+  {
+   "fieldname": "plan_origin",
+   "fieldtype": "Select",
+   "label": "Plan Origin",
+   "options": "Existing Tax Liability\nNew Penalty or Assessment\nReissue",
+   "default": "Existing Tax Liability",
+   "reqd": 1
+  },
+  {
+   "fieldname": "plan_number",
+   "fieldtype": "Data",
+   "label": "Plan Number",
+   "reqd": 0,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "tax_year",
+   "fieldtype": "Data",
+   "label": "Tax Year / Exercise"
+  },
+  {
+   "fieldname": "plan_start_date",
+   "fieldtype": "Date",
+   "label": "Plan Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "plan_end_date",
+   "fieldtype": "Date",
+   "label": "Plan End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "number_of_instalments",
+   "fieldtype": "Int",
+   "label": "Number of Instalments",
+   "read_only": 1
+  },
+  {
+   "fieldname": "original_debt_amount",
+   "fieldtype": "Currency",
+   "label": "Original Debt Amount",
+   "options": "currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_plan_amount",
+   "fieldtype": "Currency",
+   "label": "Total Plan Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "plan_variance",
+   "fieldtype": "Currency",
+   "label": "Plan Variance",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "variance_reason",
+   "fieldtype": "Small Text",
+   "label": "Variance Reason"
+  },
+  {
+   "fieldname": "original_rupe",
+   "fieldtype": "Data",
+   "label": "Original RUPE"
+  },
+  {
+   "fieldname": "original_collection_document",
+   "fieldtype": "Data",
+   "label": "Original Collection Document"
+  },
+  {
+   "fieldname": "plan_document",
+   "fieldtype": "Attach",
+   "label": "Official Payment Plan",
+   "reqd": 0
+  },
+  {
+   "fieldname": "instalments_section",
+   "fieldtype": "Section Break",
+   "label": "Instalments"
+  },
+  {
+   "fieldname": "instalments",
+   "fieldtype": "Table",
+   "label": "Instalments",
+   "options": "Tax Payment Plan Instalment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "accounting_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting Control"
+  },
+  {
+   "fieldname": "tax_account",
+   "fieldtype": "Link",
+   "label": "Tax Account",
+   "options": "Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_penalty_settings",
+   "fieldtype": "Link",
+   "label": "Tax Penalty Settings",
+   "options": "Tax Penalty Settings",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_plan_control_account",
+   "fieldtype": "Link",
+   "label": "Payment Plan Control Account",
+   "options": "Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_penalty_cost_account",
+   "fieldtype": "Link",
+   "label": "Tax Penalty Cost Account",
+   "options": "Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "opening_journal_entry",
+   "fieldtype": "Link",
+   "label": "Opening / Reissue Journal Entry",
+   "options": "Journal Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "scheduled_outstanding",
+   "fieldtype": "Currency",
+   "label": "Scheduled Outstanding",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "control_account_balance",
+   "fieldtype": "Currency",
+   "label": "Control Account Balance",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "expected_control_balance",
+   "fieldtype": "Currency",
+   "label": "Expected Active Plans Balance",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gl_variance",
+   "fieldtype": "Currency",
+   "label": "GL Variance",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accounting_reconciled",
+   "fieldtype": "Check",
+   "label": "Accounting Reconciled",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reissue_section",
+   "fieldtype": "Section Break",
+   "label": "Reissue"
+  },
+  {
+   "fieldname": "previous_plan",
+   "fieldtype": "Link",
+   "label": "Previous Plan",
+   "options": "Tax Payment Plan",
+   "read_only": 1
+  },
+  {
+   "fieldname": "superseded_by",
+   "fieldtype": "Link",
+   "label": "Superseded By",
+   "options": "Tax Payment Plan",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Tax Payment Plan",
+   "read_only": 1,
+   "no_copy": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "share": 1
+  }
+ ]
+}

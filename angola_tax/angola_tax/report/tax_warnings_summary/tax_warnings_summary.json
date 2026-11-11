@@ -1,0 +1,26 @@
+{
+ "doctype": "Report",
+ "name": "Tax Warnings Summary",
+ "report_name": "Tax Warnings Summary",
+ "ref_doctype": "Tax Warning",
+ "report_type": "Script Report",
+ "is_standard": "Yes",
+ "module": "Angola Tax",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Tax Alert Manager"
+  },
+  {
+   "role": "Tax Preparer"
+  },
+  {
+   "role": "Tax Approver"
+  },
+  {
+   "role": "Tax Submission User"
+  }
+ ]
+}

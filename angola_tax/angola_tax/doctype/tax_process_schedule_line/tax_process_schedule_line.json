@@ -1,0 +1,129 @@
+{
+ "actions": [],
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "process_stage",
+  "target_timing",
+  "target_day_rule",
+  "target_day",
+  "critical_rule",
+  "critical_timing",
+  "critical_day_rule",
+  "critical_day",
+  "target_month_offset",
+  "target_use_end_of_month",
+  "critical_month_offset",
+  "critical_use_end_of_month"
+ ],
+ "fields": [
+  {
+   "fieldname": "process_stage",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Process Stage",
+   "options": "Determination\nLiquidation\nPayment",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "target_month_offset",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Target Month Offset",
+   "reqd": 1,
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "target_day",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Target Day"
+  },
+  {
+   "default": "0",
+   "fieldname": "target_use_end_of_month",
+   "fieldtype": "Check",
+   "label": "Target End of Month",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "default": "Fixed Rule",
+   "fieldname": "critical_rule",
+   "fieldtype": "Select",
+   "label": "Critical Rule",
+   "options": "Fixed Rule\nLegal Deadline",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "critical_month_offset",
+   "fieldtype": "Int",
+   "label": "Critical Month Offset",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "critical_day",
+   "fieldtype": "Int",
+   "label": "Critical Day"
+  },
+  {
+   "default": "0",
+   "fieldname": "critical_use_end_of_month",
+   "fieldtype": "Check",
+   "label": "Critical End of Month",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "target_timing",
+   "fieldtype": "Select",
+   "label": "Target Timing",
+   "options": "Current Month\nNext Month\nSecond Following Month\nThird Following Month",
+   "reqd": 1,
+   "default": "Current Month",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "target_day_rule",
+   "fieldtype": "Select",
+   "label": "Target Day Rule",
+   "options": "Fixed Day\nEnd of Month",
+   "reqd": 1,
+   "default": "Fixed Day"
+  },
+  {
+   "fieldname": "critical_timing",
+   "fieldtype": "Select",
+   "label": "Critical Timing",
+   "options": "Current Month\nNext Month\nSecond Following Month\nThird Following Month",
+   "default": "Current Month"
+  },
+  {
+   "fieldname": "critical_day_rule",
+   "fieldtype": "Select",
+   "label": "Critical Day Rule",
+   "options": "Fixed Day\nEnd of Month",
+   "default": "Fixed Day"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-09-20 21:55:00.000000",
+ "modified_by": "Administrator",
+ "module": "Angola Tax",
+ "name": "Tax Process Schedule Line",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

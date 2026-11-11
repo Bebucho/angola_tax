@@ -1,0 +1,253 @@
+{
+ "doctype": "DocType",
+ "name": "Tax Warning",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "company",
+  "fiscal_process",
+  "kind",
+  "severity",
+  "status",
+  "responsible_user",
+  "responsible_role",
+  "escalation_user",
+  "due_date",
+  "explanation",
+  "action_needed",
+  "source_doctype",
+  "source_name",
+  "rule",
+  "condition",
+  "condition_key",
+  "detail_key",
+  "first_seen",
+  "last_seen",
+  "resolved_on",
+  "snooze_until",
+  "episode",
+  "facts_json",
+  "history"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "label": "Title",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "company",
+   "label": "Company",
+   "fieldtype": "Link",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "options": "Company"
+  },
+  {
+   "fieldname": "fiscal_process",
+   "label": "Fiscal Process",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "kind",
+   "label": "Kind",
+   "fieldtype": "Select",
+   "read_only": 1,
+   "options": "Alert\nNotice"
+  },
+  {
+   "fieldname": "severity",
+   "label": "Severity",
+   "fieldtype": "Select",
+   "read_only": 1,
+   "in_list_view": 1,
+   "options": "Low\nMedium\nHigh\nCritical"
+  },
+  {
+   "fieldname": "status",
+   "label": "Status",
+   "fieldtype": "Select",
+   "read_only": 1,
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "Open\nAcknowledged\nSnoozed\nDismissed\nResolved"
+  },
+  {
+   "fieldname": "responsible_user",
+   "label": "Responsible User",
+   "fieldtype": "Link",
+   "read_only": 1,
+   "options": "User"
+  },
+  {
+   "fieldname": "responsible_role",
+   "label": "Responsible Role",
+   "fieldtype": "Link",
+   "read_only": 1,
+   "options": "Role"
+  },
+  {
+   "fieldname": "escalation_user",
+   "label": "Escalation User",
+   "fieldtype": "Link",
+   "read_only": 1,
+   "options": "User"
+  },
+  {
+   "fieldname": "due_date",
+   "label": "Due Date",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "explanation",
+   "label": "Explanation",
+   "fieldtype": "Small Text",
+   "read_only": 1
+  },
+  {
+   "fieldname": "action_needed",
+   "label": "Action Needed",
+   "fieldtype": "Small Text",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_doctype",
+   "label": "Source Doctype",
+   "fieldtype": "Link",
+   "read_only": 1,
+   "options": "DocType"
+  },
+  {
+   "fieldname": "source_name",
+   "label": "Source Name",
+   "fieldtype": "Dynamic Link",
+   "read_only": 1,
+   "options": "source_doctype"
+  },
+  {
+   "fieldname": "rule",
+   "label": "Rule",
+   "fieldtype": "Link",
+   "read_only": 1,
+   "options": "Tax Alert Rule"
+  },
+  {
+   "fieldname": "condition",
+   "label": "Condition",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "condition_key",
+   "label": "Condition Key",
+   "fieldtype": "Data",
+   "unique": 1,
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "detail_key",
+   "label": "Detail Key",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "first_seen",
+   "label": "First Seen",
+   "fieldtype": "Datetime",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_seen",
+   "label": "Last Seen",
+   "fieldtype": "Datetime",
+   "read_only": 1
+  },
+  {
+   "fieldname": "resolved_on",
+   "label": "Resolved On",
+   "fieldtype": "Datetime",
+   "read_only": 1
+  },
+  {
+   "fieldname": "snooze_until",
+   "label": "Snooze Until",
+   "fieldtype": "Datetime",
+   "read_only": 1
+  },
+  {
+   "fieldname": "episode",
+   "label": "Episode",
+   "fieldtype": "Int",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "facts_json",
+   "label": "Facts Json",
+   "fieldtype": "Code",
+   "read_only": 1,
+   "hidden": 1,
+   "options": "JSON"
+  },
+  {
+   "fieldname": "history",
+   "label": "History",
+   "fieldtype": "Table",
+   "read_only": 1,
+   "options": "Tax Warning History"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Tax Alert Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Tax Preparer",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Tax Approver",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Tax Submission User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "track_changes": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "title",
+ "autoname": "hash"
+}

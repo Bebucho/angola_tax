@@ -1,0 +1,290 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax Withholding",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "profile",
+  "tax_type",
+  "annual_tax_type",
+  "currency",
+  "mechanism",
+  "event_date",
+  "fiscal_year",
+  "party_type",
+  "party",
+  "event_voucher_type",
+  "event_voucher",
+  "accounting_voucher_type",
+  "accounting_voucher",
+  "accounting_stage",
+  "account_configuration",
+  "taxable_base",
+  "tax_raw",
+  "tax_amount",
+  "event_key",
+  "certificate",
+  "source_hash",
+  "source_rows",
+  "review_complete",
+  "review_evidence",
+  "responsible_user",
+  "approved_by",
+  "approved_on",
+  "notes",
+  "invoice_lines",
+  "recognised_tax_amount",
+  "rounding_difference",
+  "rounding_review_complete",
+  "rounding_reason"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "Company"
+  },
+  {
+   "fieldname": "profile",
+   "fieldtype": "Link",
+   "label": "Profile",
+   "reqd": 1,
+   "options": "Industrial Tax Mechanism Profile"
+  },
+  {
+   "fieldname": "tax_type",
+   "fieldtype": "Link",
+   "label": "Tax Type",
+   "read_only": 1,
+   "options": "Tax Type"
+  },
+  {
+   "fieldname": "annual_tax_type",
+   "fieldtype": "Link",
+   "label": "Annual Tax Type",
+   "read_only": 1,
+   "options": "Tax Type"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "read_only": 1,
+   "fetch_from": "company.default_currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "mechanism",
+   "fieldtype": "Data",
+   "label": "Mechanism",
+   "read_only": 1
+  },
+  {
+   "fieldname": "event_date",
+   "fieldtype": "Date",
+   "label": "Event Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fiscal_year",
+   "fieldtype": "Data",
+   "label": "Fiscal Year",
+   "read_only": 1
+  },
+  {
+   "fieldname": "party_type",
+   "fieldtype": "Link",
+   "label": "Party Type",
+   "read_only": 1,
+   "options": "DocType"
+  },
+  {
+   "fieldname": "party",
+   "fieldtype": "Dynamic Link",
+   "label": "Party",
+   "reqd": 1,
+   "options": "party_type"
+  },
+  {
+   "fieldname": "event_voucher_type",
+   "fieldtype": "Link",
+   "label": "Event Voucher Type",
+   "reqd": 1,
+   "options": "DocType"
+  },
+  {
+   "fieldname": "event_voucher",
+   "fieldtype": "Dynamic Link",
+   "label": "Event Voucher",
+   "reqd": 1,
+   "options": "event_voucher_type"
+  },
+  {
+   "fieldname": "accounting_voucher_type",
+   "fieldtype": "Link",
+   "label": "Accounting Voucher Type",
+   "reqd": 1,
+   "options": "DocType"
+  },
+  {
+   "fieldname": "accounting_voucher",
+   "fieldtype": "Dynamic Link",
+   "label": "Accounting Voucher",
+   "reqd": 1,
+   "options": "accounting_voucher_type"
+  },
+  {
+   "fieldname": "account_configuration",
+   "fieldtype": "Link",
+   "label": "Account Configuration",
+   "read_only": 1,
+   "options": "Tax Account Configuration"
+  },
+  {
+   "fieldname": "taxable_base",
+   "fieldtype": "Currency",
+   "label": "Taxable Base",
+   "precision": "2",
+   "reqd": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "tax_raw",
+   "fieldtype": "Currency",
+   "label": "Tax Raw",
+   "read_only": 1,
+   "precision": "6",
+   "options": "currency"
+  },
+  {
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "label": "Tax Amount",
+   "precision": "2",
+   "read_only": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "event_key",
+   "fieldtype": "Data",
+   "label": "Event Key",
+   "read_only": 1,
+   "unique": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "certificate",
+   "fieldtype": "Attach",
+   "label": "Legacy Supporting Document",
+   "hidden": 1
+  },
+  {
+   "fieldname": "source_hash",
+   "fieldtype": "Data",
+   "label": "Source Hash",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_rows",
+   "fieldtype": "Table",
+   "label": "Source Rows",
+   "read_only": 1,
+   "options": "Industrial Tax Source"
+  },
+  {
+   "fieldname": "review_complete",
+   "fieldtype": "Check",
+   "label": "Review Complete",
+   "default": "0"
+  },
+  {
+   "fieldname": "review_evidence",
+   "fieldtype": "Attach",
+   "label": "Review Evidence"
+  },
+  {
+   "fieldname": "responsible_user",
+   "fieldtype": "Link",
+   "label": "Responsible User",
+   "reqd": 1,
+   "options": "User"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "read_only": 1,
+   "options": "User"
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Datetime",
+   "label": "Approved On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "invoice_lines",
+   "fieldtype": "Table",
+   "label": "Reviewed Invoice Allocations",
+   "options": "Industrial Tax Withholding Invoice"
+  },
+  {
+   "fieldname": "accounting_stage",
+   "fieldtype": "Select",
+   "label": "Withholding Accounting Stage",
+   "options": "Eligible Asset\nPending Evidence",
+   "default": "Eligible Asset",
+   "depends_on": "eval:doc.mechanism==\"Suffered Withholding\""
+  },
+  {
+   "fieldname": "recognised_tax_amount",
+   "fieldtype": "Currency",
+   "label": "Adopt Posted GL Tax Amount (Optional)"
+  },
+  {
+   "fieldname": "rounding_difference",
+   "fieldtype": "Currency",
+   "label": "Adopted GL / Calculated Tax Difference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rounding_review_complete",
+   "fieldtype": "Check",
+   "label": "Adopted GL Rounding Reviewed"
+  },
+  {
+   "fieldname": "rounding_reason",
+   "fieldtype": "Small Text",
+   "label": "Adopted GL Rounding Basis"
+  }
+ ],
+ "track_changes": 1,
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "is_submittable": 1,
+ "autoname": "format:II-WITHHOLDING-{#####}",
+ "modified": "2026-10-11 19:59:55.661810"
+}

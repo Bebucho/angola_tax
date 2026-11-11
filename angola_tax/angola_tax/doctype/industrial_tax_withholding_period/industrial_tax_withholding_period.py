@@ -1,0 +1,1 @@
+from angola_tax.industrial_tax.mechanisms import IndustrialTaxWithholdingPeriod

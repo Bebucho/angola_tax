@@ -1,0 +1,49 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax Estimate",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "journal_entry",
+  "fiscal_exercise",
+  "exercise_evidence",
+  "recognised_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "journal_entry",
+   "fieldtype": "Link",
+   "label": "Journal Entry",
+   "options": "Journal Entry",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "fiscal_exercise",
+   "fieldtype": "Data",
+   "label": "Fiscal Exercise",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "exercise_evidence",
+   "fieldtype": "Attach",
+   "label": "Exercise Evidence",
+   "reqd": 1
+  },
+  {
+   "fieldname": "recognised_amount",
+   "fieldtype": "Currency",
+   "label": "Recognised Amount",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1,
+   "in_list_view": 1
+  }
+ ],
+ "track_changes": 1,
+ "permissions": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "modified": "2026-10-11 18:00:00.000000"
+}

@@ -1,0 +1,401 @@
+{
+ "doctype": "DocType",
+ "name": "Tax Payment",
+ "module": "Angola Tax",
+ "autoname": "format:TAXPAY-{#####}",
+ "is_submittable": 1,
+ "track_changes": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "collection_target_section",
+  "collection_reference",
+  "fiscal_obligation",
+  "tax_settlement",
+  "payment_plan",
+  "instalment_no",
+  "company",
+  "tax_type",
+  "currency",
+  "tax_assessment",
+  "status",
+  "origin_section",
+  "originating_voucher_type",
+  "originating_voucher",
+  "originating_gl_entry",
+  "settlement_adjustment_journal_entry",
+  "statutory_section",
+  "nota_liquidacao",
+  "rupe",
+  "rupe_amount",
+  "principal_amount",
+  "penalty_amount",
+  "rupe_due_date",
+  "payment_section",
+  "payment_mode",
+  "payment_date",
+  "amount",
+  "tax_account",
+  "bank_cash_account",
+  "payment_reference",
+  "accounting_section",
+  "source_voucher_type",
+  "source_voucher",
+  "journal_entry",
+  "gl_entry",
+  "confirmation_section",
+  "dc_pago",
+  "dc_pago_reference",
+  "dc_pago_date",
+  "confirmed_by",
+  "confirmed_at",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "collection_target_section",
+   "fieldtype": "Section Break",
+   "label": "Collection Target",
+   "idx": 1
+  },
+  {
+   "fieldname": "collection_reference",
+   "fieldtype": "Link",
+   "label": "Tax Collection Reference",
+   "options": "Tax Collection Reference",
+   "reqd": 1,
+   "idx": 2
+  },
+  {
+   "fieldname": "fiscal_obligation",
+   "fieldtype": "Link",
+   "label": "Fiscal Obligation",
+   "options": "Fiscal Obligation",
+   "reqd": 0,
+   "in_list_view": 1,
+   "read_only": 1,
+   "idx": 3
+  },
+  {
+   "fieldname": "tax_settlement",
+   "fieldtype": "Link",
+   "label": "Tax Settlement",
+   "options": "Tax Settlement",
+   "read_only": 1,
+   "idx": 4
+  },
+  {
+   "fieldname": "payment_plan",
+   "fieldtype": "Link",
+   "label": "Tax Payment Plan",
+   "options": "Tax Payment Plan",
+   "read_only": 1,
+   "idx": 5
+  },
+  {
+   "fieldname": "instalment_no",
+   "fieldtype": "Int",
+   "label": "Instalment No.",
+   "read_only": 1,
+   "idx": 6
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1,
+   "in_list_view": 1,
+   "reqd": 0,
+   "idx": 7
+  },
+  {
+   "fieldname": "tax_type",
+   "fieldtype": "Link",
+   "label": "Tax Type",
+   "options": "Tax Type",
+   "read_only": 1,
+   "reqd": 0,
+   "idx": 8
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "read_only": 1,
+   "idx": 9
+  },
+  {
+   "fieldname": "tax_assessment",
+   "fieldtype": "Link",
+   "label": "Tax Assessment",
+   "options": "Tax Assessment",
+   "read_only": 1,
+   "idx": 10
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nAwaiting DC Pago\nConfirmed\nCancelled",
+   "default": "Draft",
+   "read_only": 1,
+   "in_list_view": 1,
+   "idx": 11,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "origin_section",
+   "fieldtype": "Section Break",
+   "label": "Tax Liability Origin",
+   "idx": 12
+  },
+  {
+   "fieldname": "originating_voucher_type",
+   "label": "Originating Voucher Type",
+   "fieldtype": "Link",
+   "options": "DocType",
+   "read_only": 1,
+   "idx": 13
+  },
+  {
+   "fieldname": "originating_voucher",
+   "label": "Originating Voucher",
+   "fieldtype": "Dynamic Link",
+   "options": "originating_voucher_type",
+   "read_only": 1,
+   "idx": 14
+  },
+  {
+   "fieldname": "originating_gl_entry",
+   "label": "Originating GL Entry",
+   "fieldtype": "Link",
+   "options": "GL Entry",
+   "read_only": 1,
+   "idx": 15
+  },
+  {
+   "fieldname": "settlement_adjustment_journal_entry",
+   "label": "Settlement Adjustment Voucher",
+   "fieldtype": "Link",
+   "options": "Journal Entry",
+   "read_only": 1,
+   "idx": 16
+  },
+  {
+   "fieldname": "statutory_section",
+   "fieldtype": "Section Break",
+   "label": "Statutory Reference",
+   "idx": 17
+  },
+  {
+   "fieldname": "nota_liquidacao",
+   "fieldtype": "Data",
+   "label": "Nota de Liquidação",
+   "read_only": 1,
+   "idx": 18
+  },
+  {
+   "fieldname": "rupe",
+   "fieldtype": "Data",
+   "label": "RUPE",
+   "read_only": 1,
+   "idx": 19
+  },
+  {
+   "fieldname": "rupe_amount",
+   "fieldtype": "Currency",
+   "label": "RUPE Amount",
+   "read_only": 1,
+   "idx": 20
+  },
+  {
+   "fieldname": "principal_amount",
+   "fieldtype": "Currency",
+   "label": "Principal Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "penalty_amount",
+   "fieldtype": "Currency",
+   "label": "Penalty Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rupe_due_date",
+   "fieldtype": "Date",
+   "label": "RUPE Due Date",
+   "read_only": 1,
+   "idx": 21
+  },
+  {
+   "fieldname": "payment_section",
+   "fieldtype": "Section Break",
+   "label": "Payment",
+   "idx": 22
+  },
+  {
+   "fieldname": "payment_mode",
+   "fieldtype": "Select",
+   "label": "Payment Mode",
+   "options": "Create Journal Entry\nLink Existing Voucher",
+   "default": "Create Journal Entry",
+   "reqd": 1,
+   "idx": 23
+  },
+  {
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "label": "Payment Date",
+   "reqd": 1,
+   "idx": 24
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Payment Amount",
+   "options": "currency",
+   "reqd": 0,
+   "read_only": 1,
+   "idx": 25
+  },
+  {
+   "fieldname": "tax_account",
+   "fieldtype": "Link",
+   "label": "Tax Control Account",
+   "options": "Account",
+   "read_only": 1,
+   "reqd": 0,
+   "idx": 26
+  },
+  {
+   "fieldname": "bank_cash_account",
+   "fieldtype": "Link",
+   "label": "Bank Account",
+   "options": "Account",
+   "idx": 27
+  },
+  {
+   "fieldname": "payment_reference",
+   "fieldtype": "Data",
+   "label": "Payment Reference",
+   "idx": 28
+  },
+  {
+   "fieldname": "accounting_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Accounting",
+   "idx": 29
+  },
+  {
+   "fieldname": "source_voucher_type",
+   "fieldtype": "Link",
+   "label": "Payment Voucher Type",
+   "options": "DocType",
+   "idx": 30
+  },
+  {
+   "fieldname": "source_voucher",
+   "fieldtype": "Dynamic Link",
+   "label": "Payment Voucher",
+   "options": "source_voucher_type",
+   "idx": 31
+  },
+  {
+   "fieldname": "journal_entry",
+   "fieldtype": "Link",
+   "label": "Generated Payment Journal Entry",
+   "options": "Journal Entry",
+   "read_only": 1,
+   "idx": 32,
+   "hidden": 1
+  },
+  {
+   "fieldname": "gl_entry",
+   "fieldtype": "Link",
+   "label": "Payment GL Entry",
+   "options": "GL Entry",
+   "read_only": 1,
+   "idx": 33
+  },
+  {
+   "fieldname": "confirmation_section",
+   "fieldtype": "Section Break",
+   "label": "AGT Payment Confirmation",
+   "idx": 34
+  },
+  {
+   "fieldname": "dc_pago",
+   "fieldtype": "Attach",
+   "label": "DC Pago",
+   "idx": 35,
+   "allow_on_submit": 1,
+   "read_only": 0
+  },
+  {
+   "fieldname": "dc_pago_reference",
+   "fieldtype": "Data",
+   "label": "DC Pago Reference",
+   "idx": 36,
+   "allow_on_submit": 1,
+   "read_only": 0
+  },
+  {
+   "fieldname": "dc_pago_date",
+   "fieldtype": "Date",
+   "label": "DC Pago Date",
+   "idx": 37,
+   "allow_on_submit": 1,
+   "read_only": 0
+  },
+  {
+   "fieldname": "confirmed_by",
+   "fieldtype": "Link",
+   "label": "Confirmed By",
+   "options": "User",
+   "read_only": 1,
+   "idx": 38,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "confirmed_at",
+   "fieldtype": "Datetime",
+   "label": "Confirmed At",
+   "read_only": 1,
+   "idx": 39,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes",
+   "idx": 40
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Tax Payment",
+   "read_only": 1,
+   "no_copy": 1,
+   "idx": 41
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "share": 1
+  }
+ ]
+}

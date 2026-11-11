@@ -1,0 +1,211 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax AGT Import",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "responsible_user",
+  "report_file",
+  "extracted_on",
+  "currency",
+  "company_tax_id",
+  "company_name",
+  "format_version",
+  "fiscal_years",
+  "file_hash",
+  "import_key",
+  "captured_on",
+  "row_count",
+  "retained_total",
+  "paid_total",
+  "allocated_total",
+  "report_rows",
+  "allocations",
+  "review_complete",
+  "review_evidence",
+  "approved_by",
+  "approved_on",
+  "notes",
+  "unallocated_paid_total",
+  "unpaid_total"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "responsible_user",
+   "fieldtype": "Link",
+   "label": "Responsible User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "report_file",
+   "fieldtype": "Attach",
+   "label": "Report File",
+   "reqd": 1
+  },
+  {
+   "fieldname": "extracted_on",
+   "fieldtype": "Date",
+   "label": "Extraction Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company_tax_id",
+   "fieldtype": "Data",
+   "label": "Report Taxpayer NIF",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "label": "Report Taxpayer Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "format_version",
+   "fieldtype": "Data",
+   "label": "Format Version",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fiscal_years",
+   "fieldtype": "Data",
+   "label": "Fiscal Years",
+   "read_only": 1
+  },
+  {
+   "fieldname": "file_hash",
+   "fieldtype": "Data",
+   "label": "File Hash",
+   "read_only": 1
+  },
+  {
+   "fieldname": "import_key",
+   "fieldtype": "Data",
+   "label": "Import Key",
+   "read_only": 1,
+   "unique": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "captured_on",
+   "fieldtype": "Datetime",
+   "label": "Captured On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "row_count",
+   "fieldtype": "Int",
+   "label": "Row Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "retained_total",
+   "fieldtype": "Currency",
+   "label": "Retained Total",
+   "read_only": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "paid_total",
+   "fieldtype": "Currency",
+   "label": "Paid Total",
+   "read_only": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "allocated_total",
+   "fieldtype": "Currency",
+   "label": "Allocated Total",
+   "read_only": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "report_rows",
+   "fieldtype": "Table",
+   "label": "AGT Retained Values",
+   "options": "Industrial Tax AGT Line",
+   "read_only": 1
+  },
+  {
+   "fieldname": "allocations",
+   "fieldtype": "Table",
+   "label": "Reviewed Allocations",
+   "options": "Industrial Tax AGT Allocation"
+  },
+  {
+   "fieldname": "review_complete",
+   "fieldtype": "Check",
+   "label": "AGT Observations and Allocations Reviewed"
+  },
+  {
+   "fieldname": "review_evidence",
+   "fieldtype": "Attach",
+   "label": "Review Evidence"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Datetime",
+   "label": "Approved On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "unallocated_paid_total",
+   "fieldtype": "Currency",
+   "label": "Paid Tax Not Allocated in This Import",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unpaid_total",
+   "fieldtype": "Currency",
+   "label": "Reported Retained Tax Less Paid Tax",
+   "read_only": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "is_submittable": 1,
+ "track_changes": 1,
+ "autoname": "format:II-AGT-{#####}"
+}

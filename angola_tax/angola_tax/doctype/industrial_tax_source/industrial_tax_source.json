@@ -1,0 +1,76 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax Source",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "gl_entry",
+  "posting_date",
+  "account",
+  "voucher_type",
+  "voucher_no",
+  "debit",
+  "credit"
+ ],
+ "fields": [
+  {
+   "fieldname": "gl_entry",
+   "fieldtype": "Link",
+   "label": "Gl Entry",
+   "options": "GL Entry",
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Account",
+   "options": "Account",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "voucher_type",
+   "fieldtype": "Link",
+   "label": "Voucher Type",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "voucher_no",
+   "fieldtype": "Dynamic Link",
+   "label": "Voucher No",
+   "options": "voucher_type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "debit",
+   "fieldtype": "Currency",
+   "label": "Debit",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "credit",
+   "fieldtype": "Currency",
+   "label": "Credit",
+   "options": "currency",
+   "precision": "2",
+   "read_only": 1,
+   "in_list_view": 1
+  }
+ ],
+ "track_changes": 1,
+ "permissions": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "modified": "2026-10-11 18:00:00.000000"
+}

@@ -1,0 +1,225 @@
+{
+ "actions": [],
+ "autoname": "format:TAX-NOT-{#####}",
+ "creation": "2026-10-03 11:15:39.749818",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "tax_type",
+  "notification_reference",
+  "notification_date",
+  "notification_document",
+  "responsible_user",
+  "fiscal_period_from",
+  "fiscal_period_to",
+  "claimed_amount",
+  "tax_credit_applied",
+  "tax_credit_account",
+  "balance_amount",
+  "legal_time_limit_days",
+  "decision_section",
+  "decision",
+  "decision_date",
+  "decision_reference",
+  "decision_document",
+  "decision_notes",
+  "fiscal_obligation",
+  "tax_assessment",
+  "tax_litigation",
+  "related_operational_obligation",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tax_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Tax Type",
+   "options": "Tax Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "notification_reference",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Notification Reference",
+   "reqd": 1
+  },
+  {
+   "fieldname": "notification_date",
+   "fieldtype": "Date",
+   "label": "Notification Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "notification_document",
+   "fieldtype": "Attach",
+   "label": "Notification Document",
+   "reqd": 1
+  },
+  {
+   "fieldname": "responsible_user",
+   "fieldtype": "Link",
+   "label": "Responsible User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fiscal_period_from",
+   "fieldtype": "Date",
+   "label": "Fiscal Period From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fiscal_period_to",
+   "fieldtype": "Date",
+   "label": "Fiscal Period To",
+   "reqd": 1
+  },
+  {
+   "fieldname": "claimed_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount Assessed",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "tax_credit_applied",
+   "fieldtype": "Currency",
+   "label": "Tax Credit Applied"
+  },
+  {
+   "depends_on": "eval:doc.tax_credit_applied > 0",
+   "fieldname": "tax_credit_account",
+   "fieldtype": "Link",
+   "label": "Tax Credit Account",
+   "mandatory_depends_on": "eval:doc.decision == 'Accepted' && doc.tax_credit_applied > 0",
+   "options": "Account"
+  },
+  {
+   "fieldname": "balance_amount",
+   "fieldtype": "Currency",
+   "label": "Balance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "legal_time_limit_days",
+   "fieldtype": "Int",
+   "label": "Response Time Limit (Days)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "decision_section",
+   "fieldtype": "Section Break",
+   "label": "Taxpayer Decision"
+  },
+  {
+   "fieldname": "decision",
+   "fieldtype": "Select",
+   "label": "Decision",
+   "options": "\nAccepted\nDisputed"
+  },
+  {
+   "fieldname": "decision_date",
+   "fieldtype": "Date",
+   "label": "Decision Date"
+  },
+  {
+   "fieldname": "decision_reference",
+   "fieldtype": "Data",
+   "label": "Decision Reference"
+  },
+  {
+   "fieldname": "decision_document",
+   "fieldtype": "Attach",
+   "label": "Acceptance Letter / DAP"
+  },
+  {
+   "fieldname": "decision_notes",
+   "fieldtype": "Small Text",
+   "label": "Decision Notes"
+  },
+  {
+   "fieldname": "fiscal_obligation",
+   "fieldtype": "Link",
+   "label": "Fiscal Obligation",
+   "options": "Fiscal Obligation",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "tax_assessment",
+   "fieldtype": "Link",
+   "label": "Tax Assessment",
+   "options": "Tax Assessment",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "tax_litigation",
+   "fieldtype": "Link",
+   "label": "Tax Litigation",
+   "options": "Tax Litigation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "related_operational_obligation",
+   "fieldtype": "Link",
+   "label": "Related Operational Obligation",
+   "options": "Fiscal Obligation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Tax Notification",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-10-03 11:34:11.260066",
+ "modified_by": "Administrator",
+ "module": "Angola Tax",
+ "name": "Tax Notification",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

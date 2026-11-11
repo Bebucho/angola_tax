@@ -1,0 +1,139 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax Mechanism Profile",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "annual_profile",
+  "annual_tax_type",
+  "mechanism",
+  "tax_type",
+  "rate",
+  "amount_precision",
+  "effective_from",
+  "effective_to",
+  "deadline_configuration",
+  "account_roles",
+  "scope_reviewed",
+  "legal_reference",
+  "approval_evidence",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "reqd": 1,
+   "options": "Company"
+  },
+  {
+   "fieldname": "annual_profile",
+   "fieldtype": "Link",
+   "label": "Annual Profile",
+   "reqd": 1,
+   "options": "Industrial Tax Profile"
+  },
+  {
+   "fieldname": "annual_tax_type",
+   "fieldtype": "Link",
+   "label": "Annual Tax Type",
+   "read_only": 1,
+   "options": "Tax Type"
+  },
+  {
+   "fieldname": "mechanism",
+   "fieldtype": "Select",
+   "label": "Mechanism",
+   "reqd": 1,
+   "options": "Own Provisional\nSuffered Withholding\nCollected Resident Withholding\nCollected Nonresident Withholding"
+  },
+  {
+   "fieldname": "tax_type",
+   "fieldtype": "Link",
+   "label": "Tax Type",
+   "reqd": 1,
+   "options": "Tax Type"
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Percent",
+   "label": "Rate",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amount_precision",
+   "fieldtype": "Int",
+   "label": "Amount Precision",
+   "default": "2"
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To",
+   "reqd": 1
+  },
+  {
+   "fieldname": "deadline_configuration",
+   "fieldtype": "Link",
+   "label": "Deadline Configuration",
+   "options": "Tax Deadline Configuration"
+  },
+  {
+   "fieldname": "account_roles",
+   "fieldtype": "Table",
+   "label": "Account Roles",
+   "reqd": 1,
+   "options": "Industrial Tax Account Role"
+  },
+  {
+   "fieldname": "scope_reviewed",
+   "fieldtype": "Check",
+   "label": "Ordinary general-regime scope and exclusions reviewed",
+   "default": "0"
+  },
+  {
+   "fieldname": "legal_reference",
+   "fieldtype": "Small Text",
+   "label": "Legal Reference",
+   "reqd": 1
+  },
+  {
+   "fieldname": "approval_evidence",
+   "fieldtype": "Attach",
+   "label": "Approval Evidence"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  }
+ ],
+ "track_changes": 1,
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "share": 1
+  }
+ ],
+ "is_submittable": 1,
+ "autoname": "format:II-MECHANISM-{#####}",
+ "modified": "2026-10-11 19:59:55.661810"
+}

@@ -1,0 +1,45 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax Revenue Mapping",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "account",
+  "classification",
+  "reason",
+  "legal_reference"
+ ],
+ "fields": [
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Income Account",
+   "options": "Account",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "classification",
+   "fieldtype": "Select",
+   "label": "Classification",
+   "options": "Eligible\nExcluded\nMixed",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "Classification Reason",
+   "reqd": 1
+  },
+  {
+   "fieldname": "legal_reference",
+   "fieldtype": "Small Text",
+   "label": "Legal Reference"
+  }
+ ],
+ "permissions": [],
+ "modified": "2026-10-11 21:06:35.941061",
+ "istable": 1,
+ "editable_grid": 1
+}

@@ -1,0 +1,172 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax Withholding Invoice",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "source_voucher_type",
+  "source_voucher",
+  "invoice_doctype",
+  "invoice",
+  "invoice_number",
+  "invoice_date",
+  "payment_date",
+  "nif_angolan",
+  "provider_id",
+  "provider_name",
+  "conformity_reference",
+  "oil_sector",
+  "description",
+  "invoice_amount",
+  "paid_amount",
+  "taxable_base",
+  "rate",
+  "tax_amount",
+  "source_reference_row",
+  "source_allocated_amount",
+  "capture_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "invoice_doctype",
+   "fieldtype": "Link",
+   "label": "Invoice Doctype",
+   "options": "DocType",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "invoice",
+   "fieldtype": "Dynamic Link",
+   "label": "Invoice",
+   "options": "invoice_doctype",
+   "in_list_view": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "invoice_number",
+   "fieldtype": "Data",
+   "label": "Fiscal Invoice Number",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "invoice_date",
+   "fieldtype": "Date",
+   "label": "Invoice Date",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "label": "Payment Date",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "nif_angolan",
+   "fieldtype": "Select",
+   "label": "Angolan NIF?",
+   "options": "\nS\nN",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "provider_id",
+   "fieldtype": "Data",
+   "label": "Provider Identification",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "provider_name",
+   "fieldtype": "Data",
+   "label": "Provider Name",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "conformity_reference",
+   "fieldtype": "Data",
+   "label": "Conformity Declaration Reference",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "oil_sector",
+   "fieldtype": "Select",
+   "label": "Petroleum Service?",
+   "options": "\nS\nN",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Service Description",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "invoice_amount",
+   "fieldtype": "Currency",
+   "label": "Invoice Amount",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "paid_amount",
+   "fieldtype": "Currency",
+   "label": "Paid Amount",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "taxable_base",
+   "fieldtype": "Currency",
+   "label": "Taxable Base",
+   "in_list_view": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Float",
+   "label": "Rate (%)",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "label": "Tax Amount",
+   "in_list_view": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "source_voucher_type",
+   "fieldtype": "Link",
+   "label": "GL Source Voucher Type",
+   "options": "DocType",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "source_voucher",
+   "fieldtype": "Dynamic Link",
+   "label": "GL Source Voucher",
+   "options": "source_voucher_type",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "source_reference_row",
+   "fieldtype": "Data",
+   "label": "Payment Reference Row",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "source_allocated_amount",
+   "fieldtype": "Currency",
+   "label": "Payable Amount Allocated by Payment",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "capture_notes",
+   "fieldtype": "Small Text",
+   "label": "Missing Source Information / Capture Notes",
+   "read_only": 1,
+   "allow_on_submit": 1
+  }
+ ],
+ "permissions": [],
+ "istable": 1,
+ "editable_grid": 1
+}

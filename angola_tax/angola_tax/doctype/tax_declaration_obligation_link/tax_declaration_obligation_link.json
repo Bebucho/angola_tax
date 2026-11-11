@@ -1,0 +1,35 @@
+{
+ "doctype": "DocType",
+ "name": "Tax Declaration Obligation Link",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "fiscal_obligation",
+  "relationship"
+ ],
+ "fields": [
+  {
+   "fieldname": "fiscal_obligation",
+   "fieldtype": "Link",
+   "label": "Fiscal Obligation",
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "Fiscal Obligation"
+  },
+  {
+   "fieldname": "relationship",
+   "fieldtype": "Select",
+   "label": "Relationship",
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "Reported Liability\nCredit Context\nProvisional Context\nOther Evidence"
+  }
+ ],
+ "istable": 1,
+ "is_submittable": 0,
+ "editable_grid": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": []
+}

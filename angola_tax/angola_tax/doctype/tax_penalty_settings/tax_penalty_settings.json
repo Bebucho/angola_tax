@@ -1,0 +1,120 @@
+{
+ "actions": [],
+ "autoname": "field:company",
+ "creation": "2026-09-19 15:50:36.464520",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "active",
+  "accounts_section",
+  "tax_settlement_control_account",
+  "payment_plan_control_account",
+  "tax_penalty_cost_account",
+  "tax_penalty_cost_center",
+  "litigation_section",
+  "tax_provision_account",
+  "tax_litigation_cost_account",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Active"
+  },
+  {
+   "fieldname": "accounts_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting"
+  },
+  {
+   "fieldname": "tax_penalty_cost_account",
+   "fieldtype": "Link",
+   "label": "Tax Penalty Cost Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "description": "Cost center used for automatic documented penalty entries.",
+   "fieldname": "tax_penalty_cost_center",
+   "fieldtype": "Link",
+   "label": "Tax Penalty Cost Center",
+   "options": "Cost Center",
+   "reqd": 1
+  },
+  {
+   "fieldname": "litigation_section",
+   "fieldtype": "Section Break",
+   "label": "Litigation / Provisions"
+  },
+  {
+   "fieldname": "tax_litigation_cost_account",
+   "fieldtype": "Link",
+   "label": "Tax Litigation Cost Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "tax_settlement_control_account",
+   "fieldtype": "Link",
+   "label": "Tax Settlement Control Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "description": "Liability account for submitted AGT payment plans.",
+   "fieldname": "payment_plan_control_account",
+   "fieldtype": "Link",
+   "label": "Payment Plan Control Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tax_provision_account",
+   "fieldtype": "Link",
+   "label": "Tax Provision Account",
+   "options": "Account",
+   "reqd": 1
+  }
+ ],
+ "links": [],
+ "modified": "2026-09-26 23:00:40.752901",
+ "modified_by": "Administrator",
+ "module": "Angola Tax",
+ "name": "Tax Penalty Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

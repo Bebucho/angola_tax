@@ -1,0 +1,57 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax Credit Allocation",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "credit",
+  "amount",
+  "credit_kind",
+  "asset_account",
+  "offset_journal_entry"
+ ],
+ "fields": [
+  {
+   "fieldname": "credit",
+   "fieldtype": "Link",
+   "label": "Credit",
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "Industrial Tax Credit"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "precision": "2",
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "credit_kind",
+   "fieldtype": "Data",
+   "label": "Credit Kind",
+   "read_only": 1
+  },
+  {
+   "fieldname": "asset_account",
+   "fieldtype": "Link",
+   "label": "Asset Account",
+   "read_only": 1,
+   "options": "Account"
+  },
+  {
+   "fieldname": "offset_journal_entry",
+   "fieldtype": "Link",
+   "label": "Offset Journal Entry",
+   "read_only": 1,
+   "options": "Journal Entry"
+  }
+ ],
+ "track_changes": 1,
+ "permissions": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "modified": "2026-10-11 19:59:55.661810"
+}

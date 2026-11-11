@@ -1,0 +1,48 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax AGT Allocation",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "portal_row_key",
+  "source_withholding",
+  "amount",
+  "eligibility_date",
+  "eligibility_reason"
+ ],
+ "fields": [
+  {
+   "fieldname": "portal_row_key",
+   "fieldtype": "Data",
+   "label": "AGT Operation Key",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "source_withholding",
+   "fieldtype": "Link",
+   "label": "Source Withholding",
+   "options": "Industrial Tax Withholding",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "eligibility_date",
+   "fieldtype": "Date",
+   "label": "Reviewed Eligibility Date",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "eligibility_reason",
+   "fieldtype": "Small Text",
+   "label": "Eligibility Date Basis"
+  }
+ ],
+ "permissions": [],
+ "istable": 1,
+ "editable_grid": 1
+}

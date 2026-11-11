@@ -1,5 +1,7 @@
 import frappe
 
+from angola_tax.payment_control import refresh_payment_control
+
 
 def update_fiscal_obligation_statuses():
     obligations = frappe.get_all(
@@ -13,9 +15,17 @@ def update_fiscal_obligation_statuses():
 
     for name in obligations:
         try:
+            refresh_payment_control(name)
+
             doc = frappe.get_doc("Fiscal Obligation", name)
 
-            doc.calculate_outstanding_amount()
+            if (
+                doc.obligation_origin == "Operational"
+                and not doc.original_payment_due_date
+            ):
+                doc.set_statutory_due_dates()
+
+            doc.set_process_schedule_dates()
             doc.calculate_filing_status()
             doc.calculate_deadline_status()
             doc.calculate_compliance_status()
@@ -27,7 +37,25 @@ def update_fiscal_obligation_statuses():
                     "filing_status": doc.filing_status,
                     "is_filing_overdue": doc.is_filing_overdue,
                     "days_filing_overdue": doc.days_filing_overdue,
+                    "original_payment_due_date": doc.original_payment_due_date,
+                    "current_payment_due_date": doc.current_payment_due_date,
                     "effective_payment_due_date": doc.effective_payment_due_date,
+
+                    "determination_target_date":
+                        doc.determination_target_date,
+                    "determination_critical_date":
+                        doc.determination_critical_date,
+
+                    "liquidation_target_date":
+                        doc.liquidation_target_date,
+                    "liquidation_critical_date":
+                        doc.liquidation_critical_date,
+
+                    "payment_target_date":
+                        doc.payment_target_date,
+                    "payment_critical_date":
+                        doc.payment_critical_date,
+
                     "deadline_status": doc.deadline_status,
                     "is_overdue": doc.is_overdue,
                     "days_overdue": doc.days_overdue,
@@ -46,69 +74,6 @@ def update_fiscal_obligation_statuses():
 
 
 def create_fiscal_obligation_notifications():
-    obligations = frappe.get_all(
-        "Fiscal Obligation",
-        filters={
-            "docstatus": ["!=", 2],
-            "compliance_alert": 1,
-            "status": ["not in", ["Closed", "Cancelled"]],
-        },
-        fields=[
-            "name",
-            "company",
-            "tax_name",
-            "compliance_status",
-            "compliance_message",
-            "responsible_user",
-            "reviewer",
-            "outstanding_amount",
-            "effective_payment_due_date",
-        ],
-    )
-
-    for row in obligations:
-        recipients = []
-
-        if row.responsible_user:
-            recipients.append(row.responsible_user)
-
-        if row.compliance_status == "Overdue" and row.reviewer:
-            recipients.append(row.reviewer)
-
-        for user in set(recipients):
-            existing = frappe.db.exists(
-                "ToDo",
-                {
-                    "reference_type": "Fiscal Obligation",
-                    "reference_name": row.name,
-                    "allocated_to": user,
-                    "status": "Open",
-                },
-            )
-
-            if existing:
-                continue
-
-            description = (
-                f"{row.tax_name} - {row.company}: "
-                f"{row.compliance_message or row.compliance_status}"
-            )
-
-            todo = frappe.get_doc(
-                {
-                    "doctype": "ToDo",
-                    "allocated_to": user,
-                    "description": description,
-                    "reference_type": "Fiscal Obligation",
-                    "reference_name": row.name,
-                    "priority": (
-                        "High"
-                        if row.compliance_status == "Overdue"
-                        else "Medium"
-                    ),
-                }
-            )
-
-            todo.insert(ignore_permissions=True)
-
-    frappe.db.commit()
+    # Keep the public method as a guarded delegate, including already queued old jobs.
+    from angola_tax.alerts.service import legacy_notifications
+    return legacy_notifications()

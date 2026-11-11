@@ -1,0 +1,131 @@
+{
+ "doctype": "DocType",
+ "name": "Tax Declaration Type",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "filing_code",
+  "statutory_name",
+  "authority",
+  "purpose",
+  "adapter_key",
+  "schema_version",
+  "verification_state",
+  "legal_sources",
+  "completion_rule",
+  "supports_replacement",
+  "supports_corrective",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "filing_code",
+   "fieldtype": "Data",
+   "label": "Filing Code",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "statutory_name",
+   "fieldtype": "Data",
+   "label": "Statutory Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "authority",
+   "fieldtype": "Link",
+   "label": "Authority",
+   "options": "Tax Authority"
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Select",
+   "label": "Purpose",
+   "reqd": 1,
+   "options": "Tax Return\nInformation\nRegistration"
+  },
+  {
+   "fieldname": "adapter_key",
+   "fieldtype": "Select",
+   "label": "Adapter Key",
+   "default": "Unsupported",
+   "reqd": 1,
+   "options": "Unsupported\nII Withholding Map v1\nII Annual Portal v1\nVAT Portal v1"
+  },
+  {
+   "fieldname": "schema_version",
+   "fieldtype": "Data",
+   "label": "Schema Version"
+  },
+  {
+   "fieldname": "verification_state",
+   "fieldtype": "Select",
+   "label": "Verification State",
+   "default": "Needs Review",
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "Needs Review\nVerified"
+  },
+  {
+   "fieldname": "legal_sources",
+   "fieldtype": "Text",
+   "label": "Legal Sources"
+  },
+  {
+   "fieldname": "completion_rule",
+   "fieldtype": "Select",
+   "label": "Completion Rule",
+   "default": "Acknowledged",
+   "reqd": 1,
+   "options": "Acknowledged\nAccepted"
+  },
+  {
+   "fieldname": "supports_replacement",
+   "fieldtype": "Check",
+   "label": "Supports Replacement"
+  },
+  {
+   "fieldname": "supports_corrective",
+   "fieldtype": "Check",
+   "label": "Supports Corrective"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  }
+ ],
+ "istable": 0,
+ "is_submittable": 0,
+ "editable_grid": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Tax Preparer",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Tax Approver",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Tax Submission User",
+   "read": 1,
+   "report": 1
+  }
+ ],
+ "autoname": "field:filing_code"
+}

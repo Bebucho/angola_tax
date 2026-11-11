@@ -1,0 +1,641 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"tax_control_title\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Tax Control</span>\",\"col\":12}},{\"id\":\"tax_control_operations_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h5\\\">Operations</span>\",\"col\":12}},{\"id\":\"tax_control_shortcut_1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Fiscal Obligation\",\"col\":4}},{\"id\":\"tax_control_shortcut_2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"VAT Period Control\",\"col\":4}},{\"id\":\"tax_control_shortcut_3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"VAT Reconciliation\",\"col\":4}},{\"id\":\"tax_control_shortcut_4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tax Notification\",\"col\":4}},{\"id\":\"tax_control_shortcut_5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tax Litigation\",\"col\":4}},{\"id\":\"tax_control_shortcut_6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tax Payment\",\"col\":4}},{\"id\":\"tax_control_processes_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h2\\\">Processes &amp; Configuration</span>\",\"col\":12}},{\"id\":\"tax_control_card_4\",\"type\":\"card\",\"data\":{\"card_name\":\"Configuration\",\"col\":3}},{\"id\":\"tax_control_card_1\",\"type\":\"card\",\"data\":{\"card_name\":\"Daily Control\",\"col\":3}},{\"id\":\"tax_control_card_2\",\"type\":\"card\",\"data\":{\"card_name\":\"VAT\",\"col\":3}},{\"id\":\"tax_control_card_3\",\"type\":\"card\",\"data\":{\"card_name\":\"Disputes & Risk\",\"col\":3}},{\"id\":\"industrial_tax_navigation_v1_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h2\\\">Industrial Tax</span>\",\"col\":12}},{\"id\":\"industrial_tax_navigation_v1_shortcut_0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Apuramento Anual II\",\"col\":4}},{\"id\":\"industrial_tax_navigation_v1_shortcut_1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Reten\u00e7\u00f5es Mensais II\",\"col\":4}},{\"id\":\"industrial_tax_navigation_v1_shortcut_2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Relat\u00f3rio AGT \u2014 Reten\u00e7\u00f5es\",\"col\":4}},{\"id\":\"industrial_tax_navigation_v1_card_0\",\"type\":\"card\",\"data\":{\"card_name\":\"Imposto Industrial \u2014 Apuramentos\",\"col\":4}},{\"id\":\"industrial_tax_navigation_v1_card_1\",\"type\":\"card\",\"data\":{\"card_name\":\"Reten\u00e7\u00f5es e Cr\u00e9ditos\",\"col\":4}},{\"id\":\"industrial_tax_navigation_v1_card_2\",\"type\":\"card\",\"data\":{\"card_name\":\"Configura\u00e7\u00e3o \u2014 Imposto Industrial\",\"col\":4}},{\"id\":\"declarative_tax_navigation_v1_header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h2\\\">Obriga\u00e7\u00f5es Declarativas</span>\",\"col\":12}},{\"id\":\"declarative_tax_navigation_v1_shortcut_1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Calend\u00e1rio Fiscal\",\"col\":4}},{\"id\":\"metagest-declarations-v1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Declara\u00e7\u00f5es Fiscais\",\"col\":4}},{\"id\":\"declarative_tax_navigation_v1_shortcut_2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tipos de Declara\u00e7\u00e3o\",\"col\":3}},{\"id\":\"declarative_tax_navigation_v1_card\",\"type\":\"card\",\"data\":{\"card_name\":\"Obriga\u00e7\u00f5es Declarativas\",\"col\":4}},{\"id\":\"tax-alert-links\",\"type\":\"card\",\"data\":{\"card_name\":\"Alertas e Avisos\",\"col\":4}},{\"id\":\"tax-core-report-links\",\"type\":\"card\",\"data\":{\"card_name\":\"Relat\u00f3rios Fiscais\",\"col\":4}},{\"id\":\"tax-alert-tax-alert-rule\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Configurar Alertas\",\"col\":4}},{\"id\":\"tax-alert-tax-warning\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Avisos Activos\",\"col\":4}},{\"id\":\"tax-alert-tax-warnings-summary\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Resumo dos Avisos\",\"col\":4}},{\"id\":\"tax-core-report-position\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Posi\u00e7\u00e3o Fiscal\",\"col\":4}}]",
+ "creation": "2026-09-26 10:13:51.192764",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Tax Control",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Daily Control",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Fiscal Obligation",
+   "link_count": 0,
+   "link_to": "Fiscal Obligation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tax Notification",
+   "link_count": 0,
+   "link_to": "Tax Notification",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tax Assessment",
+   "link_count": 0,
+   "link_to": "Tax Assessment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tax Settlement",
+   "link_count": 0,
+   "link_to": "Tax Settlement",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tax Payment",
+   "link_count": 0,
+   "link_to": "Tax Payment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tax Payment Plan",
+   "link_count": 0,
+   "link_to": "Tax Payment Plan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "VAT",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "VAT Period Control",
+   "link_count": 0,
+   "link_to": "VAT Period Control",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "VAT Reconciliation",
+   "link_count": 0,
+   "link_to": "VAT Reconciliation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "VAT Import Document",
+   "link_count": 0,
+   "link_to": "VAT Import Document",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "VAT Settings",
+   "link_count": 0,
+   "link_to": "VAT Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Disputes & Risk",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tax Provision",
+   "link_count": 0,
+   "link_to": "Tax Provision",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tax Litigation",
+   "link_count": 0,
+   "link_to": "Tax Litigation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tax Technical Meeting",
+   "link_count": 0,
+   "link_to": "Tax Technical Meeting",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tax Collection Reference",
+   "link_count": 0,
+   "link_to": "Tax Collection Reference",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Configuration",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tax Type",
+   "link_count": 0,
+   "link_to": "Tax Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tax Account Configuration",
+   "link_count": 0,
+   "link_to": "Tax Account Configuration",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tax Deadline Configuration",
+   "link_count": 0,
+   "link_to": "Tax Deadline Configuration",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tax Penalty Settings",
+   "link_count": 0,
+   "link_to": "Tax Penalty Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Imposto Industrial \u2014 Apuramentos",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Industrial Tax Computation",
+   "link_count": 0,
+   "link_to": "Industrial Tax Computation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Industrial Tax Provisional",
+   "link_count": 0,
+   "link_to": "Industrial Tax Provisional",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Industrial Tax Withholding Period",
+   "link_count": 0,
+   "link_to": "Industrial Tax Withholding Period",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reten\u00e7\u00f5es e Cr\u00e9ditos",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Industrial Tax Withholding",
+   "link_count": 0,
+   "link_to": "Industrial Tax Withholding",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Industrial Tax AGT Import",
+   "link_count": 0,
+   "link_to": "Industrial Tax AGT Import",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Industrial Tax Credit",
+   "link_count": 0,
+   "link_to": "Industrial Tax Credit",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Configura\u00e7\u00e3o \u2014 Imposto Industrial",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Industrial Tax Profile",
+   "link_count": 0,
+   "link_to": "Industrial Tax Profile",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Industrial Tax Mechanism Profile",
+   "link_count": 0,
+   "link_to": "Industrial Tax Mechanism Profile",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Industrial Tax Rule",
+   "link_count": 0,
+   "link_to": "Industrial Tax Rule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Industrial Tax Revenue Configuration",
+   "link_count": 0,
+   "link_to": "Industrial Tax Revenue Configuration",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Obriga\u00e7\u00f5es Declarativas",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Declara\u00e7\u00f5es Fiscais",
+   "link_count": 0,
+   "link_to": "Tax Declaration",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tipos de Declara\u00e7\u00e3o",
+   "link_count": 0,
+   "link_to": "Tax Declaration Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Aplicabilidade e Prazos",
+   "link_count": 0,
+   "link_to": "Tax Deadline Configuration",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Alertas e Avisos",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Configurar Alertas",
+   "link_count": 0,
+   "link_to": "Tax Alert Rule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Avisos Activos",
+   "link_count": 0,
+   "link_to": "Tax Warning",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Resumo dos Avisos",
+   "link_count": 0,
+   "link_to": "Tax Warnings Summary",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Tax Warning",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Detalhe dos Avisos",
+   "link_count": 0,
+   "link_to": "Tax Active Warnings",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Tax Warning",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Relat\u00f3rios Fiscais",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Posi\u00e7\u00e3o Fiscal",
+   "link_count": 0,
+   "link_to": "Tax Fiscal Position",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Fiscal Obligation",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Registo de Declara\u00e7\u00f5es",
+   "link_count": 0,
+   "link_to": "Tax Declaration Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Tax Declaration",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cobran\u00e7as e Pagamentos",
+   "link_count": 0,
+   "link_to": "Tax Payment Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Tax Collection Reference",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Decis\u00f5es e Contencioso",
+   "link_count": 0,
+   "link_to": "Tax Dispute Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Company",
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-11-03 19:13:35.709296",
+ "modified_by": "Administrator",
+ "module": "Angola Tax",
+ "name": "Tax Control",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 2.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Fiscal Obligation",
+   "link_to": "Fiscal Obligation",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "VAT Period Control",
+   "link_to": "VAT Period Control",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "VAT Reconciliation",
+   "link_to": "VAT Reconciliation",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Tax Notification",
+   "link_to": "Tax Notification",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Tax Litigation",
+   "link_to": "Tax Litigation",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Tax Payment",
+   "link_to": "Tax Payment",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Apuramento Anual II",
+   "link_to": "Industrial Tax Computation",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Reten\u00e7\u00f5es Mensais II",
+   "link_to": "Industrial Tax Withholding Period",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Relat\u00f3rio AGT \u2014 Reten\u00e7\u00f5es",
+   "link_to": "Industrial Tax AGT Import",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Declara\u00e7\u00f5es Fiscais",
+   "link_to": "Tax Declaration",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "Calendar",
+   "label": "Calend\u00e1rio Fiscal",
+   "link_to": "Tax Declaration",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Tipos de Declara\u00e7\u00e3o",
+   "link_to": "Tax Declaration Type",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Configurar Alertas",
+   "link_to": "Tax Alert Rule",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Avisos Activos",
+   "link_to": "Tax Warning",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "",
+   "label": "Resumo dos Avisos",
+   "link_to": "Tax Warnings Summary",
+   "report_ref_doctype": "Tax Warning",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "",
+   "label": "Posi\u00e7\u00e3o Fiscal",
+   "link_to": "Tax Fiscal Position",
+   "report_ref_doctype": "Fiscal Obligation",
+   "type": "Report"
+  }
+ ],
+ "title": "Tax Control"
+}

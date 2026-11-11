@@ -1,0 +1,168 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax AGT Line",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "fiscal_year",
+  "month",
+  "document_number",
+  "payer_tax_id",
+  "invoice_number",
+  "description",
+  "invoice_date",
+  "payment_date",
+  "invoice_amount",
+  "paid_amount",
+  "taxable_base",
+  "rate",
+  "withheld_amount",
+  "tax_paid",
+  "source_row",
+  "row_key",
+  "calculation_difference",
+  "unpaid_amount",
+  "duplicate_count",
+  "original_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "fiscal_year",
+   "fieldtype": "Data",
+   "label": "Fiscal Year",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "month",
+   "fieldtype": "Data",
+   "label": "Month",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "document_number",
+   "fieldtype": "Data",
+   "label": "Document Number",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "payer_tax_id",
+   "fieldtype": "Data",
+   "label": "Payer Tax Id",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "invoice_number",
+   "fieldtype": "Data",
+   "label": "Invoice Number",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "invoice_date",
+   "fieldtype": "Date",
+   "label": "Invoice Date",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "label": "Payment Date",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "invoice_amount",
+   "fieldtype": "Currency",
+   "label": "Invoice Amount",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "paid_amount",
+   "fieldtype": "Currency",
+   "label": "Paid Amount",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "taxable_base",
+   "fieldtype": "Currency",
+   "label": "Taxable Base",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Float",
+   "label": "Rate",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "withheld_amount",
+   "fieldtype": "Currency",
+   "label": "Withheld Amount",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "tax_paid",
+   "fieldtype": "Currency",
+   "label": "Tax Paid",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "source_row",
+   "fieldtype": "Int",
+   "label": "Source Row",
+   "read_only": 1
+  },
+  {
+   "fieldname": "row_key",
+   "fieldtype": "Data",
+   "label": "Row Key",
+   "read_only": 1
+  },
+  {
+   "fieldname": "calculation_difference",
+   "fieldtype": "Currency",
+   "label": "Calculation Difference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unpaid_amount",
+   "fieldtype": "Currency",
+   "label": "Unpaid Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "duplicate_count",
+   "fieldtype": "Int",
+   "label": "Duplicate Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "original_json",
+   "fieldtype": "Long Text",
+   "label": "Original Json",
+   "read_only": 1,
+   "hidden": 1
+  }
+ ],
+ "permissions": [],
+ "istable": 1,
+ "editable_grid": 1
+}

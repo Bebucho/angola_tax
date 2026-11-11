@@ -6,29 +6,77 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "payment_date",
+  "allocation_type",
+  "tax_settlement",
+  "payment_plan",
+  "instalment_no",
+  "column_break_target",
+  "nota_liquidacao",
+  "rupe",
+  "due_date",
   "amount",
   "payment_reference",
-  "rupe",
-  "payment_entry",
-  "journal_entry",
-  "bank_transaction",
   "notes"
  ],
  "fields": [
   {
-   "fieldname": "payment_date",
+   "fieldname": "allocation_type",
+   "fieldtype": "Select",
+   "label": "Allocation Type",
+   "options": "Tax Settlement\nPayment Plan Instalment",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "tax_settlement",
+   "fieldtype": "Link",
+   "label": "Tax Settlement",
+   "options": "Tax Settlement",
+   "depends_on": "eval:doc.allocation_type=='Tax Settlement'"
+  },
+  {
+   "fieldname": "payment_plan",
+   "fieldtype": "Link",
+   "label": "Payment Plan",
+   "options": "Tax Payment Plan",
+   "depends_on": "eval:doc.allocation_type=='Payment Plan Instalment'"
+  },
+  {
+   "fieldname": "instalment_no",
+   "fieldtype": "Int",
+   "label": "Instalment No.",
+   "depends_on": "eval:doc.allocation_type=='Payment Plan Instalment'"
+  },
+  {
+   "fieldname": "column_break_target",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "nota_liquidacao",
+   "fieldtype": "Data",
+   "label": "Nota de Liquidação",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "rupe",
+   "fieldtype": "Data",
+   "label": "RUPE",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "due_date",
    "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Payment Date",
-   "reqd": 1
+   "label": "Payment Due Date",
+   "read_only": 1
   },
   {
    "fieldname": "amount",
    "fieldtype": "Currency",
-   "in_list_view": 1,
-   "label": "Amount",
-   "reqd": 1
+   "label": "Allocated Amount",
+   "reqd": 1,
+   "in_list_view": 1
   },
   {
    "fieldname": "payment_reference",
@@ -36,32 +84,9 @@
    "label": "Payment Reference"
   },
   {
-   "fieldname": "rupe",
-   "fieldtype": "Data",
-   "label": "RUPE"
-  },
-  {
-   "fieldname": "payment_entry",
-   "fieldtype": "Link",
-   "label": "Payment Entry",
-   "options": "Payment Entry"
-  },
-  {
-   "fieldname": "bank_transaction",
-   "fieldtype": "Link",
-   "label": "Bank Transaction",
-   "options": "Bank Transaction"
-  },
-  {
    "fieldname": "notes",
    "fieldtype": "Small Text",
    "label": "Notes"
-  },
-  {
-   "fieldname": "journal_entry",
-   "fieldtype": "Link",
-   "label": "Journal Entry",
-   "options": "Journal Entry"
   }
  ],
  "grid_page_length": 50,

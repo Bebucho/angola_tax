@@ -1,0 +1,188 @@
+{
+ "doctype": "DocType",
+ "name": "VAT Transaction Detail",
+ "module": "Angola Tax",
+ "istable": 1,
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "posting_date",
+  "transaction_type",
+  "vat_nature",
+  "source_section",
+  "voucher_type",
+  "voucher_no",
+  "source_row",
+  "party_section",
+  "party_type",
+  "party",
+  "tax_id",
+  "accounting_section",
+  "account",
+  "debit",
+  "credit",
+  "vat_amount",
+  "gl_entry",
+  "classification_section",
+  "item_code",
+  "item_name",
+  "taxable_base",
+  "vat_rate",
+  "modelo_7_field",
+  "classification_status",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "transaction_type",
+   "fieldtype": "Select",
+   "label": "Transaction Type",
+   "options": "Sales\nPurchase\nSales Credit Note\nPurchase Credit Note\nImport\nJournal Entry\nOther",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vat_nature",
+   "fieldtype": "Data",
+   "label": "VAT Nature",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "source_section",
+   "fieldtype": "Section Break",
+   "label": "Source"
+  },
+  {
+   "fieldname": "voucher_type",
+   "fieldtype": "Link",
+   "label": "Voucher Type",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "voucher_no",
+   "fieldtype": "Dynamic Link",
+   "label": "Voucher No",
+   "options": "voucher_type"
+  },
+  {
+   "fieldname": "source_row",
+   "fieldtype": "Data",
+   "label": "Source Row"
+  },
+  {
+   "fieldname": "party_section",
+   "fieldtype": "Section Break",
+   "label": "Party"
+  },
+  {
+   "fieldname": "party_type",
+   "fieldtype": "Link",
+   "label": "Party Type",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "party",
+   "fieldtype": "Dynamic Link",
+   "label": "Party",
+   "options": "party_type"
+  },
+  {
+   "fieldname": "tax_id",
+   "fieldtype": "Data",
+   "label": "Tax ID"
+  },
+  {
+   "fieldname": "accounting_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting"
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "VAT Account",
+   "options": "Account",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "debit",
+   "fieldtype": "Currency",
+   "label": "Debit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "credit",
+   "fieldtype": "Currency",
+   "label": "Credit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vat_amount",
+   "fieldtype": "Currency",
+   "label": "VAT Amount",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "gl_entry",
+   "fieldtype": "Link",
+   "label": "GL Entry",
+   "options": "GL Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "classification_section",
+   "fieldtype": "Section Break",
+   "label": "Modelo 7 Classification"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "taxable_base",
+   "fieldtype": "Currency",
+   "label": "Taxable Base"
+  },
+  {
+   "fieldname": "vat_rate",
+   "fieldtype": "Percent",
+   "label": "VAT Rate"
+  },
+  {
+   "fieldname": "modelo_7_field",
+   "fieldtype": "Data",
+   "label": "Modelo 7 Field"
+  },
+  {
+   "fieldname": "classification_status",
+   "fieldtype": "Select",
+   "label": "Classification Status",
+   "options": "Accounting Only\nAutomatic\nReviewed",
+   "default": "Accounting Only",
+   "reqd": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "permissions": []
+}

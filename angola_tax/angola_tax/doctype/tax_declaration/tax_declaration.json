@@ -1,0 +1,466 @@
+{
+ "doctype": "DocType",
+ "name": "Tax Declaration",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "track_changes": 1,
+ "field_order": [
+  "company",
+  "declaration_type",
+  "period_start",
+  "period_end",
+  "fiscal_year",
+  "statutory_scope",
+  "event_reference",
+  "event_date",
+  "deadline_configuration",
+  "applicability",
+  "legal_due_date",
+  "effective_due_date",
+  "override_due_date",
+  "override_reference",
+  "override_evidence",
+  "penalty_free_until",
+  "responsible_user",
+  "reviewer",
+  "version_section",
+  "submission_kind",
+  "revision",
+  "root_declaration",
+  "previous_version",
+  "correction_reason",
+  "replaces_reference",
+  "occurrence_key",
+  "original_key",
+  "revision_key",
+  "source_section",
+  "source_doctype",
+  "source_name",
+  "obligations",
+  "preparation_state",
+  "prepared_by",
+  "prepared_on",
+  "approved_by",
+  "approved_on",
+  "snapshot_file",
+  "manifest_file",
+  "generated_file",
+  "snapshot_hash",
+  "manifest_hash",
+  "generated_hash",
+  "delivery_section",
+  "delivery_state",
+  "freshness",
+  "last_checked_on",
+  "is_overdue",
+  "days_overdue",
+  "effective_accepted_version",
+  "chain_state",
+  "is_latest_version",
+  "events"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "options": "Company"
+  },
+  {
+   "fieldname": "declaration_type",
+   "fieldtype": "Link",
+   "label": "Declaration Type",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "options": "Tax Declaration Type"
+  },
+  {
+   "fieldname": "period_start",
+   "fieldtype": "Date",
+   "label": "Period Start",
+   "reqd": 1
+  },
+  {
+   "fieldname": "period_end",
+   "fieldtype": "Date",
+   "label": "Period End",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "fiscal_year",
+   "fieldtype": "Link",
+   "label": "Fiscal Year",
+   "options": "Fiscal Year"
+  },
+  {
+   "fieldname": "statutory_scope",
+   "fieldtype": "Data",
+   "label": "Statutory Scope",
+   "default": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "event_reference",
+   "fieldtype": "Data",
+   "label": "Event Reference"
+  },
+  {
+   "fieldname": "event_date",
+   "fieldtype": "Date",
+   "label": "Event Date"
+  },
+  {
+   "fieldname": "deadline_configuration",
+   "fieldtype": "Link",
+   "label": "Deadline Configuration",
+   "reqd": 1,
+   "options": "Tax Deadline Configuration"
+  },
+  {
+   "fieldname": "applicability",
+   "fieldtype": "Select",
+   "label": "Applicability",
+   "read_only": 1,
+   "options": "Required\nOptional\nNot Applicable\nNeeds Review"
+  },
+  {
+   "fieldname": "legal_due_date",
+   "fieldtype": "Date",
+   "label": "Legal Due Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "effective_due_date",
+   "fieldtype": "Date",
+   "label": "Effective Due Date",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "override_due_date",
+   "fieldtype": "Date",
+   "label": "Override Due Date"
+  },
+  {
+   "fieldname": "override_reference",
+   "fieldtype": "Data",
+   "label": "Override Reference"
+  },
+  {
+   "fieldname": "override_evidence",
+   "fieldtype": "Attach",
+   "label": "Override Evidence"
+  },
+  {
+   "fieldname": "penalty_free_until",
+   "fieldtype": "Date",
+   "label": "Penalty Free Until"
+  },
+  {
+   "fieldname": "responsible_user",
+   "fieldtype": "Link",
+   "label": "Responsible User",
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "User"
+  },
+  {
+   "fieldname": "reviewer",
+   "fieldtype": "Link",
+   "label": "Reviewer",
+   "options": "User"
+  },
+  {
+   "fieldname": "version_section",
+   "fieldtype": "Section Break",
+   "label": "Version Section"
+  },
+  {
+   "fieldname": "submission_kind",
+   "fieldtype": "Select",
+   "label": "Submission Kind",
+   "default": "Original",
+   "reqd": 1,
+   "read_only": 1,
+   "options": "Original\nReplacement\nCorrective"
+  },
+  {
+   "fieldname": "revision",
+   "fieldtype": "Int",
+   "label": "Revision",
+   "default": "1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "root_declaration",
+   "fieldtype": "Link",
+   "label": "Root Declaration",
+   "read_only": 1,
+   "options": "Tax Declaration"
+  },
+  {
+   "fieldname": "previous_version",
+   "fieldtype": "Link",
+   "label": "Previous Version",
+   "read_only": 1,
+   "options": "Tax Declaration"
+  },
+  {
+   "fieldname": "correction_reason",
+   "fieldtype": "Small Text",
+   "label": "Correction Reason"
+  },
+  {
+   "fieldname": "replaces_reference",
+   "fieldtype": "Data",
+   "label": "Replaces Reference"
+  },
+  {
+   "fieldname": "occurrence_key",
+   "fieldtype": "Data",
+   "label": "Occurrence Key",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "original_key",
+   "fieldtype": "Data",
+   "label": "Original Key",
+   "read_only": 1,
+   "hidden": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "revision_key",
+   "fieldtype": "Data",
+   "label": "Revision Key",
+   "read_only": 1,
+   "hidden": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "source_section",
+   "fieldtype": "Section Break",
+   "label": "Source Section"
+  },
+  {
+   "fieldname": "source_doctype",
+   "fieldtype": "Link",
+   "label": "Source Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "source_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Source Name",
+   "options": "source_doctype"
+  },
+  {
+   "fieldname": "obligations",
+   "fieldtype": "Table",
+   "label": "Obligations",
+   "options": "Tax Declaration Obligation Link"
+  },
+  {
+   "fieldname": "preparation_state",
+   "fieldtype": "Select",
+   "label": "Preparation State",
+   "default": "Scheduled",
+   "read_only": 1,
+   "in_list_view": 1,
+   "options": "Scheduled\nPreparing\nPrepared\nApproved"
+  },
+  {
+   "fieldname": "prepared_by",
+   "fieldtype": "Link",
+   "label": "Prepared By",
+   "read_only": 1,
+   "options": "User"
+  },
+  {
+   "fieldname": "prepared_on",
+   "fieldtype": "Datetime",
+   "label": "Prepared On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "read_only": 1,
+   "options": "User"
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Datetime",
+   "label": "Approved On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "snapshot_file",
+   "fieldtype": "Attach",
+   "label": "Snapshot File",
+   "read_only": 1
+  },
+  {
+   "fieldname": "manifest_file",
+   "fieldtype": "Attach",
+   "label": "Manifest File",
+   "read_only": 1
+  },
+  {
+   "fieldname": "generated_file",
+   "fieldtype": "Attach",
+   "label": "Generated File",
+   "read_only": 1
+  },
+  {
+   "fieldname": "snapshot_hash",
+   "fieldtype": "Data",
+   "label": "Snapshot Hash",
+   "read_only": 1
+  },
+  {
+   "fieldname": "manifest_hash",
+   "fieldtype": "Data",
+   "label": "Manifest Hash",
+   "read_only": 1
+  },
+  {
+   "fieldname": "generated_hash",
+   "fieldtype": "Data",
+   "label": "Generated Hash",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delivery_section",
+   "fieldtype": "Section Break",
+   "label": "Delivery Section"
+  },
+  {
+   "fieldname": "delivery_state",
+   "fieldtype": "Select",
+   "label": "Delivery State",
+   "default": "Not Submitted",
+   "read_only": 1,
+   "allow_on_submit": 1,
+   "in_list_view": 1,
+   "options": "Not Submitted\nSubmitted\nAcknowledged\nAccepted\nRejected"
+  },
+  {
+   "fieldname": "freshness",
+   "fieldtype": "Select",
+   "label": "Freshness",
+   "default": "Check Required",
+   "read_only": 1,
+   "allow_on_submit": 1,
+   "in_list_view": 1,
+   "options": "Check Required\nCurrent\nSources Changed"
+  },
+  {
+   "fieldname": "last_checked_on",
+   "fieldtype": "Datetime",
+   "label": "Last Checked On",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "is_overdue",
+   "fieldtype": "Check",
+   "label": "Is Overdue",
+   "read_only": 1,
+   "allow_on_submit": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "days_overdue",
+   "fieldtype": "Int",
+   "label": "Days Overdue",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "effective_accepted_version",
+   "fieldtype": "Link",
+   "label": "Effective Accepted Version",
+   "read_only": 1,
+   "allow_on_submit": 1,
+   "options": "Tax Declaration"
+  },
+  {
+   "fieldname": "chain_state",
+   "fieldtype": "Select",
+   "label": "Chain State",
+   "default": "Current Version",
+   "read_only": 1,
+   "allow_on_submit": 1,
+   "options": "Current Version\nCurrent Accepted\nReplacement Pending\nSuperseded"
+  },
+  {
+   "fieldname": "is_latest_version",
+   "fieldtype": "Check",
+   "label": "Is Latest Version",
+   "default": "1",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "events",
+   "fieldtype": "Table",
+   "label": "Events",
+   "read_only": 1,
+   "allow_on_submit": 1,
+   "options": "Tax Declaration Event"
+  }
+ ],
+ "istable": 0,
+ "is_submittable": 1,
+ "editable_grid": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "print": 1,
+   "export": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Tax Preparer",
+   "read": 1,
+   "report": 1,
+   "print": 1,
+   "export": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Tax Approver",
+   "read": 1,
+   "report": 1,
+   "print": 1,
+   "export": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Tax Submission User",
+   "read": 1,
+   "report": 1,
+   "print": 1,
+   "export": 1,
+   "write": 1
+  }
+ ],
+ "autoname": ""
+}

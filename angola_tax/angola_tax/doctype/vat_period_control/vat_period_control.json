@@ -1,0 +1,339 @@
+{
+ "doctype": "DocType",
+ "name": "VAT Period Control",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "is_submittable": 1,
+ "track_changes": 1,
+ "field_order": [
+  "period_section",
+  "company",
+  "vat_settings",
+  "period_start",
+  "period_end",
+  "fiscal_year",
+  "currency",
+  "status_column",
+  "status",
+  "accounting_section",
+  "transactions",
+  "accounting_state_amount",
+  "accounting_taxpayer_amount",
+  "accounting_net_position",
+  "declaration_details_section",
+  "declaration_details",
+  "modelo_7_section",
+  "modelo_7_lines",
+  "modelo_7_confirmed",
+  "declared_state_amount",
+  "declared_taxpayer_amount",
+  "previous_credit",
+  "declared_payable",
+  "declared_credit",
+  "declaration_net_position",
+  "reconciliation_section",
+  "reconciling_items",
+  "reconciling_total",
+  "unexplained_difference",
+  "is_reconciled",
+  "submission_section",
+  "declaration_reference",
+  "submission_date",
+  "declaration_document",
+  "downstream_section",
+  "vat_reconciliation",
+  "fiscal_obligation",
+  "closing_journal_entry",
+  "review_section",
+  "reviewed_by",
+  "reviewed_on",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "period_section",
+   "fieldtype": "Section Break",
+   "label": "VAT Period"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "vat_settings",
+   "fieldtype": "Link",
+   "label": "VAT Settings",
+   "options": "VAT Settings",
+   "reqd": 1
+  },
+  {
+   "fieldname": "period_start",
+   "fieldtype": "Date",
+   "label": "Period Start",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "period_end",
+   "fieldtype": "Date",
+   "label": "Period End",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "fiscal_year",
+   "fieldtype": "Data",
+   "label": "Fiscal Year",
+   "read_only": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status_column",
+   "fieldtype": "Column Break",
+   "label": "Status"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nLoaded\nReviewed\nReconciled\nSubmitted\nClosed\nCancelled",
+   "default": "Draft",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "accounting_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting Position"
+  },
+  {
+   "fieldname": "transactions",
+   "fieldtype": "Table",
+   "label": "VAT Transactions",
+   "options": "VAT Transaction Detail"
+  },
+  {
+   "fieldname": "accounting_state_amount",
+   "fieldtype": "Currency",
+   "label": "VAT in Favour of State",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accounting_taxpayer_amount",
+   "fieldtype": "Currency",
+   "label": "VAT in Favour of Taxpayer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accounting_net_position",
+   "fieldtype": "Currency",
+   "label": "Accounting Net VAT Position",
+   "description": "Positive = payable to State; negative = VAT credit.",
+   "read_only": 1
+  },
+  {
+   "fieldname": "declaration_details_section",
+   "fieldtype": "Section Break",
+   "label": "VAT Declaration Detail"
+  },
+  {
+   "fieldname": "declaration_details",
+   "fieldtype": "Table",
+   "label": "Declaration Details",
+   "options": "VAT Declaration Detail"
+  },
+  {
+   "fieldname": "modelo_7_section",
+   "fieldtype": "Section Break",
+   "label": "Modelo 7 / AGT Position"
+  },
+  {
+   "fieldname": "modelo_7_lines",
+   "fieldtype": "Table",
+   "label": "Modelo 7 Lines",
+   "options": "VAT Modelo 7 Line"
+  },
+  {
+   "fieldname": "modelo_7_confirmed",
+   "fieldtype": "Check",
+   "label": "Modelo 7 Confirmed",
+   "default": "0",
+   "description": "Confirm only after the AGT Modelo 7 position has been entered and reviewed."
+  },
+  {
+   "fieldname": "declared_state_amount",
+   "fieldtype": "Currency",
+   "label": "Declared VAT in Favour of State"
+  },
+  {
+   "fieldname": "declared_taxpayer_amount",
+   "fieldtype": "Currency",
+   "label": "Declared VAT in Favour of Taxpayer"
+  },
+  {
+   "fieldname": "previous_credit",
+   "fieldtype": "Currency",
+   "label": "Previous VAT Credit",
+   "default": "0"
+  },
+  {
+   "fieldname": "declared_payable",
+   "fieldtype": "Currency",
+   "label": "Declared VAT Payable",
+   "default": "0"
+  },
+  {
+   "fieldname": "declared_credit",
+   "fieldtype": "Currency",
+   "label": "Declared VAT Credit",
+   "default": "0"
+  },
+  {
+   "fieldname": "declaration_net_position",
+   "fieldtype": "Currency",
+   "label": "Declaration Net VAT Position",
+   "description": "Positive = payable to State; negative = VAT credit.",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reconciliation_section",
+   "fieldtype": "Section Break",
+   "label": "Reconciliation"
+  },
+  {
+   "fieldname": "reconciling_items",
+   "fieldtype": "Table",
+   "label": "Reconciling Items",
+   "options": "VAT Reconciling Item"
+  },
+  {
+   "fieldname": "reconciling_total",
+   "fieldtype": "Currency",
+   "label": "Reconciling Items Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unexplained_difference",
+   "fieldtype": "Currency",
+   "label": "Unexplained Difference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "is_reconciled",
+   "fieldtype": "Check",
+   "label": "Reconciled",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "submission_section",
+   "fieldtype": "Section Break",
+   "label": "AGT Submission"
+  },
+  {
+   "fieldname": "declaration_reference",
+   "fieldtype": "Data",
+   "label": "Declaration Reference"
+  },
+  {
+   "fieldname": "submission_date",
+   "fieldtype": "Date",
+   "label": "Submission Date"
+  },
+  {
+   "fieldname": "declaration_document",
+   "fieldtype": "Attach",
+   "label": "Modelo 7 / Submission Evidence"
+  },
+  {
+   "fieldname": "downstream_section",
+   "fieldtype": "Section Break",
+   "label": "Downstream Tax Control"
+  },
+  {
+   "fieldname": "vat_reconciliation",
+   "fieldtype": "Link",
+   "label": "VAT Reconciliation",
+   "options": "VAT Reconciliation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fiscal_obligation",
+   "fieldtype": "Link",
+   "label": "Fiscal Obligation",
+   "options": "Fiscal Obligation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "closing_journal_entry",
+   "fieldtype": "Link",
+   "label": "VAT Closing Journal Entry",
+   "options": "Journal Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "review_section",
+   "fieldtype": "Section Break",
+   "label": "Review"
+  },
+  {
+   "fieldname": "reviewed_by",
+   "fieldtype": "Link",
+   "label": "Reviewed By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reviewed_on",
+   "fieldtype": "Datetime",
+   "label": "Reviewed On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "VAT Period Control",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1,
+   "search_index": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "period_end",
+ "sort_order": "DESC"
+}

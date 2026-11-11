@@ -1,0 +1,75 @@
+{
+ "doctype": "DocType",
+ "name": "Tax Technical Meeting",
+ "module": "Angola Tax",
+ "autoname": "format:TAXMEET-{#####}",
+ "track_changes": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "reference_doctype",
+  "reference_name",
+  "meeting_date",
+  "meeting_reference",
+  "participants",
+  "meeting_document",
+  "minutes",
+  "follow_up_actions"
+ ],
+ "fields": [
+  {
+   "fieldname": "reference_doctype",
+   "label": "Litigation Phase Type",
+   "fieldtype": "Link",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reference_name",
+   "label": "Litigation Phase",
+   "fieldtype": "Dynamic Link",
+   "options": "reference_doctype",
+   "reqd": 1
+  },
+  {
+   "fieldname": "meeting_date",
+   "label": "Meeting Date",
+   "fieldtype": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "meeting_reference",
+   "label": "Meeting Reference",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "participants",
+   "label": "Participants",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "meeting_document",
+   "label": "Meeting Document",
+   "fieldtype": "Attach"
+  },
+  {
+   "fieldname": "minutes",
+   "label": "Minutes / Notes",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "follow_up_actions",
+   "label": "Follow-up Actions",
+   "fieldtype": "Small Text"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "report": 1
+  }
+ ]
+}

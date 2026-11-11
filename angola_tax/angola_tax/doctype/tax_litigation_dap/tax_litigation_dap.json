@@ -1,0 +1,233 @@
+{
+ "doctype": "DocType",
+ "name": "Tax Litigation DAP",
+ "module": "Angola Tax",
+ "autoname": "format:TLPH-{#####}",
+ "is_submittable": 1,
+ "track_changes": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tax_litigation",
+  "tax_assessment",
+  "company",
+  "tax_type",
+  "fiscal_obligation",
+  "tax_provision",
+  "phase_status",
+  "company_submission_due_date",
+  "submission_date",
+  "submission_reference",
+  "submission_document",
+  "response_due_date",
+  "agt_response",
+  "agt_response_date",
+  "agt_response_reference",
+  "agt_response_document",
+  "agt_revised_amount",
+  "company_decision",
+  "settlement_amount",
+  "company_decision_date",
+  "company_decision_notes",
+  "tax_settlement",
+  "next_phase_doctype",
+  "next_phase"
+ ],
+ "fields": [
+  {
+   "fieldname": "tax_litigation",
+   "label": "Tax Litigation",
+   "fieldtype": "Link",
+   "reqd": true,
+   "options": "Tax Litigation"
+  },
+  {
+   "fieldname": "tax_assessment",
+   "label": "Tax Assessment",
+   "fieldtype": "Link",
+   "reqd": true,
+   "options": "Tax Assessment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "label": "Company",
+   "fieldtype": "Link",
+   "reqd": true,
+   "options": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_type",
+   "label": "Tax Type",
+   "fieldtype": "Link",
+   "reqd": true,
+   "options": "Tax Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fiscal_obligation",
+   "label": "Fiscal Obligation",
+   "fieldtype": "Link",
+   "reqd": false,
+   "options": "Fiscal Obligation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_provision",
+   "label": "Provision Review",
+   "fieldtype": "Link",
+   "options": "Tax Provision",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "phase_status",
+   "label": "Phase Status",
+   "fieldtype": "Select",
+   "reqd": true,
+   "options": "Draft\nAwaiting AGT Reply\nAGT Accepted\nAGT Rejected\nRevised Amount Proposed\nSettlement Pending\nContinue Dispute\nClosed",
+   "allow_on_submit": 1,
+   "default": "Draft",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company_submission_due_date",
+   "label": "Company Submission Due Date",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "submission_date",
+   "label": "Company Submission Date",
+   "fieldtype": "Date",
+   "reqd": false
+  },
+  {
+   "fieldname": "submission_reference",
+   "label": "Company Submission Reference",
+   "fieldtype": "Data",
+   "reqd": false
+  },
+  {
+   "fieldname": "submission_document",
+   "label": "DAP Submission / Supporting Document",
+   "fieldtype": "Attach",
+   "reqd": false
+  },
+  {
+   "fieldname": "response_due_date",
+   "label": "AGT Response Due Date",
+   "fieldtype": "Date",
+   "reqd": false
+  },
+  {
+   "fieldname": "agt_response",
+   "label": "AGT Response",
+   "fieldtype": "Select",
+   "reqd": false,
+   "options": "\nArgument Accepted\nArgument Rejected\nRevised Amount Proposed",
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "agt_response_date",
+   "label": "AGT Response Date",
+   "fieldtype": "Date",
+   "reqd": false,
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "agt_response_reference",
+   "label": "AGT Response Reference",
+   "fieldtype": "Data",
+   "reqd": false,
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "agt_response_document",
+   "label": "AGT Response Document",
+   "fieldtype": "Attach",
+   "reqd": false,
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "agt_revised_amount",
+   "label": "AGT Revised Amount",
+   "fieldtype": "Currency",
+   "reqd": false,
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "company_decision",
+   "label": "Company Decision",
+   "fieldtype": "Select",
+   "reqd": false,
+   "options": "\nAccept AGT Position\nContinue to Next Phase",
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "company_decision_date",
+   "label": "Company Decision Date",
+   "fieldtype": "Date",
+   "reqd": false,
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "settlement_amount",
+   "label": "Accepted Settlement Amount",
+   "fieldtype": "Currency",
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "company_decision_notes",
+   "label": "Company Decision Notes",
+   "fieldtype": "Small Text",
+   "reqd": false,
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_settlement",
+   "label": "Tax Settlement",
+   "fieldtype": "Link",
+   "reqd": false,
+   "options": "Tax Settlement",
+   "allow_on_submit": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "next_phase_doctype",
+   "label": "Next Phase Type",
+   "fieldtype": "Link",
+   "reqd": false,
+   "options": "DocType",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "next_phase",
+   "label": "Next Phase Record",
+   "fieldtype": "Dynamic Link",
+   "reqd": false,
+   "options": "next_phase_doctype",
+   "allow_on_submit": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "print": 1,
+   "report": 1
+  }
+ ]
+}

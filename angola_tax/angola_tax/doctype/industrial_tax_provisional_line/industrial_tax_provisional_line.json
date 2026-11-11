@@ -1,0 +1,72 @@
+{
+ "doctype": "DocType",
+ "name": "Industrial Tax Provisional Line",
+ "module": "Angola Tax",
+ "engine": "InnoDB",
+ "field_order": [
+  "source_row",
+  "sales_invoice",
+  "posting_date",
+  "item_code",
+  "base_amount",
+  "classification",
+  "reason"
+ ],
+ "fields": [
+  {
+   "fieldname": "source_row",
+   "fieldtype": "Data",
+   "label": "Source Row",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "read_only": 1,
+   "in_list_view": 1,
+   "options": "Sales Invoice"
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item Code",
+   "read_only": 1,
+   "options": "Item"
+  },
+  {
+   "fieldname": "base_amount",
+   "fieldtype": "Currency",
+   "label": "Base Amount",
+   "precision": "2",
+   "read_only": 1,
+   "in_list_view": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "classification",
+   "fieldtype": "Select",
+   "label": "Classification",
+   "default": "Needs Review",
+   "reqd": 1,
+   "in_list_view": 1,
+   "options": "Needs Review\nEligible\nExcluded"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "Reason"
+  }
+ ],
+ "track_changes": 1,
+ "permissions": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "modified": "2026-10-11 19:59:55.661810"
+}

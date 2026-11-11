@@ -1,0 +1,37 @@
+{
+ "actions": [],
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "component",
+  "amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "component",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Component",
+   "options": "Principal\nPenalty",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "module": "Angola Tax",
+ "name": "Tax Settlement Component",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "states": []
+}

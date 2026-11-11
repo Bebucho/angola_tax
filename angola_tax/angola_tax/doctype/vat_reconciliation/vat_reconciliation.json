@@ -1,0 +1,306 @@
+{
+ "actions": [],
+ "autoname": "format:VATR-{YYYY}-{#####}",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "is_submittable": 1,
+ "module": "Angola Tax",
+ "name": "VAT Reconciliation",
+ "naming_rule": "Expression (old style)",
+ "track_changes": 1,
+ "field_order": [
+  "period_section",
+  "vat_period_control",
+  "company",
+  "period_start",
+  "period_end",
+  "status_column",
+  "status",
+  "modelo_7_confirmed",
+  "accounting_section",
+  "accounting_state_amount",
+  "accounting_taxpayer_amount",
+  "accounting_net_position",
+  "declaration_section",
+  "declared_state_amount",
+  "declared_taxpayer_amount",
+  "previous_credit",
+  "declared_payable",
+  "declared_credit",
+  "declaration_net_position",
+  "reconciliation_section",
+  "reconciling_items",
+  "reconciling_total",
+  "unexplained_difference",
+  "is_reconciled",
+  "submission_section",
+  "declaration_reference",
+  "submission_date",
+  "declaration_document",
+  "review_section",
+  "prepared_by",
+  "prepared_on",
+  "reviewed_by",
+  "reviewed_on",
+  "notes",
+  "downstream_section",
+  "closing_journal_entry",
+  "fiscal_obligation",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "period_section",
+   "fieldtype": "Section Break",
+   "label": "VAT Period"
+  },
+  {
+   "fieldname": "vat_period_control",
+   "fieldtype": "Link",
+   "label": "VAT Period Control",
+   "options": "VAT Period Control",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1,
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "period_start",
+   "fieldtype": "Date",
+   "label": "Period Start",
+   "read_only": 1
+  },
+  {
+   "fieldname": "period_end",
+   "fieldtype": "Date",
+   "label": "Period End",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nIn Review\nReconciled\nSubmitted\nCancelled",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "modelo_7_confirmed",
+   "fieldtype": "Check",
+   "label": "Modelo 7 Confirmed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accounting_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting Position"
+  },
+  {
+   "fieldname": "accounting_state_amount",
+   "fieldtype": "Currency",
+   "label": "VAT in Favour of State",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accounting_taxpayer_amount",
+   "fieldtype": "Currency",
+   "label": "VAT in Favour of Taxpayer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accounting_net_position",
+   "fieldtype": "Currency",
+   "label": "Accounting Net VAT Position",
+   "read_only": 1
+  },
+  {
+   "fieldname": "declaration_section",
+   "fieldtype": "Section Break",
+   "label": "Modelo 7 / AGT Position"
+  },
+  {
+   "fieldname": "declared_state_amount",
+   "fieldtype": "Currency",
+   "label": "Declared VAT in Favour of State",
+   "read_only": 1
+  },
+  {
+   "fieldname": "declared_taxpayer_amount",
+   "fieldtype": "Currency",
+   "label": "Declared VAT in Favour of Taxpayer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "previous_credit",
+   "fieldtype": "Currency",
+   "label": "Previous VAT Credit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "declared_payable",
+   "fieldtype": "Currency",
+   "label": "Declared VAT Payable",
+   "read_only": 1
+  },
+  {
+   "fieldname": "declared_credit",
+   "fieldtype": "Currency",
+   "label": "Declared VAT Credit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "declaration_net_position",
+   "fieldtype": "Currency",
+   "label": "Declaration Net VAT Position",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reconciliation_section",
+   "fieldtype": "Section Break",
+   "label": "Reconciliation"
+  },
+  {
+   "fieldname": "reconciling_items",
+   "fieldtype": "Table",
+   "label": "Reconciling Items",
+   "options": "VAT Reconciling Item"
+  },
+  {
+   "fieldname": "reconciling_total",
+   "fieldtype": "Currency",
+   "label": "Reconciling Items Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unexplained_difference",
+   "fieldtype": "Currency",
+   "label": "Unexplained Difference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "is_reconciled",
+   "fieldtype": "Check",
+   "label": "Reconciled",
+   "read_only": 1
+  },
+  {
+   "fieldname": "submission_section",
+   "fieldtype": "Section Break",
+   "label": "AGT Submission"
+  },
+  {
+   "fieldname": "declaration_reference",
+   "fieldtype": "Data",
+   "label": "Declaration Reference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "submission_date",
+   "fieldtype": "Date",
+   "label": "Submission Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "declaration_document",
+   "fieldtype": "Attach",
+   "label": "Modelo 7 / Submission Evidence",
+   "read_only": 1
+  },
+  {
+   "fieldname": "review_section",
+   "fieldtype": "Section Break",
+   "label": "Review"
+  },
+  {
+   "fieldname": "prepared_by",
+   "fieldtype": "Link",
+   "label": "Prepared By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "prepared_on",
+   "fieldtype": "Datetime",
+   "label": "Prepared On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reviewed_by",
+   "fieldtype": "Link",
+   "label": "Reviewed By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reviewed_on",
+   "fieldtype": "Datetime",
+   "label": "Reviewed On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "downstream_section",
+   "fieldtype": "Section Break",
+   "label": "Downstream Tax Control"
+  },
+  {
+   "fieldname": "closing_journal_entry",
+   "fieldtype": "Link",
+   "label": "VAT Closing Journal Entry",
+   "options": "Journal Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fiscal_obligation",
+   "fieldtype": "Link",
+   "label": "Fiscal Obligation",
+   "options": "Fiscal Obligation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "VAT Reconciliation",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
